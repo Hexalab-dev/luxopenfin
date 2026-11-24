@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxembourg Payroll Calculator - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-success {
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #4cae4c;
+        }
+
+        .btn-danger {
+            background: var(--accent-danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c9302c;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 0.85em;
+        }
+
+        .calculation-result {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--accent-primary);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .breakdown-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .breakdown-section h3 {
+            color: var(--accent-primary);
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .employee-list {
+            margin-top: 20px;
+        }
+
+        .employee-card {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent-secondary);
+        }
+
+        .employee-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .employee-name {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .employee-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        .detail-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .payroll-register {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Luxembourg Payroll Calculator</h1>
+            <p class="subtitle">Calculate gross-to-net salary with Luxembourg social charges breakdown</p>
+        </header>
+
+        <div class="info-box">
+            <h3>Luxembourg Social Charges Rates (CCSS, as of 1 January 2026 — check ccss.lu each year)</h3>
+            <p><strong>Employee Portion (12.95%):</strong> Health Insurance 2.80% + 0.25% (cash benefits), Pension 8.50%, Dependency Insurance 1.40% (on gross minus 1/4 of the social minimum wage = €675.94; no ceiling). 12.95% is the headline total; the effective rate is slightly lower because of the allowance.</p>
+            <p><strong>Employer Portion (12.57%):</strong> Health Insurance 2.80% + 0.25%, Pension 8.50%, Accident Insurance 0.65%, Health at Work 0.14%, Mutualité des employeurs 0.23% (class 1 assumed; classes 2–4: 0.95% / 1.56% / 2.66%). No employer dependency insurance.</p>
+            <p><strong>Total Social Charges:</strong> about 25.52% of gross salary. Health, pension and employer contributions are capped at 5 × the social minimum wage (€2,703.74 × 5 = €13,518.70/month at 1 January 2026). Wage tax (withheld per the employee's tax card) is not calculated here.</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>Add Employee</h2>
+                <form id="employeeForm">
+                    <div class="form-group">
+                        <label for="employeeName">Employee Name</label>
+                        <input type="text" id="employeeName" required placeholder="e.g., John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grossSalary">Gross Salary (€)</label>
+                        <input type="number" id="grossSalary" step="0.01" min="0" required placeholder="0.00">
+                    </div>
+
+                    <button type="submit" class="btn btn-success" style="width: 100%;">Add Employee</button>
+                    <button type="button" class="btn btn-danger" onclick="clearAllEmployees()" style="width: 100%; margin-top: 10px;">Clear All</button>
+                </form>
+
+                <div id="singleCalculation" class="calculation-result" style="display: none;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 10px;">Calculation Result</h3>
+                    <div class="result-row">
+                        <span>Gross Salary:</span>
+                        <span id="singleGross">€0.00</span>
+                    </div>
+                    <div class="breakdown-section">
+                        <h3>Employee Deductions (12.95%)</h3>
+                        <div class="result-row">
+                            <span>Health Insurance (2.80% + 0.25%):</span>
+                            <span id="singleHealthEmp">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Pension (8.50%):</span>
+                            <span id="singlePensionEmp">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Dependency Insurance (1.40% on gross − €675.94):</span>
+                            <span id="singleDependencyEmp">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Total Employee Deductions:</span>
+                            <span id="singleTotalEmp">€0.00</span>
+                        </div>
+                    </div>
+                    <div class="breakdown-section">
+                        <h3>Employer Costs (12.57%)</h3>
+                        <div class="result-row">
+                            <span>Health Insurance (2.80% + 0.25%):</span>
+                            <span id="singleHealthEmp2">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Pension (8.50%):</span>
+                            <span id="singlePensionEmp2">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Health at Work 0.14% + Mutualité class 1 0.23%:</span>
+                            <span id="singleDependencyEmp2">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Accident Insurance (0.65%):</span>
+                            <span id="singleAccident">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span>Total Employer Charges:</span>
+                            <span id="singleTotalEmp2">€0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-row">
+                        <span>Net after Social Security (before wage tax):</span>
+                        <span id="singleNet">€0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Total Cost to Employer:</span>
+                        <span id="singleTotalCost">€0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="card">
+                <h2>Payroll Register</h2>
+                <div id="employeeList" class="employee-list">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">👥</div>
+                        <p>No employees added yet. Add employees using the form.</p>
+                    </div>
+                </div>
+
+                <div id="payrollSummary" class="payroll-register" style="display: none;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 15px;">Payroll Summary</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Gross Salary</th>
+                                <th>Employee Deductions</th>
+                                <th>Net before Wage Tax</th>
+                                <th>Employer Charges</th>
+                                <th>Total Cost</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payrollTableBody">
+                        </tbody>
+                        <tfoot id="payrollTableFooter">
+                        </tfoot>
+                    </table>
+
+                    <div class="export-buttons">
+                        <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button>
+                        <button class="btn btn-secondary" onclick="exportToExcel()">Export to Excel</button>
+                        <button class="btn btn-secondary" onclick="window.print()">Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Luxembourg Social Charges Rates (CCSS, as of 1 January 2026 — check ccss.lu each year)
+        // Same method as the website's PayrollCalculator.tsx: contributions capped at 5 × social minimum wage;
+        // dependency insurance on gross − 1/4 social minimum wage with no ceiling; Mutualité class 1 assumed.
+        const SOCIAL_MINIMUM_WAGE = 2703.74;                    // unskilled, 18+, monthly (1 Jan 2026)
+        const CONTRIBUTION_CEILING = 5 * SOCIAL_MINIMUM_WAGE;   // €13,518.70 per month
+        const DEPENDENCY_ALLOWANCE = SOCIAL_MINIMUM_WAGE / 4;   // €675.94 per month
+        const SOCIAL_RATES = {
+            employee: {
+                health: 0.0305,     // 2.80% benefits in kind + 0.25% cash benefits
+                pension: 0.085,     // 8.50%
+                dependency: 0.014,  // 1.40% (employee only)
+                total: 0.1295       // 12.95%
+            },
+            employer: {
+                health: 0.0305,     // 2.80% + 0.25%
+                pension: 0.085,     // 8.50%
+                other: 0.0037,      // health at work 0.14% + Mutualité class 1 0.23%
+                accident: 0.0065,   // 0.65% (before bonus-malus factor)
+                total: 0.1257       // 12.57%
+            }
+        };
+
+        let employees = [];
+
+        // Calculate payroll
+        function calculatePayroll(grossSalary) {
+            const cappedBase = Math.min(grossSalary, CONTRIBUTION_CEILING);
+            const dependencyBase = Math.max(grossSalary - DEPENDENCY_ALLOWANCE, 0);
+
+            const employeeDeductions = {
+                health: cappedBase * SOCIAL_RATES.employee.health,
+                pension: cappedBase * SOCIAL_RATES.employee.pension,
+                dependency: dependencyBase * SOCIAL_RATES.employee.dependency
+            };
+            employeeDeductions.total = employeeDeductions.health + employeeDeductions.pension + employeeDeductions.dependency;
+
+            const employerCharges = {
+                health: cappedBase * SOCIAL_RATES.employer.health,
+                pension: cappedBase * SOCIAL_RATES.employer.pension,
+                other: cappedBase * SOCIAL_RATES.employer.other,
+                accident: cappedBase * SOCIAL_RATES.employer.accident
+            };
+            employerCharges.total = employerCharges.health + employerCharges.pension + employerCharges.other + employerCharges.accident;
+
+            const netSalary = grossSalary - employeeDeductions.total;
+            const totalCost = grossSalary + employerCharges.total;
+
+            return {
+                gross: grossSalary,
+                employeeDeductions,
+                employerCharges,
+                net: netSalary,
+                totalCost
+            };
+        }
+
+        // Add Employee
+        document.getElementById('employeeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('employeeName').value.trim();
+            const gross = parseFloat(document.getElementById('grossSalary').value);
+
+            if (isNaN(gross) || gross <= 0) {
+                alert('Please enter a valid gross salary');
+                return;
+            }
+
+            const calculation = calculatePayroll(gross);
+            
+            employees.push({
+                id: Date.now(),
+                name: name,
+                ...calculation
+            });
+
+            updateEmployeeList();
+            document.getElementById('employeeForm').reset();
+        });
+
+        // Update Employee List
+        function updateEmployeeList() {
+            const list = document.getElementById('employeeList');
+            const summary = document.getElementById('payrollSummary');
+
+            if (employees.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">👥</div>
+                        <p>No employees added yet. Add employees using the form.</p>
+                    </div>
+                `;
+                summary.style.display = 'none';
+                return;
+            }
+
+            list.innerHTML = employees.map(emp => `
+                <div class="employee-card">
+                    <div class="employee-header">
+                        <div class="employee-name">${escapeHtml(emp.name)}</div>
+                        <button class="btn btn-danger btn-small" onclick="removeEmployee(${emp.id})">Remove</button>
+                    </div>
+                    <div class="employee-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Gross Salary</span>
+                            <span class="detail-value">${formatCurrency(emp.gross)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Employee Deductions</span>
+                            <span class="detail-value">${formatCurrency(emp.employeeDeductions.total)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Net before Wage Tax</span>
+                            <span class="detail-value">${formatCurrency(emp.net)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Total Cost to Employer</span>
+                            <span class="detail-value">${formatCurrency(emp.totalCost)}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Update Payroll Register Table
+            const tbody = document.getElementById('payrollTableBody');
+            tbody.innerHTML = employees.map(emp => `
+                <tr>
+                    <td>${escapeHtml(emp.name)}</td>
+                    <td>${formatCurrency(emp.gross)}</td>
+                    <td>${formatCurrency(emp.employeeDeductions.total)}</td>
+                    <td>${formatCurrency(emp.net)}</td>
+                    <td>${formatCurrency(emp.employerCharges.total)}</td>
+                    <td>${formatCurrency(emp.totalCost)}</td>
+                    <td>
+                        <button class="btn btn-danger btn-small" onclick="removeEmployee(${emp.id})">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Update Totals
+            const totalGross = employees.reduce((sum, e) => sum + e.gross, 0);
+            const totalEmpDeductions = employees.reduce((sum, e) => sum + e.employeeDeductions.total, 0);
+            const totalNet = employees.reduce((sum, e) => sum + e.net, 0);
+            const totalEmpCharges = employees.reduce((sum, e) => sum + e.employerCharges.total, 0);
+            const totalCost = employees.reduce((sum, e) => sum + e.totalCost, 0);
+
+            const footer = document.getElementById('payrollTableFooter');
+            footer.innerHTML = `
+                <tr style="font-weight: bold; background: var(--bg-tertiary);">
+                    <td>TOTALS</td>
+                    <td>${formatCurrency(totalGross)}</td>
+                    <td>${formatCurrency(totalEmpDeductions)}</td>
+                    <td>${formatCurrency(totalNet)}</td>
+                    <td>${formatCurrency(totalEmpCharges)}</td>
+                    <td>${formatCurrency(totalCost)}</td>
+                    <td>-</td>
+                </tr>
+            `;
+
+            summary.style.display = 'block';
+        }
+
+        // Remove Employee
+        function removeEmployee(id) {
+            employees = employees.filter(e => e.id !== id);
+            updateEmployeeList();
+        }
+
+        // Clear All Employees
+        function clearAllEmployees() {
+            if (employees.length === 0) return;
+            if (confirm('Clear all employees from payroll register?')) {
+                employees = [];
+                updateEmployeeList();
+            }
+        }
+
+        // Export Functions
+        function exportToCSV() {
+            if (employees.length === 0) {
+                alert('No employees to export');
+                return;
+            }
+
+            let csv = 'Employee Name,Gross Salary,Employee Deductions,Net before Wage Tax,Employer Charges,Total Cost\n';
+            employees.forEach(emp => {
+                csv += `"${emp.name}",${emp.gross.toFixed(2)},${emp.employeeDeductions.total.toFixed(2)},${emp.net.toFixed(2)},${emp.employerCharges.total.toFixed(2)},${emp.totalCost.toFixed(2)}\n`;
+            });
+
+            const totalGross = employees.reduce((sum, e) => sum + e.gross, 0);
+            const totalEmpDeductions = employees.reduce((sum, e) => sum + e.employeeDeductions.total, 0);
+            const totalNet = employees.reduce((sum, e) => sum + e.net, 0);
+            const totalEmpCharges = employees.reduce((sum, e) => sum + e.employerCharges.total, 0);
+            const totalCost = employees.reduce((sum, e) => sum + e.totalCost, 0);
+
+            csv += `"TOTALS",${totalGross.toFixed(2)},${totalEmpDeductions.toFixed(2)},${totalNet.toFixed(2)},${totalEmpCharges.toFixed(2)},${totalCost.toFixed(2)}\n`;
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `payroll_register_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportToExcel() {
+            // For Excel, we'll create a CSV that Excel can open
+            exportToCSV();
+            alert('CSV file exported. You can open it in Excel. Full Excel export coming soon.');
+        }
+
+        // Utility Functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-LU', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Real-time calculation on gross salary input
+        document.getElementById('grossSalary').addEventListener('input', function() {
+            const gross = parseFloat(this.value);
+            const singleCalc = document.getElementById('singleCalculation');
+            
+            if (isNaN(gross) || gross <= 0) {
+                singleCalc.style.display = 'none';
+                return;
+            }
+
+            const calc = calculatePayroll(gross);
+            
+            document.getElementById('singleGross').textContent = formatCurrency(calc.gross);
+            document.getElementById('singleHealthEmp').textContent = formatCurrency(calc.employeeDeductions.health);
+            document.getElementById('singlePensionEmp').textContent = formatCurrency(calc.employeeDeductions.pension);
+            document.getElementById('singleDependencyEmp').textContent = formatCurrency(calc.employeeDeductions.dependency);
+            document.getElementById('singleTotalEmp').textContent = formatCurrency(calc.employeeDeductions.total);
+            document.getElementById('singleHealthEmp2').textContent = formatCurrency(calc.employerCharges.health);
+            document.getElementById('singlePensionEmp2').textContent = formatCurrency(calc.employerCharges.pension);
+            document.getElementById('singleDependencyEmp2').textContent = formatCurrency(calc.employerCharges.other);
+            document.getElementById('singleAccident').textContent = formatCurrency(calc.employerCharges.accident);
+            document.getElementById('singleTotalEmp2').textContent = formatCurrency(calc.employerCharges.total);
+            document.getElementById('singleNet').textContent = formatCurrency(calc.net);
+            document.getElementById('singleTotalCost').textContent = formatCurrency(calc.totalCost);
+            
+            singleCalc.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+

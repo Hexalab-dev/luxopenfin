@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: The Adjustment Process - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 4: The Adjustment Process</div>
+        <div class="slide-subtitle">Chapter 4 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Explain the concepts and guidelines affecting adjusting entries</div>
+            <div class="objective-item">Discuss the adjustment process and illustrate common types of adjusting entries</div>
+            <div class="objective-item">Record and post the common types of adjusting entries</div>
+            <div class="objective-item">Use the ledger balances to prepare an adjusted trial balance</div>
+            <div class="objective-item">Prepare financial statements using the adjusted trial balance</div>
+            <div class="objective-item">Understand Luxembourg-specific adjustments: VAT accruals, social charges, and provisions</div>
+        </div>
+    </div>
+    
+    <!-- Section 4.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.1 Explain the Concepts and Guidelines Affecting Adjusting Entries</div>
+            <div class="subsection-title">Why Adjusting Entries Are Necessary</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">The Need for Adjustments</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Time passes (depreciation, rent expiration, interest accrual)</li>
+                <li class="bullet-item">Services are provided but not yet billed (accrued revenue)</li>
+                <li class="bullet-item">Expenses are incurred but not yet paid (accrued expenses)</li>
+                <li class="bullet-item">Cash is received before services are provided (unearned revenue)</li>
+                <li class="bullet-item">Expenses are paid before they are incurred (prepaid expenses)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 4.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.2 Discuss the Adjustment Process and Illustrate Common Types of Adjusting Entries</div>
+            <div class="subsection-title">Types of Adjusting Entries</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Type 1: Prepaid Expenses (Deferred Expenses)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Prepaid insurance</li>
+                <li class="bullet-item">Prepaid rent</li>
+                <li class="bullet-item">Supplies on hand</li>
+                <li class="bullet-item">Prepaid advertising</li>
+                <li class="bullet-item">614: Insurance Expense (Class 6)</li>
+                <li class="bullet-item">481: Prepaid Expenses (Class 4) or keep as 481 with separate tracking</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 4.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.3 Record and Post the Common Types of Adjusting Entries</div>
+            <div class="subsection-title">Recording Adjusting Entries</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Step-by-Step Process</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 4.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.4 Use the Ledger Balances to Prepare an Adjusted Trial Balance</div>
+            <div class="subsection-title">What is an Adjusted Trial Balance?</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Purpose of Adjusted Trial Balance</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 4.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.5 Prepare Financial Statements Using the Adjusted Trial Balance</div>
+            <div class="subsection-title">Using Adjusted Balances</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Preparing the Income Statement</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 4.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">4.6 Luxembourg-Specific Adjustments: VAT Accruals, Social Charges, Provisions</div>
+            <div class="subsection-title">Luxembourg-Specific Adjusting Entries</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">VAT (Value Added Tax)</li>
+                <li class="bullet-item">Social charges (employee benefits)</li>
+                <li class="bullet-item">Provisions (reserves for future obligations)</li>
+            </ul>
+            <div class="subsection-title">VAT Accruals</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">461411: VAT Payable (Class 4)</li>
+                <li class="bullet-item">421611: VAT Recoverable (Class 4)</li>
+                <li class="bullet-item">VAT Payable: €1,700</li>
+                <li class="bullet-item">VAT Recoverable: €850</li>
+                <li class="bullet-item">Net VAT to Pay: €850</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Accrual Basis Accounting</div>
+                <div class="term-definition">Recording transactions when they occur, not when cash changes hands</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accrued Expenses</div>
+                <div class="term-definition">Expenses incurred but not yet paid or recorded</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accrued Revenues</div>
+                <div class="term-definition">Revenues earned but not yet received or recorded</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Adjusted Trial Balance</div>
+                <div class="term-definition">Trial balance prepared after adjusting entries</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Adjusting Entries</div>
+                <div class="term-definition">Journal entries made at period end to update accounts</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Depreciation</div>
+                <div class="term-definition">Systematic allocation of asset cost over useful life</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Matching Principle</div>
+                <div class="term-definition">Expenses recorded in same period as related revenues</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Prepaid Expenses</div>
+                <div class="term-definition">Expenses paid in advance, recorded as assets</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Provision</div>
+                <div class="term-definition">Estimated liability for future obligations</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Revenue Recognition Principle</div>
+                <div class="term-definition">Revenue recorded when earned, not when cash received</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Time Period Concept</div>
+                <div class="term-definition">Business activities divided into specific periods for reporting</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Unearned Revenues</div>
+                <div class="term-definition">Cash received in advance for future services, recorded as liabilities</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Ratio Calculator - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --accent-warning: #f0ad4e;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .ratio-section {
+            margin-bottom: 30px;
+        }
+
+        .ratio-section h3 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .ratio-item {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .ratio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .ratio-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .ratio-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'Courier New', monospace;
+        }
+
+        .ratio-formula {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .ratio-interpretation {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .ratio-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-good {
+            background: rgba(92, 184, 92, 0.2);
+            color: var(--accent-secondary);
+        }
+
+        .status-acceptable {
+            background: rgba(240, 173, 78, 0.2);
+            color: var(--accent-warning);
+        }
+
+        .status-poor {
+            background: rgba(217, 83, 79, 0.2);
+            color: var(--accent-danger);
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .benchmark-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+
+        .benchmark-table th,
+        .benchmark-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .benchmark-table th {
+            background: var(--bg-primary);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Financial Ratio Calculator</h1>
+            <p class="subtitle">Calculate and analyze financial ratios from financial statement data</p>
+        </header>
+
+        <div class="info-box">
+            <h3>💡 Financial Ratios</h3>
+            <p>Financial ratios help analyze a company's financial health, performance, and efficiency. Enter values from your financial statements to calculate ratios automatically.</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>Financial Data Input</h2>
+                <form id="ratioForm">
+                    <div class="form-group">
+                        <label>Balance Sheet Data</label>
+                        <input type="number" id="cash" step="0.01" min="0" placeholder="Cash">
+                        <input type="number" id="accountsReceivable" step="0.01" min="0" placeholder="Accounts Receivable" style="margin-top: 10px;">
+                        <input type="number" id="inventory" step="0.01" min="0" placeholder="Inventory" style="margin-top: 10px;">
+                        <input type="number" id="currentAssets" step="0.01" min="0" placeholder="Total Current Assets" style="margin-top: 10px;">
+                        <input type="number" id="totalAssets" step="0.01" min="0" placeholder="Total Assets" style="margin-top: 10px;">
+                        <input type="number" id="currentLiabilities" step="0.01" min="0" placeholder="Current Liabilities" style="margin-top: 10px;">
+                        <input type="number" id="totalLiabilities" step="0.01" min="0" placeholder="Total Liabilities" style="margin-top: 10px;">
+                        <input type="number" id="equity" step="0.01" min="0" placeholder="Total Equity" style="margin-top: 10px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Income Statement Data</label>
+                        <input type="number" id="revenue" step="0.01" min="0" placeholder="Revenue (Sales)">
+                        <input type="number" id="cogs" step="0.01" min="0" placeholder="Cost of Goods Sold" style="margin-top: 10px;">
+                        <input type="number" id="netIncome" step="0.01" placeholder="Net Income" style="margin-top: 10px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Data (Optional)</label>
+                        <input type="number" id="averageInventory" step="0.01" min="0" placeholder="Average Inventory">
+                        <input type="number" id="averageReceivables" step="0.01" min="0" placeholder="Average Accounts Receivable" style="margin-top: 10px;">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Calculate Ratios</button>
+                    <button type="button" class="btn btn-secondary" onclick="loadExample()" style="width: 100%; margin-top: 10px;">Load Example</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()" style="width: 100%; margin-top: 10px;">Clear</button>
+                </form>
+            </div>
+
+            <!-- Results -->
+            <div class="card">
+                <h2>Calculated Ratios</h2>
+                <div id="ratioResults">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <p>Enter financial data and click "Calculate Ratios"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateRatios() {
+            // Get input values
+            const cash = parseFloat(document.getElementById('cash').value) || 0;
+            const accountsReceivable = parseFloat(document.getElementById('accountsReceivable').value) || 0;
+            const inventory = parseFloat(document.getElementById('inventory').value) || 0;
+            const currentAssets = parseFloat(document.getElementById('currentAssets').value) || 0;
+            const totalAssets = parseFloat(document.getElementById('totalAssets').value) || 0;
+            const currentLiabilities = parseFloat(document.getElementById('currentLiabilities').value) || 0;
+            const totalLiabilities = parseFloat(document.getElementById('totalLiabilities').value) || 0;
+            const equity = parseFloat(document.getElementById('equity').value) || 0;
+            const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+            const cogs = parseFloat(document.getElementById('cogs').value) || 0;
+            const netIncome = parseFloat(document.getElementById('netIncome').value) || 0;
+            const averageInventory = parseFloat(document.getElementById('averageInventory').value) || inventory;
+            const averageReceivables = parseFloat(document.getElementById('averageReceivables').value) || accountsReceivable;
+
+            // Calculate ratios
+            const ratios = {};
+
+            // Liquidity Ratios
+            if (currentLiabilities > 0) {
+                ratios.currentRatio = currentAssets / currentLiabilities;
+                ratios.quickRatio = (currentAssets - inventory) / currentLiabilities;
+                ratios.workingCapital = currentAssets - currentLiabilities;
+            }
+
+            // Profitability Ratios
+            if (revenue > 0) {
+                ratios.grossProfitMargin = ((revenue - cogs) / revenue) * 100;
+                ratios.netProfitMargin = (netIncome / revenue) * 100;
+            }
+            if (totalAssets > 0) {
+                ratios.returnOnAssets = (netIncome / totalAssets) * 100;
+            }
+            if (equity > 0) {
+                ratios.returnOnEquity = (netIncome / equity) * 100;
+            }
+
+            // Efficiency Ratios
+            if (averageInventory > 0 && cogs > 0) {
+                ratios.inventoryTurnover = cogs / averageInventory;
+                ratios.daysInventory = 365 / ratios.inventoryTurnover;
+            }
+            if (averageReceivables > 0 && revenue > 0) {
+                ratios.receivablesTurnover = revenue / averageReceivables;
+                ratios.daysSalesOutstanding = 365 / ratios.receivablesTurnover;
+            }
+
+            // Solvency Ratios
+            if (equity > 0) {
+                ratios.debtToEquity = totalLiabilities / equity;
+            }
+            if (totalAssets > 0) {
+                ratios.debtToAssets = totalLiabilities / totalAssets;
+            }
+
+            // Display results
+            displayRatios(ratios);
+        }
+
+        function displayRatios(ratios) {
+            const resultsDiv = document.getElementById('ratioResults');
+            let html = '';
+
+            // Liquidity Ratios
+            html += '<div class="ratio-section">';
+            html += '<h3>Liquidity Ratios</h3>';
+            
+            if (ratios.currentRatio !== undefined) {
+                const status = getCurrentRatioStatus(ratios.currentRatio);
+                html += createRatioCard(
+                    'Current Ratio',
+                    ratios.currentRatio.toFixed(2),
+                    'Current Assets ÷ Current Liabilities',
+                    getCurrentRatioInterpretation(ratios.currentRatio),
+                    status
+                );
+            }
+
+            if (ratios.quickRatio !== undefined) {
+                const status = getQuickRatioStatus(ratios.quickRatio);
+                html += createRatioCard(
+                    'Quick Ratio (Acid-Test)',
+                    ratios.quickRatio.toFixed(2),
+                    '(Current Assets - Inventory) ÷ Current Liabilities',
+                    getQuickRatioInterpretation(ratios.quickRatio),
+                    status
+                );
+            }
+
+            if (ratios.workingCapital !== undefined) {
+                html += createRatioCard(
+                    'Working Capital',
+                    formatCurrency(ratios.workingCapital),
+                    'Current Assets - Current Liabilities',
+                    ratios.workingCapital >= 0 ? 'Positive working capital indicates good liquidity' : 'Negative working capital indicates liquidity concerns',
+                    ratios.workingCapital >= 0 ? 'status-good' : 'status-poor'
+                );
+            }
+
+            html += '</div>';
+
+            // Profitability Ratios
+            html += '<div class="ratio-section">';
+            html += '<h3>Profitability Ratios</h3>';
+
+            if (ratios.grossProfitMargin !== undefined) {
+                const status = getProfitMarginStatus(ratios.grossProfitMargin, 'gross');
+                html += createRatioCard(
+                    'Gross Profit Margin',
+                    ratios.grossProfitMargin.toFixed(2) + '%',
+                    '(Revenue - COGS) ÷ Revenue × 100',
+                    getGrossMarginInterpretation(ratios.grossProfitMargin),
+                    status
+                );
+            }
+
+            if (ratios.netProfitMargin !== undefined) {
+                const status = getProfitMarginStatus(ratios.netProfitMargin, 'net');
+                html += createRatioCard(
+                    'Net Profit Margin',
+                    ratios.netProfitMargin.toFixed(2) + '%',
+                    'Net Income ÷ Revenue × 100',
+                    getNetMarginInterpretation(ratios.netProfitMargin),
+                    status
+                );
+            }
+
+            if (ratios.returnOnAssets !== undefined) {
+                const status = getROAStatus(ratios.returnOnAssets);
+                html += createRatioCard(
+                    'Return on Assets (ROA)',
+                    ratios.returnOnAssets.toFixed(2) + '%',
+                    'Net Income ÷ Total Assets × 100',
+                    getROAInterpretation(ratios.returnOnAssets),
+                    status
+                );
+            }
+
+            if (ratios.returnOnEquity !== undefined) {
+                const status = getROEStatus(ratios.returnOnEquity);
+                html += createRatioCard(
+                    'Return on Equity (ROE)',
+                    ratios.returnOnEquity.toFixed(2) + '%',
+                    'Net Income ÷ Equity × 100',
+                    getROEInterpretation(ratios.returnOnEquity),
+                    status
+                );
+            }
+
+            html += '</div>';
+
+            // Efficiency Ratios
+            html += '<div class="ratio-section">';
+            html += '<h3>Efficiency Ratios</h3>';
+
+            if (ratios.inventoryTurnover !== undefined) {
+                html += createRatioCard(
+                    'Inventory Turnover',
+                    ratios.inventoryTurnover.toFixed(2) + 'x',
+                    'COGS ÷ Average Inventory',
+                    'Higher is better. Shows how many times inventory is sold per year.',
+                    'status-good'
+                );
+            }
+
+            if (ratios.daysInventory !== undefined) {
+                html += createRatioCard(
+                    'Days Inventory',
+                    ratios.daysInventory.toFixed(0) + ' days',
+                    '365 ÷ Inventory Turnover',
+                    'Lower is better. Shows average days to sell inventory.',
+                    ratios.daysInventory < 60 ? 'status-good' : 'status-acceptable'
+                );
+            }
+
+            if (ratios.receivablesTurnover !== undefined) {
+                html += createRatioCard(
+                    'Accounts Receivable Turnover',
+                    ratios.receivablesTurnover.toFixed(2) + 'x',
+                    'Revenue ÷ Average Accounts Receivable',
+                    'Higher is better. Shows how many times receivables are collected per year.',
+                    ratios.receivablesTurnover > 12 ? 'status-good' : 'status-acceptable'
+                );
+            }
+
+            if (ratios.daysSalesOutstanding !== undefined) {
+                const status = ratios.daysSalesOutstanding < 30 ? 'status-good' : 
+                              ratios.daysSalesOutstanding < 45 ? 'status-acceptable' : 'status-poor';
+                html += createRatioCard(
+                    'Days Sales Outstanding (DSO)',
+                    ratios.daysSalesOutstanding.toFixed(0) + ' days',
+                    '365 ÷ Receivables Turnover',
+                    getDSOInterpretation(ratios.daysSalesOutstanding),
+                    status
+                );
+            }
+
+            html += '</div>';
+
+            // Solvency Ratios
+            html += '<div class="ratio-section">';
+            html += '<h3>Solvency Ratios</h3>';
+
+            if (ratios.debtToEquity !== undefined) {
+                const status = ratios.debtToEquity < 1 ? 'status-good' : 
+                              ratios.debtToEquity < 2 ? 'status-acceptable' : 'status-poor';
+                html += createRatioCard(
+                    'Debt to Equity',
+                    ratios.debtToEquity.toFixed(2),
+                    'Total Liabilities ÷ Equity',
+                    getDebtToEquityInterpretation(ratios.debtToEquity),
+                    status
+                );
+            }
+
+            if (ratios.debtToAssets !== undefined) {
+                const status = ratios.debtToAssets < 0.5 ? 'status-good' : 
+                              ratios.debtToAssets < 0.7 ? 'status-acceptable' : 'status-poor';
+                html += createRatioCard(
+                    'Debt to Assets',
+                    ratios.debtToAssets.toFixed(2),
+                    'Total Liabilities ÷ Total Assets',
+                    getDebtToAssetsInterpretation(ratios.debtToAssets),
+                    status
+                );
+            }
+
+            html += '</div>';
+
+            resultsDiv.innerHTML = html;
+        }
+
+        function createRatioCard(name, value, formula, interpretation, status) {
+            return `
+                <div class="ratio-item">
+                    <div class="ratio-header">
+                        <div>
+                            <div class="ratio-name">${name}</div>
+                            <div class="ratio-formula">${formula}</div>
+                        </div>
+                        <div>
+                            <span class="ratio-value">${value}</span>
+                            ${status ? `<span class="ratio-status ${status}">${getStatusText(status)}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="ratio-interpretation">${interpretation}</div>
+                </div>
+            `;
+        }
+
+        function getCurrentRatioStatus(ratio) {
+            if (ratio >= 1.5) return 'status-good';
+            if (ratio >= 1.0) return 'status-acceptable';
+            return 'status-poor';
+        }
+
+        function getCurrentRatioInterpretation(ratio) {
+            if (ratio >= 1.5) return 'Good liquidity. Business can easily cover short-term obligations.';
+            if (ratio >= 1.0) return 'Acceptable liquidity. Business can cover short-term obligations.';
+            return 'Poor liquidity. Business may struggle to pay short-term obligations.';
+        }
+
+        function getQuickRatioStatus(ratio) {
+            if (ratio >= 1.0) return 'status-good';
+            if (ratio >= 0.8) return 'status-acceptable';
+            return 'status-poor';
+        }
+
+        function getQuickRatioInterpretation(ratio) {
+            if (ratio >= 1.0) return 'Good quick liquidity. Can pay obligations without selling inventory.';
+            if (ratio >= 0.8) return 'Acceptable quick liquidity.';
+            return 'Poor quick liquidity. May need to sell inventory to pay obligations.';
+        }
+
+        function getProfitMarginStatus(margin, type) {
+            if (type === 'gross') {
+                if (margin >= 50) return 'status-good';
+                if (margin >= 30) return 'status-acceptable';
+                return 'status-poor';
+            } else {
+                if (margin >= 10) return 'status-good';
+                if (margin >= 5) return 'status-acceptable';
+                return 'status-poor';
+            }
+        }
+
+        function getGrossMarginInterpretation(margin) {
+            if (margin >= 50) return 'Good gross margin. Strong pricing or cost control.';
+            if (margin >= 30) return 'Acceptable gross margin.';
+            return 'Low gross margin. May need to increase prices or reduce costs.';
+        }
+
+        function getNetMarginInterpretation(margin) {
+            if (margin >= 10) return 'Good net margin. Strong profitability.';
+            if (margin >= 5) return 'Acceptable net margin.';
+            if (margin >= 0) return 'Low net margin. Consider cost reduction or revenue increase.';
+            return 'Negative margin. Business is operating at a loss.';
+        }
+
+        function getROAStatus(roa) {
+            if (roa >= 10) return 'status-good';
+            if (roa >= 5) return 'status-acceptable';
+            return 'status-poor';
+        }
+
+        function getROAInterpretation(roa) {
+            if (roa >= 10) return 'Good return on assets. Efficient use of assets.';
+            if (roa >= 5) return 'Acceptable return on assets.';
+            if (roa >= 0) return 'Low return on assets. Assets not generating sufficient returns.';
+            return 'Negative return. Assets are not profitable.';
+        }
+
+        function getROEStatus(roe) {
+            if (roe >= 15) return 'status-good';
+            if (roe >= 10) return 'status-acceptable';
+            return 'status-poor';
+        }
+
+        function getROEInterpretation(roe) {
+            if (roe >= 15) return 'Good return on equity. Strong profitability for owners.';
+            if (roe >= 10) return 'Acceptable return on equity.';
+            if (roe >= 0) return 'Low return on equity.';
+            return 'Negative return. Equity is not generating returns.';
+        }
+
+        function getDSOInterpretation(dso) {
+            if (dso < 30) return 'Good collection period. Receivables collected quickly.';
+            if (dso < 45) return 'Acceptable collection period.';
+            return 'Slow collection. May need to improve credit policies or collection efforts.';
+        }
+
+        function getDebtToEquityInterpretation(ratio) {
+            if (ratio < 1) return 'Low debt. Conservative financing.';
+            if (ratio < 2) return 'Moderate debt. Balanced financing.';
+            return 'High debt. High financial risk.';
+        }
+
+        function getDebtToAssetsInterpretation(ratio) {
+            if (ratio < 0.5) return 'Low debt ratio. Most assets financed by equity.';
+            if (ratio < 0.7) return 'Moderate debt ratio.';
+            return 'High debt ratio. Most assets financed by debt.';
+        }
+
+        function getStatusText(status) {
+            if (status === 'status-good') return 'Good';
+            if (status === 'status-acceptable') return 'Acceptable';
+            return 'Poor';
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-LU', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function loadExample() {
+            document.getElementById('cash').value = '15000';
+            document.getElementById('accountsReceivable').value = '3000';
+            document.getElementById('inventory').value = '4000';
+            document.getElementById('currentAssets').value = '23100';
+            document.getElementById('totalAssets').value = '50000';
+            document.getElementById('currentLiabilities').value = '12100';
+            document.getElementById('totalLiabilities').value = '20000';
+            document.getElementById('equity').value = '30000';
+            document.getElementById('revenue').value = '100000';
+            document.getElementById('cogs').value = '40000';
+            document.getElementById('netIncome').value = '15000';
+            document.getElementById('averageInventory').value = '4000';
+            document.getElementById('averageReceivables').value = '3000';
+        }
+
+        function clearForm() {
+            document.getElementById('ratioForm').reset();
+            document.getElementById('ratioResults').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">📊</div>
+                    <p>Enter financial data and click "Calculate Ratios"</p>
+                </div>
+            `;
+        }
+
+        document.getElementById('ratioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateRatios();
+        });
+    </script>
+</body>
+</html>
+

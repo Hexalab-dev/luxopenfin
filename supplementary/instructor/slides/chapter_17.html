@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 17: Financial Statement Analysis - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 17: Financial Statement Analysis</div>
+        <div class="slide-subtitle">Chapter 17 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe the need for and purpose of financial statement analysis</div>
+            <div class="objective-item">Prepare comparative financial statements</div>
+            <div class="objective-item">Prepare common-size financial statements</div>
+            <div class="objective-item">Compute and interpret financial ratios</div>
+            <div class="objective-item">Analyze and interpret return on assets</div>
+            <div class="objective-item">Describe other measures used to analyze a company (appendix)</div>
+            <div class="objective-item">Understand Luxembourg financial analysis benchmarks</div>
+            <div class="objective-item">Explain Luxembourg SME performance indicators</div>
+        </div>
+    </div>
+    
+    <!-- Section 17.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.1 Describe the Need for and Purpose of Financial Statement Analysis</div>
+            <div class="subsection-title">Need for Analysis</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Need to calculate ratios</li>
+                <li class="bullet-item">Need to compare periods</li>
+                <li class="bullet-item">Need to compare to benchmarks</li>
+                <li class="bullet-item">Need to identify trends</li>
+            </ul>
+            <div class="subsection-title">Purpose</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Evaluate performance</li>
+                <li class="bullet-item">Identify strengths and weaknesses</li>
+                <li class="bullet-item">Make decisions</li>
+                <li class="bullet-item">Communicate with stakeholders</li>
+                <li class="bullet-item">Plan for future</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.2 Prepare Comparative Financial Statements</div>
+            <div class="subsection-title">Comparative Statements</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Show multiple periods side-by-side</li>
+                <li class="bullet-item">Allow period-to-period comparison</li>
+                <li class="bullet-item">Show changes in amounts and percentages</li>
+                <li class="bullet-item">Identify trends</li>
+            </ul>
+            <div class="subsection-title">Format</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.3 Prepare Common-Size Financial Statements</div>
+            <div class="subsection-title">Common-Size Statements</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Express items as percentages</li>
+                <li class="bullet-item">Income statement: % of revenue</li>
+                <li class="bullet-item">Balance sheet: % of total assets</li>
+                <li class="bullet-item">Allow comparison regardless of size</li>
+            </ul>
+            <div class="subsection-title">Income Statement Format</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.4 Compute and Interpret Financial Ratios</div>
+            <div class="subsection-title">Types of Financial Ratios</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Liquidity Ratios</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Measures short-term liquidity</li>
+                <li class="bullet-item">Higher is generally better</li>
+                <li class="bullet-item">Should be > 1.0</li>
+                <li class="bullet-item">Typical range: 1.5 - 3.0</li>
+                <li class="bullet-item">Current Assets: €100,000</li>
+                <li class="bullet-item">Current Liabilities: €50,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.5 Analyze and Interpret Return on Assets</div>
+            <div class="subsection-title">Return on Assets (ROA)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">How efficiently assets generate profit</li>
+                <li class="bullet-item">Overall profitability</li>
+                <li class="bullet-item">Asset utilization</li>
+            </ul>
+            <div class="subsection-title">Interpretation</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Efficient use of assets</li>
+                <li class="bullet-item">Good profitability</li>
+                <li class="bullet-item">Effective management</li>
+                <li class="bullet-item">Inefficient asset use</li>
+                <li class="bullet-item">Low profitability</li>
+                <li class="bullet-item">May need improvement</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.6 Appendix: Describe Other Measures Used to Analyze a Company</div>
+            <div class="subsection-title">Other Measures</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Measures value creation</li>
+                <li class="bullet-item">Considers cost of capital</li>
+                <li class="bullet-item">Advanced measure</li>
+                <li class="bullet-item">Price-to-earnings (P/E)</li>
+                <li class="bullet-item">Market-to-book</li>
+                <li class="bullet-item">For public companies</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Considerations</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Focus on basic ratios</li>
+                <li class="bullet-item">Compare to benchmarks</li>
+                <li class="bullet-item">Use for decision-making</li>
+                <li class="bullet-item">Less focus on market ratios</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.7 Luxembourg Financial Analysis Benchmarks</div>
+            <div class="subsection-title">Luxembourg Benchmarks</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Restaurant industry</li>
+                <li class="bullet-item">Retail industry</li>
+                <li class="bullet-item">Service industry</li>
+                <li class="bullet-item">Manufacturing</li>
+                <li class="bullet-item">Typical ratios for SMEs</li>
+                <li class="bullet-item">Performance indicators</li>
+            </ul>
+            <div class="subsection-title">Sources</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Luxembourg Chamber of Commerce</li>
+                <li class="bullet-item">Industry associations</li>
+                <li class="bullet-item">Government statistics</li>
+                <li class="bullet-item">Professional services</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 17.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">17.8 Luxembourg SME Performance Indicators</div>
+            <div class="subsection-title">Key Indicators</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Profitability ratios</li>
+                <li class="bullet-item">Liquidity ratios</li>
+                <li class="bullet-item">Efficiency ratios</li>
+                <li class="bullet-item">Growth indicators</li>
+            </ul>
+            <div class="subsection-title">Typical Values</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Gross margin: 30-50%</li>
+                <li class="bullet-item">Net margin: 5-15%</li>
+                <li class="bullet-item">Current ratio: >1.5</li>
+                <li class="bullet-item">Gross margin: 40-60%</li>
+                <li class="bullet-item">Net margin: 3-10%</li>
+                <li class="bullet-item">Inventory turnover: 4-6 times</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Common-Size Statement</div>
+                <div class="term-definition">Financial statement with items as percentages</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Comparative Statement</div>
+                <div class="term-definition">Financial statement showing multiple periods</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Financial Ratio</div>
+                <div class="term-definition">Relationship between two financial statement items</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Return on Assets (ROA)</div>
+                <div class="term-definition">Net income as percentage of assets</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Return on Equity (ROE)</div>
+                <div class="term-definition">Net income as percentage of equity</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

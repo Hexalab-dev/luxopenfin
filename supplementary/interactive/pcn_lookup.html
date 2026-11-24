@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCN Account Lookup - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .class-list {
+            list-style: none;
+        }
+
+        .class-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .class-item:hover {
+            background: var(--bg-primary);
+            border-left-color: var(--accent-primary);
+        }
+
+        .class-item.active {
+            background: var(--bg-primary);
+            border-left-color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .account-results {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .account-card {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.3s;
+        }
+
+        .account-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .account-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .account-number {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--accent-primary);
+            font-family: 'Courier New', monospace;
+        }
+
+        .account-name {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-top: 5px;
+        }
+
+        .account-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 4px 10px;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+
+        .meta-badge.class {
+            color: var(--accent-primary);
+        }
+
+        .meta-badge.type {
+            color: var(--accent-secondary);
+        }
+
+        .account-description {
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .account-examples {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .account-examples h4 {
+            color: var(--accent-primary);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .account-examples ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .account-examples li {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            padding: 3px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .account-examples li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        .search-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .results-count {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .search-highlight {
+            background: rgba(74, 158, 255, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 PCN Account Lookup</h1>
+            <p class="subtitle">Luxembourg PCN 2020 Chart of Accounts - Selected Accounts</p>
+        </header>
+
+        <div class="info-box">
+            <h3>About PCN 2020</h3>
+            <p>The Plan Comptable Normalisé (PCN 2020), laid down by the Règlement grand-ducal of 12 September 2019, is the standard chart of accounts for Luxembourg GAAP bookkeeping (sole traders and partnerships with turnover up to EUR 100,000 excl. VAT are exempt). Accounts are organised into 7 classes. Numbers have <strong>no fixed length</strong>: the first digit is the class, two digits a group, and each further digit is more specific (4 → 46 → 461 → 4614 → 46141 → 461411 output VAT). You may open your own sub-accounts below an official account. This tool lists selected accounts used in the textbook, not the full chart.</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <div class="card">
+                <h2>Search & Browse</h2>
+                
+                <div class="form-group">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Account number or name..." autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="classFilter">Filter by Class</label>
+                    <select id="classFilter">
+                        <option value="">All Classes</option>
+                        <option value="1">Class 1: Capital, Provisions, Financial Debts</option>
+                        <option value="2">Class 2: Fixed Assets</option>
+                        <option value="3">Class 3: Inventory</option>
+                        <option value="4">Class 4: Third Parties</option>
+                        <option value="5">Class 5: Financial Accounts</option>
+                        <option value="6">Class 6: Expenses</option>
+                        <option value="7">Class 7: Revenue</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Browse by Class</label>
+                    <ul class="class-list">
+                        <li class="class-item" data-class="all">All Accounts</li>
+                        <li class="class-item" data-class="1">Class 1: Capital</li>
+                        <li class="class-item" data-class="2">Class 2: Fixed Assets</li>
+                        <li class="class-item" data-class="3">Class 3: Inventory</li>
+                        <li class="class-item" data-class="4">Class 4: Third Parties</li>
+                        <li class="class-item" data-class="5">Class 5: Financial</li>
+                        <li class="class-item" data-class="6">Class 6: Expenses</li>
+                        <li class="class-item" data-class="7">Class 7: Revenue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="card">
+                <div class="search-results-header">
+                    <div>
+                        <h2>Account Results</h2>
+                        <div class="results-count" id="resultsCount">0 accounts found</div>
+                    </div>
+                    <div class="export-buttons">
+                        <button class="btn btn-secondary" onclick="exportToCSV()">Export CSV</button>
+                        <button class="btn btn-secondary" onclick="exportToExcel()">Export Excel</button>
+                    </div>
+                </div>
+                <div id="accountResults" class="account-results">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <p>Search for an account or browse by class</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete PCN Account Database
+        // Selected accounts of the official PCN 2020 (Règlement grand-ducal du 12 septembre 2019).
+        // Ported from web/src/components/interactive/PCNLookup.tsx (SAMPLE_PCN_ACCOUNTS) — keep in sync.
+        const pcnAccounts = [
+            {"number":"10","name":"Capital and owner's accounts","nameFr":"Capital ou dotation des succursales et comptes de l'exploitant","nameDe":"Kapital und Privatkonten","class":1,"group":true,"type":"equity","normal":"credit","description":"Official name: Capital ou dotation des succursales et comptes de l'exploitant. Account group.","examples":[]},
+            {"number":"101","name":"Subscribed capital (S.A., S.à r.l.)","nameFr":"Capital souscrit","nameDe":"Gezeichnetes Kapital (S.A., S.à r.l.)","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Capital souscrit. Group 10: Capital and owner's accounts.","examples":[]},
+            {"number":"104","name":"Capital of sole traders and partnerships","nameFr":"Capital des entreprises individuelles, des sociétés de personnes et assimilées","nameDe":"Kapital von Einzelunternehmen und Personengesellschaften","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Capital des entreprises individuelles, des sociétés de personnes et assimilées. Group 10: Capital and owner's accounts.","examples":[]},
+            {"number":"106","name":"Owner's / partners' private accounts","nameFr":"Comptes de l'exploitant ou des co-exploitants","nameDe":"Privatkonten des Inhabers / der Gesellschafter","class":1,"group":false,"type":"equity","normal":"debit or credit","description":"Official name: Comptes de l'exploitant ou des co-exploitants. Group 10: Capital and owner's accounts.","examples":[]},
+            {"number":"10611","name":"Cash drawings by the owner","nameFr":"Prélèvements en numéraire","nameDe":"Privatentnahmen in bar","class":1,"group":false,"type":"contra-equity","normal":"debit","description":"Official name: Prélèvements en numéraire. Group 10: Capital and owner's accounts.","examples":[]},
+            {"number":"11","name":"Share premium and similar premiums","nameFr":"Primes d'émission et primes assimilées","nameDe":"Agio und ähnliche Rücklagen","class":1,"group":true,"type":"equity","normal":"credit","description":"Official name: Primes d'émission et primes assimilées. Account group.","examples":[]},
+            {"number":"111","name":"Share premium","nameFr":"Primes d'émission","nameDe":"Agio (Emissionsagio)","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Primes d'émission. Group 11: Share premium and similar premiums.","examples":[]},
+            {"number":"115","name":"Capital contribution without issue of shares","nameFr":"Apport en capitaux propres non rémunéré par des titres","nameDe":"Kapitaleinlage ohne Ausgabe von Anteilen","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Apport en capitaux propres non rémunéré par des titres. Group 11: Share premium and similar premiums.","examples":[]},
+            {"number":"13","name":"Reserves","nameFr":"Réserves","nameDe":"Rücklagen","class":1,"group":true,"type":"equity","normal":"credit","description":"Official name: Réserves. Account group.","examples":[]},
+            {"number":"131","name":"Legal reserve (5 % of profit until it reaches 10 % of capital)","nameFr":"Réserve légale","nameDe":"Gesetzliche Rücklage (5 % des Gewinns bis 10 % des Kapitals)","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Réserve légale. Group 13: Reserves.","examples":[]},
+            {"number":"138","name":"Other reserves (incl. net wealth tax reserve 13821)","nameFr":"Autres réserves","nameDe":"Andere Rücklagen (inkl. Vermögensteuerrücklage 13821)","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Autres réserves. Group 13: Reserves.","examples":[]},
+            {"number":"14","name":"Results","nameFr":"Résultats","nameDe":"Ergebnisse","class":1,"group":true,"type":"equity","normal":"credit","description":"Official name: Résultats. Account group.","examples":[]},
+            {"number":"141","name":"Results brought forward (1411 pending allocation, 1412 allocated)","nameFr":"Résultats reportés","nameDe":"Ergebnisvortrag (1411 noch nicht zugewiesen, 1412 zugewiesen)","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Résultats reportés. Group 14: Results.","examples":[]},
+            {"number":"142","name":"Result for the financial year","nameFr":"Résultat de l'exercice","nameDe":"Jahresergebnis","class":1,"group":false,"type":"equity","normal":"credit","description":"Official name: Résultat de l'exercice. Group 14: Results.","examples":[]},
+            {"number":"15","name":"Interim dividends","nameFr":"Acomptes sur dividendes","nameDe":"Abschlagsdividenden","class":1,"group":true,"type":"contra-equity","normal":"debit","description":"Official name: Acomptes sur dividendes. Account group.","examples":[]},
+            {"number":"18","name":"Provisions","nameFr":"Provisions","nameDe":"Rückstellungen","class":1,"group":true,"type":"liability","normal":"credit","description":"Official name: Provisions. Account group.","examples":[]},
+            {"number":"181","name":"Provisions for pensions and similar obligations","nameFr":"Provisions pour pensions et obligations similaires","nameDe":"Pensionsrückstellungen","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Provisions pour pensions et obligations similaires. Group 18: Provisions.","examples":[]},
+            {"number":"182","name":"Tax provisions (disputes, uncertainties)","nameFr":"Provisions pour impôts","nameDe":"Steuerrückstellungen","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Provisions pour impôts. Group 18: Provisions.","examples":[]},
+            {"number":"188","name":"Other provisions","nameFr":"Autres provisions","nameDe":"Sonstige Rückstellungen","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Autres provisions. Group 18: Provisions.","examples":[]},
+            {"number":"19","name":"Financial debts","nameFr":"Dettes financières et dettes assimilées","nameDe":"Finanzverbindlichkeiten","class":1,"group":true,"type":"liability","normal":"credit","description":"Official name: Dettes financières et dettes assimilées. Account group.","examples":[]},
+            {"number":"193","name":"Non-convertible bonds (1931 ≤ 1 year / 1932 > 1 year)","nameFr":"Emprunts obligataires non convertibles","nameDe":"Nicht wandelbare Anleihen (1931 ≤ 1 Jahr / 1932 > 1 Jahr)","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Emprunts obligataires non convertibles. Group 19: Financial debts.","examples":[]},
+            {"number":"1941","name":"Bank loans due within one year","nameFr":"Dettes envers des établissements de crédit – durée résiduelle ≤ 1 an","nameDe":"Bankverbindlichkeiten mit Restlaufzeit ≤ 1 Jahr","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Dettes envers des établissements de crédit – durée résiduelle ≤ 1 an. Group 19: Financial debts.","examples":[]},
+            {"number":"1942","name":"Bank loans due after more than one year","nameFr":"Dettes envers des établissements de crédit – durée résiduelle > 1 an","nameDe":"Bankverbindlichkeiten mit Restlaufzeit > 1 Jahr","class":1,"group":false,"type":"liability","normal":"credit","description":"Official name: Dettes envers des établissements de crédit – durée résiduelle > 1 an. Group 19: Financial debts.","examples":[]},
+            {"number":"20","name":"Formation expenses","nameFr":"Frais d'établissement et frais assimilés","nameDe":"Gründungs- und ähnliche Kosten","class":2,"group":true,"type":"asset","normal":"debit","description":"Official name: Frais d'établissement et frais assimilés. Account group.","examples":[]},
+            {"number":"201","name":"Formation (incorporation) costs","nameFr":"Frais de constitution","nameDe":"Gründungskosten","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Frais de constitution. Group 20: Formation expenses.","examples":[]},
+            {"number":"21","name":"Intangible fixed assets","nameFr":"Immobilisations incorporelles","nameDe":"Immaterielle Vermögensgegenstände","class":2,"group":true,"type":"asset","normal":"debit","description":"Official name: Immobilisations incorporelles. Account group.","examples":[]},
+            {"number":"211","name":"Development costs","nameFr":"Frais de développement","nameDe":"Entwicklungskosten","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Frais de développement. Group 21: Intangible fixed assets.","examples":[]},
+            {"number":"212","name":"Concessions, patents, licences, trademarks","nameFr":"Concessions, brevets, licences, marques ainsi que droits et valeurs similaires","nameDe":"Konzessionen, Patente, Lizenzen, Marken","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Concessions, brevets, licences, marques ainsi que droits et valeurs similaires. Group 21: Intangible fixed assets.","examples":[]},
+            {"number":"21213","name":"Software licences purchased","nameFr":"Licences informatiques (acquises à titre onéreux)","nameDe":"Erworbene Softwarelizenzen","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Licences informatiques (acquises à titre onéreux). Group 21: Intangible fixed assets.","examples":[]},
+            {"number":"213","name":"Goodwill acquired for valuable consideration","nameFr":"Fonds de commerce, dans la mesure où il a été acquis à titre onéreux","nameDe":"Entgeltlich erworbener Geschäfts- oder Firmenwert","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Fonds de commerce, dans la mesure où il a été acquis à titre onéreux. Group 21: Intangible fixed assets.","examples":[]},
+            {"number":"22","name":"Tangible fixed assets","nameFr":"Immobilisations corporelles","nameDe":"Sachanlagen","class":2,"group":true,"type":"asset","normal":"debit","description":"Official name: Immobilisations corporelles. Account group.","examples":[]},
+            {"number":"2211","name":"Land (not depreciated)","nameFr":"Terrains","nameDe":"Grundstücke (keine Abschreibung)","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Terrains. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"2213","name":"Buildings","nameFr":"Constructions","nameDe":"Gebäude","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Constructions. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"222","name":"Plant and machinery (used in this book for 'Equipment')","nameFr":"Installations techniques et machines","nameDe":"Technische Anlagen und Maschinen (in diesem Buch für 'Ausrüstung')","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Installations techniques et machines. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"2232","name":"Motor vehicles","nameFr":"Véhicules de transport","nameDe":"Fahrzeuge","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Véhicules de transport. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"2234","name":"Furniture","nameFr":"Mobilier","nameDe":"Mobiliar","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Mobilier. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"2235","name":"Computer hardware","nameFr":"Matériel informatique","nameDe":"EDV-Hardware","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Matériel informatique. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"2238","name":"Other fixtures and equipment","nameFr":"Autres installations","nameDe":"Sonstige Anlagen","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Autres installations. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"224","name":"Payments on account and assets under construction","nameFr":"Acomptes versés et immobilisations corporelles en cours","nameDe":"Anzahlungen und Anlagen im Bau","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Acomptes versés et immobilisations corporelles en cours. Group 22: Tangible fixed assets.","examples":[]},
+            {"number":"23","name":"Financial fixed assets","nameFr":"Immobilisations financières","nameDe":"Finanzanlagen","class":2,"group":true,"type":"asset","normal":"debit","description":"Official name: Immobilisations financières. Account group.","examples":[]},
+            {"number":"231","name":"Shares in affiliated undertakings","nameFr":"Parts dans des entreprises liées","nameDe":"Anteile an verbundenen Unternehmen","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Parts dans des entreprises liées. Group 23: Financial fixed assets.","examples":[]},
+            {"number":"233","name":"Participating interests","nameFr":"Participations","nameDe":"Beteiligungen","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Participations. Group 23: Financial fixed assets.","examples":[]},
+            {"number":"235","name":"Securities held as fixed assets","nameFr":"Titres ayant le caractère d'immobilisations","nameDe":"Wertpapiere des Anlagevermögens","class":2,"group":false,"type":"asset","normal":"debit","description":"Official name: Titres ayant le caractère d'immobilisations. Group 23: Financial fixed assets.","examples":[]},
+            {"number":"30","name":"Raw materials and consumables","nameFr":"Stocks de matières premières et consommables","nameDe":"Roh-, Hilfs- und Betriebsstoffe","class":3,"group":true,"type":"asset","normal":"debit","description":"Official name: Stocks de matières premières et consommables. Account group.","examples":[]},
+            {"number":"301","name":"Raw materials","nameFr":"Matières premières","nameDe":"Rohstoffe","class":3,"group":false,"type":"asset","normal":"debit","description":"Official name: Matières premières. Group 30: Raw materials and consumables.","examples":[]},
+            {"number":"303","name":"Consumables and supplies","nameFr":"Matières consommables","nameDe":"Hilfs- und Betriebsstoffe","class":3,"group":false,"type":"asset","normal":"debit","description":"Official name: Matières consommables. Group 30: Raw materials and consumables.","examples":[]},
+            {"number":"31","name":"Work in progress","nameFr":"Stocks de produits en cours de fabrication et commandes en cours","nameDe":"Unfertige Erzeugnisse und Aufträge in Arbeit","class":3,"group":true,"type":"asset","normal":"debit","description":"Official name: Stocks de produits en cours de fabrication et commandes en cours. Account group.","examples":[]},
+            {"number":"311","name":"Work in progress (manufacturing)","nameFr":"Produits en cours de fabrication","nameDe":"Unfertige Erzeugnisse","class":3,"group":false,"type":"asset","normal":"debit","description":"Official name: Produits en cours de fabrication. Group 31: Work in progress.","examples":[]},
+            {"number":"32","name":"Finished and intermediate products","nameFr":"Stocks de produits","nameDe":"Fertige und Zwischenerzeugnisse","class":3,"group":true,"type":"asset","normal":"debit","description":"Official name: Stocks de produits. Account group.","examples":[]},
+            {"number":"321","name":"Finished goods","nameFr":"Produits finis","nameDe":"Fertigerzeugnisse","class":3,"group":false,"type":"asset","normal":"debit","description":"Official name: Produits finis. Group 32: Finished and intermediate products.","examples":[]},
+            {"number":"36","name":"Goods for resale","nameFr":"Stocks de marchandises et d'autres biens destinés à la revente","nameDe":"Handelswaren","class":3,"group":true,"type":"asset","normal":"debit","description":"Official name: Stocks de marchandises et d'autres biens destinés à la revente. Account group.","examples":[]},
+            {"number":"361","name":"Merchandise (goods for resale)","nameFr":"Marchandises","nameDe":"Waren","class":3,"group":false,"type":"asset","normal":"debit","description":"Official name: Marchandises. Group 36: Goods for resale.","examples":[]},
+            {"number":"37","name":"Payments on account for inventories","nameFr":"Acomptes versés sur stocks","nameDe":"Geleistete Anzahlungen auf Vorräte","class":3,"group":true,"type":"asset","normal":"debit","description":"Official name: Acomptes versés sur stocks. Account group.","examples":[]},
+            {"number":"40","name":"Trade receivables","nameFr":"Créances résultant de ventes et prestations de services","nameDe":"Forderungen aus Lieferungen und Leistungen","class":4,"group":true,"type":"asset","normal":"debit","description":"Official name: Créances résultant de ventes et prestations de services. Account group.","examples":[]},
+            {"number":"4011","name":"Customers (accounts receivable)","nameFr":"Clients","nameDe":"Kunden (Forderungen)","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Clients. Group 40: Trade receivables.","examples":[]},
+            {"number":"4012","name":"Customers – notes / bills receivable","nameFr":"Clients – Effets à recevoir","nameDe":"Kunden – Besitzwechsel","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Clients – Effets à recevoir. Group 40: Trade receivables.","examples":[]},
+            {"number":"4013","name":"Doubtful customers","nameFr":"Clients douteux ou litigieux","nameDe":"Zweifelhafte Kunden","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Clients douteux ou litigieux. Group 40: Trade receivables.","examples":[]},
+            {"number":"4019","name":"Value adjustments (allowance for doubtful accounts)","nameFr":"Corrections de valeur","nameDe":"Wertberichtigungen (auf Forderungen)","class":4,"group":false,"type":"contra-asset","normal":"credit","description":"Official name: Corrections de valeur. Group 40: Trade receivables.","examples":[]},
+            {"number":"42","name":"Other receivables","nameFr":"Autres créances","nameDe":"Sonstige Forderungen","class":4,"group":true,"type":"asset","normal":"debit","description":"Official name: Autres créances. Account group.","examples":[]},
+            {"number":"4211","name":"Staff advances","nameFr":"Personnel – Avances et acomptes","nameDe":"Vorschüsse an Personal","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Personnel – Avances et acomptes. Group 42: Other receivables.","examples":[]},
+            {"number":"4214","name":"Direct tax administration (tax advances paid)","nameFr":"Administration des Contributions Directes (ACD)","nameDe":"Direktsteuerverwaltung (geleistete Steuervorauszahlungen)","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Administration des Contributions Directes (ACD). Group 42: Other receivables.","examples":[]},
+            {"number":"421611","name":"Input VAT (VAT recoverable)","nameFr":"TVA en amont","nameDe":"Vorsteuer (abziehbare MwSt.)","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: TVA en amont. Group 42: Other receivables.","examples":[]},
+            {"number":"421612","name":"VAT receivable (credit from the AED)","nameFr":"TVA à recevoir","nameDe":"MwSt.-Forderung (Guthaben bei der AED)","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: TVA à recevoir. Group 42: Other receivables.","examples":[]},
+            {"number":"4218","name":"Sundry receivables (e.g., interest receivable)","nameFr":"Créances diverses","nameDe":"Sonstige Forderungen (z.B. Zinsforderungen)","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Créances diverses. Group 42: Other receivables.","examples":[]},
+            {"number":"43","name":"Payments received on account","nameFr":"Acomptes reçus sur commandes","nameDe":"Erhaltene Anzahlungen","class":4,"group":true,"type":"liability","normal":"credit","description":"Official name: Acomptes reçus sur commandes. Account group.","examples":[]},
+            {"number":"4311","name":"Customer deposits received (≤ 1 year)","nameFr":"Acomptes reçus – durée résiduelle ≤ 1 an","nameDe":"Erhaltene Anzahlungen (≤ 1 Jahr)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Acomptes reçus – durée résiduelle ≤ 1 an. Group 43: Payments received on account.","examples":[]},
+            {"number":"44","name":"Trade payables and notes payable","nameFr":"Dettes sur achats et prestations de services et dettes représentées par des effets de commerce","nameDe":"Verbindlichkeiten aus Lieferungen und Leistungen und Wechselverbindlichkeiten","class":4,"group":true,"type":"liability","normal":"credit","description":"Official name: Dettes sur achats et prestations de services et dettes représentées par des effets de commerce. Account group.","examples":[]},
+            {"number":"44111","name":"Suppliers (accounts payable)","nameFr":"Fournisseurs","nameDe":"Lieferanten (Verbindlichkeiten)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Fournisseurs. Group 44: Trade payables and notes payable.","examples":[]},
+            {"number":"44112","name":"Suppliers – invoices not yet received (accrued expenses)","nameFr":"Fournisseurs – Factures non parvenues","nameDe":"Lieferanten – ausstehende Rechnungen","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Fournisseurs – Factures non parvenues. Group 44: Trade payables and notes payable.","examples":[]},
+            {"number":"4421","name":"Notes / bills payable (≤ 1 year)","nameFr":"Effets à payer – durée résiduelle ≤ 1 an","nameDe":"Schuldwechsel (≤ 1 Jahr)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Effets à payer – durée résiduelle ≤ 1 an. Group 44: Trade payables and notes payable.","examples":[]},
+            {"number":"46","name":"Tax and social security debts","nameFr":"Dettes fiscales et dettes au titre de la sécurité sociale","nameDe":"Steuer- und Sozialversicherungsverbindlichkeiten","class":4,"group":true,"type":"liability","normal":"credit","description":"Official name: Dettes fiscales et dettes au titre de la sécurité sociale. Account group.","examples":[]},
+            {"number":"46121","name":"Corporate income tax payable","nameFr":"Impôt sur le revenu des collectivités (IRC)","nameDe":"Körperschaftsteuer-Verbindlichkeit","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Impôt sur le revenu des collectivités (IRC). Group 46: Tax and social security debts.","examples":[]},
+            {"number":"46122","name":"Municipal business tax payable","nameFr":"Impôt commercial communal (ICC)","nameDe":"Gewerbesteuer-Verbindlichkeit","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Impôt commercial communal (ICC). Group 46: Tax and social security debts.","examples":[]},
+            {"number":"46124","name":"Wage tax withheld","nameFr":"Retenue d'impôt sur traitements et salaires","nameDe":"Einbehaltene Lohnsteuer","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Retenue d'impôt sur traitements et salaires. Group 46: Tax and social security debts.","examples":[]},
+            {"number":"461411","name":"Output VAT (shown in this book as 'VAT Payable')","nameFr":"TVA en aval","nameDe":"Umsatzsteuer (in diesem Buch 'MwSt.-Verbindlichkeit')","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: TVA en aval. Group 46: Tax and social security debts.","examples":[]},
+            {"number":"461412","name":"VAT payable to the AED (after settlement)","nameFr":"TVA à payer","nameDe":"MwSt.-Zahllast an die AED","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: TVA à payer. Group 46: Tax and social security debts.","examples":[]},
+            {"number":"4621","name":"Social security payable (CCSS)","nameFr":"Centre Commun de la Sécurité Sociale (CCSS)","nameDe":"Sozialversicherung (CCSS)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Centre Commun de la Sécurité Sociale (CCSS). Group 46: Tax and social security debts.","examples":[]},
+            {"number":"47","name":"Other debts","nameFr":"Autres dettes","nameDe":"Sonstige Verbindlichkeiten","class":4,"group":true,"type":"liability","normal":"credit","description":"Official name: Autres dettes. Account group.","examples":[]},
+            {"number":"4712","name":"Amounts owed to shareholders (e.g., dividends payable)","nameFr":"Dettes envers associés et actionnaires","nameDe":"Verbindlichkeiten gegenüber Gesellschaftern","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Dettes envers associés et actionnaires. Group 47: Other debts.","examples":[]},
+            {"number":"4714","name":"Amounts owed to staff (salaries payable)","nameFr":"Dettes envers le personnel","nameDe":"Verbindlichkeiten gegenüber Personal (Löhne)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Dettes envers le personnel. Group 47: Other debts.","examples":[]},
+            {"number":"4718","name":"Sundry other debts (e.g., interest payable)","nameFr":"Autres dettes diverses","nameDe":"Sonstige Verbindlichkeiten (z.B. Zinsen)","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Autres dettes diverses. Group 47: Other debts.","examples":[]},
+            {"number":"48","name":"Prepayments and deferred income","nameFr":"Comptes de régularisation","nameDe":"Rechnungsabgrenzungsposten","class":4,"group":true,"type":"accrual","normal":"debit or credit","description":"Official name: Comptes de régularisation. Account group.","examples":[]},
+            {"number":"481","name":"Prepaid expenses","nameFr":"Charges à reporter","nameDe":"Aktive Rechnungsabgrenzung","class":4,"group":false,"type":"asset","normal":"debit","description":"Official name: Charges à reporter. Group 48: Prepayments and deferred income.","examples":[]},
+            {"number":"482","name":"Deferred (unearned) income","nameFr":"Produits à reporter","nameDe":"Passive Rechnungsabgrenzung","class":4,"group":false,"type":"liability","normal":"credit","description":"Official name: Produits à reporter. Group 48: Prepayments and deferred income.","examples":[]},
+            {"number":"50","name":"Transferable securities","nameFr":"Valeurs mobilières","nameDe":"Wertpapiere","class":5,"group":true,"type":"asset","normal":"debit","description":"Official name: Valeurs mobilières. Account group.","examples":[]},
+            {"number":"508","name":"Other short-term securities","nameFr":"Autres valeurs mobilières","nameDe":"Sonstige Wertpapiere","class":5,"group":false,"type":"asset","normal":"debit","description":"Official name: Autres valeurs mobilières. Group 50: Transferable securities.","examples":[]},
+            {"number":"51","name":"Cash at bank and in hand","nameFr":"Avoirs en banques, avoirs en comptes de chèques postaux, chèques et en caisse","nameDe":"Bankguthaben, Postscheck, Schecks und Kassenbestand","class":5,"group":true,"type":"asset","normal":"debit","description":"Official name: Avoirs en banques, avoirs en comptes de chèques postaux, chèques et en caisse. Account group.","examples":[]},
+            {"number":"5131","name":"Bank accounts (debit balance) – 'Cash' in this book","nameFr":"Banques et CCP – avoirs disponibles","nameDe":"Bankkonten (Sollsaldo) – 'Kasse' in diesem Buch","class":5,"group":false,"type":"asset","normal":"debit","description":"Official name: Banques et CCP – avoirs disponibles. Group 51: Cash at bank and in hand.","examples":[]},
+            {"number":"5132","name":"Bank overdrafts (a liability at year-end)","nameFr":"Banques et CCP – découverts","nameDe":"Kontokorrentkredite (am Jahresende Verbindlichkeit)","class":5,"group":false,"type":"liability","normal":"credit","description":"Official name: Banques et CCP – découverts. Group 51: Cash at bank and in hand.","examples":[]},
+            {"number":"516","name":"Cash on hand (notes and coins)","nameFr":"Caisse","nameDe":"Kassenbestand (Bargeld)","class":5,"group":false,"type":"asset","normal":"debit","description":"Official name: Caisse. Group 51: Cash at bank and in hand.","examples":[]},
+            {"number":"517","name":"Internal transfers","nameFr":"Virements internes","nameDe":"Interne Überträge","class":5,"group":false,"type":"transfer","normal":"nil (clearing)","description":"Official name: Virements internes. Group 51: Cash at bank and in hand.","examples":[]},
+            {"number":"60","name":"Purchases of goods and materials","nameFr":"Consommation de marchandises et de matières premières et consommables","nameDe":"Material- und Wareneinsatz","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Consommation de marchandises et de matières premières et consommables. Account group.","examples":[]},
+            {"number":"601","name":"Raw materials purchased","nameFr":"Matières premières","nameDe":"Rohstoffeinkäufe","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Matières premières. Group 60: Purchases of goods and materials.","examples":[]},
+            {"number":"6061","name":"Purchases of goods for resale","nameFr":"Achats de marchandises","nameDe":"Wareneinkäufe","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Achats de marchandises. Group 60: Purchases of goods and materials.","examples":[]},
+            {"number":"607","name":"Change in stocks (used in this book for 'Cost of Goods Sold')","nameFr":"Variation des stocks","nameDe":"Bestandsveränderungen (in diesem Buch für 'Wareneinsatz')","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Variation des stocks. Group 60: Purchases of goods and materials.","examples":[]},
+            {"number":"609","name":"Purchase returns, rebates and discounts received","nameFr":"Rabais, remises et ristournes obtenus","nameDe":"Erhaltene Rabatte, Nachlässe und Boni","class":6,"group":false,"type":"contra-expense","normal":"credit","description":"Official name: Rabais, remises et ristournes obtenus. Group 60: Purchases of goods and materials.","examples":[]},
+            {"number":"61","name":"Other external charges","nameFr":"Autres charges externes","nameDe":"Sonstige externe Aufwendungen","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Autres charges externes. Account group.","examples":[]},
+            {"number":"6111","name":"Rent of premises","nameFr":"Locations et leasing immobiliers","nameDe":"Miete und Leasing von Immobilien","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Locations et leasing immobiliers. Group 61: Other external charges.","examples":[]},
+            {"number":"6122","name":"Repairs and maintenance","nameFr":"Entretien et réparations","nameDe":"Instandhaltung und Reparaturen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Entretien et réparations. Group 61: Other external charges.","examples":[]},
+            {"number":"6133","name":"Bank charges","nameFr":"Services bancaires et assimilés","nameDe":"Bankgebühren","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Services bancaires et assimilés. Group 61: Other external charges.","examples":[]},
+            {"number":"6134","name":"Professional fees (lawyers, accountants)","nameFr":"Honoraires","nameDe":"Honorare (Anwälte, Steuerberater)","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Honoraires. Group 61: Other external charges.","examples":[]},
+            {"number":"614","name":"Insurance premiums","nameFr":"Primes d'assurance","nameDe":"Versicherungsprämien","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Primes d'assurance. Group 61: Other external charges.","examples":[]},
+            {"number":"6151","name":"Marketing and advertising","nameFr":"Frais de marketing et de publicité","nameDe":"Marketing und Werbung","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Frais de marketing et de publicité. Group 61: Other external charges.","examples":[]},
+            {"number":"6152","name":"Travel and entertainment","nameFr":"Frais de déplacements et de représentation","nameDe":"Reise- und Repräsentationskosten","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Frais de déplacements et de représentation. Group 61: Other external charges.","examples":[]},
+            {"number":"6153","name":"Postage and telecommunications","nameFr":"Frais postaux et frais de télécommunications","nameDe":"Porto und Telekommunikation","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Frais postaux et frais de télécommunications. Group 61: Other external charges.","examples":[]},
+            {"number":"616","name":"Carriage of goods (6161 inward, 6162 outward)","nameFr":"Transports de biens et transports collectifs du personnel","nameDe":"Frachtkosten (6161 Eingang, 6162 Ausgang)","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Transports de biens et transports collectifs du personnel. Group 61: Other external charges.","examples":[]},
+            {"number":"6184","name":"Utilities (energy and water)","nameFr":"Combustibles, gaz, eau et électricité","nameDe":"Energie und Wasser","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Combustibles, gaz, eau et électricité. Group 61: Other external charges.","examples":[]},
+            {"number":"6185","name":"Office supplies and small equipment","nameFr":"Fournitures et petit matériel","nameDe":"Büromaterial und Kleingeräte","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Fournitures et petit matériel. Group 61: Other external charges.","examples":[]},
+            {"number":"6188","name":"Other sundry external charges","nameFr":"Autres charges externes diverses","nameDe":"Sonstige externe Aufwendungen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Autres charges externes diverses. Group 61: Other external charges.","examples":[]},
+            {"number":"62","name":"Staff costs","nameFr":"Frais de personnel","nameDe":"Personalaufwand","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Frais de personnel. Account group.","examples":[]},
+            {"number":"6211","name":"Gross salaries and wages","nameFr":"Salaires bruts","nameDe":"Bruttolöhne und -gehälter","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Salaires bruts. Group 62: Staff costs.","examples":[]},
+            {"number":"623","name":"Employer social security contributions","nameFr":"Charges sociales (part patronale)","nameDe":"Arbeitgeberanteil Sozialversicherung","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Charges sociales (part patronale). Group 62: Staff costs.","examples":[]},
+            {"number":"63","name":"Value adjustments (depreciation, amortisation, write-downs)","nameFr":"Dotations aux corrections de valeur des éléments d'actif","nameDe":"Wertberichtigungen (Abschreibungen)","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Dotations aux corrections de valeur des éléments d'actif. Account group.","examples":[]},
+            {"number":"632","name":"Amortisation of intangible assets","nameFr":"DCV sur immobilisations incorporelles","nameDe":"Abschreibungen auf immaterielle Vermögensgegenstände","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: DCV sur immobilisations incorporelles. Group 63: Value adjustments (depreciation, amortisation, write-downs).","examples":[]},
+            {"number":"633","name":"Depreciation of tangible assets","nameFr":"DCV sur immobilisations corporelles","nameDe":"Abschreibungen auf Sachanlagen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: DCV sur immobilisations corporelles. Group 63: Value adjustments (depreciation, amortisation, write-downs).","examples":[]},
+            {"number":"6351","name":"Value adjustments on receivables (bad debt expense)","nameFr":"DCV sur créances de l'actif circulant","nameDe":"Wertberichtigungen auf Forderungen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: DCV sur créances de l'actif circulant. Group 63: Value adjustments (depreciation, amortisation, write-downs).","examples":[]},
+            {"number":"64","name":"Other operating charges","nameFr":"Autres charges d'exploitation","nameDe":"Sonstige betriebliche Aufwendungen","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Autres charges d'exploitation. Account group.","examples":[]},
+            {"number":"644","name":"Losses on disposal of fixed assets","nameFr":"Moins-values de cession d'immobilisations","nameDe":"Verluste aus Anlagenabgängen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Moins-values de cession d'immobilisations. Group 64: Other operating charges.","examples":[]},
+            {"number":"6451","name":"Bad debts written off","nameFr":"Pertes sur créances irrécouvrables","nameDe":"Forderungsausfälle","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Pertes sur créances irrécouvrables. Group 64: Other operating charges.","examples":[]},
+            {"number":"6461","name":"Property tax","nameFr":"Impôt foncier","nameDe":"Grundsteuer","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Impôt foncier. Group 64: Other operating charges.","examples":[]},
+            {"number":"649","name":"Charges to operating provisions","nameFr":"Dotations aux provisions d'exploitation","nameDe":"Zuführungen zu betrieblichen Rückstellungen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Dotations aux provisions d'exploitation. Group 64: Other operating charges.","examples":[]},
+            {"number":"65","name":"Financial charges","nameFr":"Charges financières","nameDe":"Finanzaufwendungen","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Charges financières. Account group.","examples":[]},
+            {"number":"6552","name":"Bank interest expense","nameFr":"Intérêts bancaires et assimilés","nameDe":"Bankzinsen","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Intérêts bancaires et assimilés. Group 65: Financial charges.","examples":[]},
+            {"number":"656","name":"Foreign exchange losses","nameFr":"Pertes de change","nameDe":"Wechselkursverluste","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Pertes de change. Group 65: Financial charges.","examples":[]},
+            {"number":"67","name":"Taxes on profit","nameFr":"Impôts sur le résultat","nameDe":"Steuern vom Ertrag","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Impôts sur le résultat. Account group.","examples":[]},
+            {"number":"671","name":"Corporate income tax","nameFr":"Impôt sur le revenu des collectivités (IRC)","nameDe":"Körperschaftsteuer","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Impôt sur le revenu des collectivités (IRC). Group 67: Taxes on profit.","examples":[]},
+            {"number":"672","name":"Municipal business tax","nameFr":"Impôt commercial communal (ICC)","nameDe":"Gemeindegewerbesteuer","class":6,"group":false,"type":"expense","normal":"debit","description":"Official name: Impôt commercial communal (ICC). Group 67: Taxes on profit.","examples":[]},
+            {"number":"68","name":"Other taxes (e.g., net wealth tax 681)","nameFr":"Autres impôts ne figurant pas sous les postes ci-dessus","nameDe":"Sonstige Steuern (z.B. Vermögensteuer 681)","class":6,"group":true,"type":"expense","normal":"debit","description":"Official name: Autres impôts ne figurant pas sous les postes ci-dessus. Account group.","examples":[]},
+            {"number":"70","name":"Net turnover","nameFr":"Montant net du chiffre d'affaires","nameDe":"Nettoumsatzerlöse","class":7,"group":true,"type":"revenue","normal":"credit","description":"Official name: Montant net du chiffre d'affaires. Account group.","examples":[]},
+            {"number":"702","name":"Sales of own products","nameFr":"Ventes de produits","nameDe":"Verkauf eigener Erzeugnisse","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Ventes de produits. Group 70: Net turnover.","examples":[]},
+            {"number":"703","name":"Services rendered","nameFr":"Prestations de services","nameDe":"Dienstleistungen","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Prestations de services. Group 70: Net turnover.","examples":[]},
+            {"number":"7061","name":"Sales of goods for resale","nameFr":"Ventes de marchandises","nameDe":"Warenverkäufe","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Ventes de marchandises. Group 70: Net turnover.","examples":[]},
+            {"number":"709","name":"Sales returns, rebates and discounts granted","nameFr":"Rabais, remises et ristournes accordés par l'entreprise","nameDe":"Gewährte Rabatte, Nachlässe und Boni","class":7,"group":false,"type":"contra-revenue","normal":"debit","description":"Official name: Rabais, remises et ristournes accordés par l'entreprise. Group 70: Net turnover.","examples":[]},
+            {"number":"71","name":"Change in stocks of finished goods and work in progress","nameFr":"Variation des stocks de produits finis, d'en-cours et de commandes en cours","nameDe":"Bestandsveränderungen an fertigen und unfertigen Erzeugnissen","class":7,"group":true,"type":"revenue","normal":"credit or debit","description":"Official name: Variation des stocks de produits finis, d'en-cours et de commandes en cours. Account group.","examples":[]},
+            {"number":"74","name":"Other operating income","nameFr":"Autres produits d'exploitation","nameDe":"Sonstige betriebliche Erträge","class":7,"group":true,"type":"revenue","normal":"credit","description":"Official name: Autres produits d'exploitation. Account group.","examples":[]},
+            {"number":"742","name":"Rental income (ancillary)","nameFr":"Revenus des immeubles non affectés aux activités professionnelles","nameDe":"Mieterträge (Nebentätigkeit)","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Revenus des immeubles non affectés aux activités professionnelles. Group 74: Other operating income.","examples":[]},
+            {"number":"744","name":"Gains on disposal of fixed assets","nameFr":"Plus-values de cession d'immobilisations","nameDe":"Gewinne aus Anlagenabgängen","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Plus-values de cession d'immobilisations. Group 74: Other operating income.","examples":[]},
+            {"number":"748","name":"Sundry operating income","nameFr":"Autres produits d'exploitation divers","nameDe":"Sonstige betriebliche Erträge","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Autres produits d'exploitation divers. Group 74: Other operating income.","examples":[]},
+            {"number":"75","name":"Financial income","nameFr":"Produits financiers","nameDe":"Finanzerträge","class":7,"group":true,"type":"revenue","normal":"credit","description":"Official name: Produits financiers. Account group.","examples":[]},
+            {"number":"752","name":"Income from financial fixed assets (dividends)","nameFr":"Revenus des immobilisations financières","nameDe":"Erträge aus Finanzanlagen (Dividenden)","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Revenus des immobilisations financières. Group 75: Financial income.","examples":[]},
+            {"number":"7552","name":"Bank interest income","nameFr":"Intérêts bancaires et assimilés","nameDe":"Bankzinserträge","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Intérêts bancaires et assimilés. Group 75: Financial income.","examples":[]},
+            {"number":"756","name":"Foreign exchange gains","nameFr":"Gains de change","nameDe":"Wechselkursgewinne","class":7,"group":false,"type":"revenue","normal":"credit","description":"Official name: Gains de change. Group 75: Financial income.","examples":[]}
+        ];
+
+        let currentResults = [];
+        let searchQuery = '';
+        let classFilter = '';
+
+        // Initialize
+        document.getElementById('searchInput').addEventListener('input', handleSearch);
+        document.getElementById('classFilter').addEventListener('change', handleFilter);
+        document.querySelectorAll('.class-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.class-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                const classNum = this.dataset.class;
+                if (classNum === 'all') {
+                    document.getElementById('classFilter').value = '';
+                    classFilter = '';
+                } else {
+                    document.getElementById('classFilter').value = classNum;
+                    classFilter = classNum;
+                }
+                handleFilter();
+            });
+        });
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            filterAndDisplay();
+        }
+
+        function handleFilter() {
+            classFilter = document.getElementById('classFilter').value;
+            filterAndDisplay();
+        }
+
+        function filterAndDisplay() {
+            currentResults = pcnAccounts.filter(account => {
+                const matchesSearch = !searchQuery || 
+                    account.number.includes(searchQuery) ||
+                    account.name.toLowerCase().includes(searchQuery) ||
+                    (account.nameFr && account.nameFr.toLowerCase().includes(searchQuery)) ||
+                    (account.nameDe && account.nameDe.toLowerCase().includes(searchQuery)) ||
+                    (account.description && account.description.toLowerCase().includes(searchQuery));
+                
+                const matchesClass = !classFilter || account.class.toString() === classFilter;
+                
+                return matchesSearch && matchesClass;
+            });
+
+            displayResults(currentResults);
+        }
+
+        function displayResults(results) {
+            const container = document.getElementById('accountResults');
+            const count = document.getElementById('resultsCount');
+            
+            count.textContent = `${results.length} account${results.length !== 1 ? 's' : ''} found`;
+
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <p>No accounts found. Try a different search term or class filter.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = results.map(account => {
+                const highlight = (text) => {
+                    if (!searchQuery) return text;
+                    const escaped = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const regex = new RegExp(`(${escaped})`, 'gi');
+                    return text.replace(regex, '<span class="search-highlight">$1</span>');
+                };
+
+                return `
+                    <div class="account-card">
+                        <div class="account-header">
+                            <div>
+                                <div class="account-number">${highlight(account.number)}</div>
+                                <div class="account-name">${highlight(account.name)}</div>
+                            </div>
+                        </div>
+                        <div class="account-meta">
+                            <span class="meta-badge class">Class ${account.class}</span>
+                            <span class="meta-badge type">${account.type.charAt(0).toUpperCase() + account.type.slice(1)}</span>
+                            <span class="meta-badge">Normal: ${account.normal}</span>
+                            ${account.group ? '<span class="meta-badge">Account group (aggregates only; post to a detailed account)</span>' : ''}
+                        </div>
+                        ${account.description ? `<div class="account-description">${account.description}</div>` : ''}
+                        ${account.examples && account.examples.length > 0 ? `
+                            <div class="account-examples">
+                                <h4>Common Usage:</h4>
+                                <ul>
+                                    ${account.examples.map(ex => `<li>${ex}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function exportToCSV() {
+            if (currentResults.length === 0) {
+                alert('No results to export');
+                return;
+            }
+
+            let csv = 'Account Number,Account Name,Class,Type,Normal Balance,Description\n';
+            currentResults.forEach(account => {
+                csv += `"${account.number}","${account.name}",${account.class},"${account.type}","${account.normal}","${account.description || ''}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `pcn_accounts_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportToExcel() {
+            // For Excel, we'll create a CSV that Excel can open
+            // A full Excel export would require a library like SheetJS
+            exportToCSV();
+            alert('CSV file exported. You can open it in Excel. Full Excel export coming soon.');
+        }
+
+        // Show all accounts on load
+        filterAndDisplay();
+    </script>
+</body>
+</html>
+

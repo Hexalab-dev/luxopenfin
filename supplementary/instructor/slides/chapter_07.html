@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Accounting Information Systems - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 7: Accounting Information Systems</div>
+        <div class="slide-subtitle">Chapter 7 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Define and describe the components of an accounting information system</div>
+            <div class="objective-item">Describe and explain the purpose of special journals and their importance to stakeholders</div>
+            <div class="objective-item">Analyze and journalize transactions using special journals</div>
+            <div class="objective-item">Prepare a subsidiary ledger</div>
+            <div class="objective-item">Describe career paths open to individuals with a joint education in accounting and information systems</div>
+            <div class="objective-item">Understand the Luxembourg accounting software landscape (Sage BOB, Odoo, etc.)</div>
+            <div class="objective-item">Explain Luxembourg eCDF and FAIA requirements</div>
+            <div class="objective-item">Understand digital invoice requirements and fiscal cash registers</div>
+        </div>
+    </div>
+    
+    <!-- Section 7.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.1 Define and Describe the Components of an Accounting Information System</div>
+            <div class="subsection-title">What is an Accounting Information System?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Collect transaction data</li>
+                <li class="bullet-item">Process and organize data</li>
+                <li class="bullet-item">Store data securely</li>
+                <li class="bullet-item">Generate reports and financial statements</li>
+                <li class="bullet-item">Support decision-making</li>
+                <li class="bullet-item">Ensure compliance</li>
+            </ul>
+            <div class="subsection-title">Components of an Accounting Information System</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.2 Describe and Explain the Purpose of Special Journals and Their Importance to Stakeholders</div>
+            <div class="subsection-title">What are Special Journals?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Efficiency</strong>: Faster recording of repetitive transactions</li>
+                <li class="bullet-item"><strong>Organization</strong>: Group similar transactions together</li>
+                <li class="bullet-item"><strong>Control</strong>: Easier to review and verify specific transaction types</li>
+                <li class="bullet-item"><strong>Division of Labor</strong>: Different people can handle different journals</li>
+            </ul>
+            <div class="subsection-title">Types of Special Journals</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.3 Analyze and Journalize Transactions Using Special Journals</div>
+            <div class="subsection-title">Using Special Journals</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Example Business: Mode Luxembourg SARL</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.4 Prepare a Subsidiary Ledger</div>
+            <div class="subsection-title">What is a Subsidiary Ledger?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Provide detail for general ledger accounts</li>
+                <li class="bullet-item">Track individual customers, suppliers, inventory items</li>
+                <li class="bullet-item">Support accounts receivable and accounts payable management</li>
+                <li class="bullet-item">Enable detailed reporting</li>
+            </ul>
+            <div class="subsection-title">Subsidiary Ledgers vs. General Ledger</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Contains summary accounts (control accounts)</li>
+                <li class="bullet-item">Shows total balances</li>
+                <li class="bullet-item">Example: Accounts Receivable (total of all customers)</li>
+                <li class="bullet-item">Contains individual accounts</li>
+                <li class="bullet-item">Shows detail for each customer, supplier, etc.</li>
+                <li class="bullet-item">Example: Customer A account, Customer B account, etc.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.5 Describe Career Paths Open to Individuals with a Joint Education in Accounting and Information Systems</div>
+            <div class="subsection-title">The Intersection of Accounting and IT</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Career Paths</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Analyze accounting processes</li>
+                <li class="bullet-item">Design system solutions</li>
+                <li class="bullet-item">Implement accounting software</li>
+                <li class="bullet-item">Train users</li>
+                <li class="bullet-item">Troubleshoot system issues</li>
+                <li class="bullet-item">Ensure compliance</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.6 Luxembourg Accounting Software Landscape (Sage BOB, Odoo, etc.)</div>
+            <div class="subsection-title">Overview of Luxembourg Accounting Software</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Sage BOB</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">✅ Full PCN 2020 compliance</li>
+                <li class="bullet-item">✅ Excellent VAT handling (all 4 rates)</li>
+                <li class="bullet-item">✅ eCDF integration built-in</li>
+                <li class="bullet-item">✅ FAIA export capability</li>
+                <li class="bullet-item">✅ Multilingual (FR, DE, EN, NL)</li>
+                <li class="bullet-item">✅ Strong Luxembourg localization</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.7 Luxembourg eCDF and FAIA Requirements</div>
+            <div class="subsection-title">eCDF (Electronic Collection of Financial Data)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">VAT returns</li>
+                <li class="bullet-item">Annual accounts</li>
+                <li class="bullet-item">Other tax and financial documents</li>
+                <li class="bullet-item">Streamline filing process</li>
+                <li class="bullet-item">Reduce errors</li>
+                <li class="bullet-item">Improve efficiency</li>
+            </ul>
+            <div class="subsection-title">eCDF Requirements</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">All businesses filing VAT returns</li>
+                <li class="bullet-item">All businesses filing annual accounts</li>
+                <li class="bullet-item">Mandatory for electronic filing</li>
+                <li class="bullet-item"><strong>VAT Returns</strong>: Monthly, quarterly, or annual (depending on business)</li>
+                <li class="bullet-item"><strong>Annual Accounts</strong>: Within 7 months of fiscal year end</li>
+                <li class="bullet-item"><strong>Electronic Only</strong>: Paper returns no longer accepted</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 7.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">7.8 Digital Invoice Requirements and Fiscal Cash Registers</div>
+            <div class="subsection-title">Digital Invoicing in Luxembourg</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Digital invoices are accepted and often preferred</li>
+                <li class="bullet-item">Must meet certain format and content requirements</li>
+                <li class="bullet-item">Must be stored electronically</li>
+                <li class="bullet-item">Must be accessible for audits</li>
+            </ul>
+            <div class="subsection-title">Digital Invoice Formats</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>PDF</strong>: Most common, must be readable</li>
+                <li class="bullet-item"><strong>XML</strong>: Structured format, preferred for automated processing</li>
+                <li class="bullet-item"><strong>UBL</strong>: Universal Business Language (XML-based)</li>
+                <li class="bullet-item"><strong>Peppol</strong>: Pan-European Public Procurement OnLine network</li>
+                <li class="bullet-item">Must contain all required information</li>
+                <li class="bullet-item">Must be readable and accessible</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Accounting Information System (AIS)</div>
+                <div class="term-definition">System that collects, processes, stores, and reports financial information</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cash Disbursements Journal</div>
+                <div class="term-definition">Special journal recording all cash paid out</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cash Receipts Journal</div>
+                <div class="term-definition">Special journal recording all cash received</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">eCDF</div>
+                <div class="term-definition">Electronic Collection of Financial Data - Luxembourg's electronic filing platform</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">FAIA</div>
+                <div class="term-definition">Fichier d'Audit Informatisé AED - Computerized audit file (XML, OECD SAF-T)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Fiscal Cash Register</div>
+                <div class="term-definition">Certified cash register meeting legal requirements</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">General Journal</div>
+                <div class="term-definition">Journal for transactions that don't fit special journals</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Purchases Journal</div>
+                <div class="term-definition">Special journal recording credit purchases</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Sales Journal</div>
+                <div class="term-definition">Special journal recording credit sales</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Subsidiary Ledger</div>
+                <div class="term-definition">Detailed ledger for individual items (customers, suppliers) that support a general ledger control account</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

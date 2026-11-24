@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tools - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .tool-card.available {
+            border-left-color: var(--accent-secondary);
+        }
+
+        .tool-card.planned {
+            border-left-color: #ffa500;
+            opacity: 0.7;
+        }
+
+        .tool-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-available {
+            background: rgba(92, 184, 92, 0.2);
+            color: var(--accent-secondary);
+        }
+
+        .status-planned {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        .tool-card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .tool-features li {
+            color: var(--text-secondary);
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tool-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #3a8eef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(74, 158, 255, 0.3);
+        }
+
+        .btn:disabled {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇱🇺 Interactive Tools</h1>
+            <p class="subtitle">Luxembourg SME Accounting - LuxOpenFin</p>
+        </header>
+
+        <div class="info-box">
+            <h3>About These Tools</h3>
+            <p>These interactive tools are designed to enhance learning and practice with accounting concepts specific to Luxembourg SMEs. All tools are web-based, work offline, and require no installation. Simply open the HTML file in your browser.</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- VAT Calculator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>VAT Calculator</h2>
+                <p>Calculate VAT amounts for Luxembourg businesses with all four VAT rates (3%, 8%, 14%, 17%).</p>
+                <ul class="tool-features">
+                    <li>Net to gross and gross to net calculations</li>
+                    <li>Multiple items support</li>
+                    <li>VAT return worksheet</li>
+                    <li>CSV export functionality</li>
+                </ul>
+                <a href="vat_calculator.html" class="btn">Open Tool</a>
+                <a href="vat_calculator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- T-Account Simulator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>T-Account Simulator</h2>
+                <p>Practice recording transactions in T-accounts with visual interface and automatic balance calculation.</p>
+                <ul class="tool-features">
+                    <li>Visual T-account interface</li>
+                    <li>PCN account lookup and integration</li>
+                    <li>Automatic balance calculation</li>
+                    <li>Practice mode with hints</li>
+                </ul>
+                <a href="t_account_simulator.html" class="btn">Open Tool</a>
+                <a href="t_account_simulator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- Journal Entry Practice -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>Journal Entry Practice</h2>
+                <p>Practice creating journal entries with official PCN 2020 accounts, validation and step-by-step hints.</p>
+                <ul class="tool-features">
+                    <li>Journal entry form</li>
+                    <li>Account lookup (PCN)</li>
+                    <li>Debit/credit validation</li>
+                    <li>Luxembourg transaction scenarios</li>
+                </ul>
+                <a href="journal_entry_practice.html" class="btn">Open Tool</a>
+                <a href="journal_entry_practice_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- PCN Account Lookup -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>PCN Account Lookup</h2>
+                <p>Quick reference for selected Luxembourg PCN 2020 accounts (same list as the website's PCN Lookup) with search and browse functionality.</p>
+                <ul class="tool-features">
+                    <li>Search by account number or name</li>
+                    <li>Browse by account class</li>
+                    <li>Multilingual support (FR, DE, EN)</li>
+                    <li>Export to CSV/Excel</li>
+                </ul>
+                <a href="pcn_lookup.html" class="btn">Open Tool</a>
+                <a href="pcn_lookup_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- Financial Statement Generator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>Financial Statement Generator</h2>
+                <p>Generate a simplified balance sheet and profit and loss account from a trial balance, classified by PCN 2020 class.</p>
+                <ul class="tool-features">
+                    <li>Input trial balance</li>
+                    <li>Automatic statement generation</li>
+                    <li>Balance sheet, profit and loss account, cash flow outline</li>
+                    <li>Print / save as PDF</li>
+                </ul>
+                <a href="financial_statement_generator.html" class="btn">Open Tool</a>
+                <a href="financial_statement_generator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- Payroll Calculator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>Payroll Calculator</h2>
+                <p>Calculate Luxembourg social security contributions (CCSS rates at 1 January 2026) for employees and employers.</p>
+                <ul class="tool-features">
+                    <li>Gross to net of social security (wage tax not included)</li>
+                    <li>Social charges breakdown</li>
+                    <li>Employee and employer portions</li>
+                    <li>Export payroll register</li>
+                </ul>
+                <a href="payroll_calculator.html" class="btn">Open Tool</a>
+                <a href="payroll_calculator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- Break-Even Calculator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>Break-Even Calculator</h2>
+                <p>Calculate break-even point with sensitivity analysis.</p>
+                <ul class="tool-features">
+                    <li>Fixed and variable costs input</li>
+                    <li>Break-even units and sales</li>
+                    <li>Sensitivity analysis</li>
+                    <li>Target profit analysis</li>
+                </ul>
+                <a href="break_even_calculator.html" class="btn">Open Tool</a>
+                <a href="break_even_calculator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+
+            <!-- Financial Ratio Calculator -->
+            <div class="tool-card available">
+                <span class="tool-status status-available">✅ Available</span>
+                <h2>Financial Ratio Calculator</h2>
+                <p>Calculate and analyze financial ratios with benchmark comparisons.</p>
+                <ul class="tool-features">
+                    <li>Liquidity, profitability, efficiency ratios</li>
+                    <li>Automatic calculation</li>
+                    <li>Benchmark comparisons</li>
+                    <li>Comprehensive analysis</li>
+                </ul>
+                <a href="ratio_calculator.html" class="btn">Open Tool</a>
+                <a href="ratio_calculator_README.md" class="btn btn-secondary">Documentation</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>LuxOpenFin - Luxembourg SME Accounting Textbook</p>
+            <p>All tools are released under Creative Commons Attribution 4.0 (CC BY 4.0)</p>
+        </footer>
+    </div>
+</body>
+</html>
+

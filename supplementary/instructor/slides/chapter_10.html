@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Inventory - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 10: Inventory</div>
+        <div class="slide-subtitle">Chapter 10 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe and demonstrate the basic inventory valuation methods and their cost flow assumptions</div>
+            <div class="objective-item">Calculate the cost of goods sold and ending inventory using the periodic method</div>
+            <div class="objective-item">Calculate the cost of goods sold and ending inventory using the perpetual method</div>
+            <div class="objective-item">Explain and demonstrate the impact of inventory valuation errors on the income statement and balance sheet</div>
+            <div class="objective-item">Examine the efficiency of inventory management using financial ratios</div>
+            <div class="objective-item">Understand Luxembourg inventory valuation methods (FIFO, weighted average)</div>
+            <div class="objective-item">Explain Luxembourg PCN Class 3 inventory accounts</div>
+        </div>
+    </div>
+    
+    <!-- Section 10.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.1 Describe and Demonstrate the Basic Inventory Valuation Methods and Their Cost Flow Assumptions</div>
+            <div class="subsection-title">Cost Flow Assumptions</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Inventory Valuation Methods</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.2 Calculate the Cost of Goods Sold and Ending Inventory Using the Periodic Method</div>
+            <div class="subsection-title">Periodic Inventory System</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cost of Goods Sold Formula (Periodic)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Beginning Inventory</strong>: Inventory on hand at start of period</li>
+                <li class="bullet-item"><strong>Purchases</strong>: Goods purchased during period</li>
+                <li class="bullet-item"><strong>Ending Inventory</strong>: Inventory on hand at end of period (from physical count)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.3 Calculate the Cost of Goods Sold and Ending Inventory Using the Perpetual Method</div>
+            <div class="subsection-title">Perpetual Inventory System</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cost of Goods Sold (Perpetual)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Each sale triggers a cost of goods sold entry</li>
+                <li class="bullet-item">Cost is determined using cost flow assumption (FIFO, weighted average)</li>
+                <li class="bullet-item">Inventory is reduced by cost amount</li>
+                <li class="bullet-item">Inventory balance is always current</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.4 Explain and Demonstrate the Impact of Inventory Valuation Errors on the Income Statement and Balance Sheet</div>
+            <div class="subsection-title">Inventory Errors</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Types of Inventory Errors</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.5 Examine the Efficiency of Inventory Management Using Financial Ratios</div>
+            <div class="subsection-title">Inventory Management Ratios</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Inventory Turnover Ratio</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">How many times inventory is sold and replaced during the period</li>
+                <li class="bullet-item">Higher ratio = faster turnover = better</li>
+                <li class="bullet-item"><strong>Cost of Goods Sold</strong>: From income statement</li>
+                <li class="bullet-item"><strong>Average Inventory</strong>: (Beginning Inventory + Ending Inventory) ÷ 2</li>
+                <li class="bullet-item">Cost of Goods Sold: €120,000</li>
+                <li class="bullet-item">Beginning Inventory: €20,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.6 Luxembourg Inventory Valuation Methods (FIFO, Weighted Average)</div>
+            <div class="subsection-title">Luxembourg Allowed Methods</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>FIFO</strong> (First-In, First-Out)</li>
+                <li class="bullet-item"><strong>Weighted Average</strong></li>
+                <li class="bullet-item"><strong>Specific Identification</strong> (for appropriate items)</li>
+                <li class="bullet-item"><strong>LIFO</strong> (Last-In, First-Out) or similar, for fungible items (law of 19 December 2002, art. 66); prohibited under IFRS (IAS 2), not under Lux GAAP</li>
+            </ul>
+            <div class="subsection-title">FIFO in Luxembourg</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must be applied consistently</li>
+                <li class="bullet-item">Must be disclosed in financial statements</li>
+                <li class="bullet-item">Must be reasonable and supportable</li>
+                <li class="bullet-item">Must comply with PCN requirements</li>
+                <li class="bullet-item">Simple to understand</li>
+                <li class="bullet-item">Matches physical flow for perishables</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 10.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">10.7 Luxembourg PCN Class 3 Inventory Accounts</div>
+            <div class="subsection-title">PCN Class 3: Inventory</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">30: Raw Materials (Matières Premières)</li>
+                <li class="bullet-item">31: Work in Progress (En Cours de Fabrication)</li>
+                <li class="bullet-item">32: Finished Goods (Produits Finis)</li>
+                <li class="bullet-item">361: Merchandise (Marchandises)</li>
+            </ul>
+            <div class="subsection-title">Main Inventory Accounts</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Materials to be used in production</li>
+                <li class="bullet-item">Ingredients for manufacturing</li>
+                <li class="bullet-item">Components to be assembled</li>
+                <li class="bullet-item">Products partially completed</li>
+                <li class="bullet-item">Manufacturing in process</li>
+                <li class="bullet-item">Construction in progress</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Cost Flow Assumption</div>
+                <div class="term-definition">Method for assigning costs to goods sold and ending inventory</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">FIFO (First-In, First-Out)</div>
+                <div class="term-definition">Inventory method assuming first items purchased are first sold</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Inventory Turnover</div>
+                <div class="term-definition">Ratio measuring how many times inventory is sold and replaced</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Periodic Inventory System</div>
+                <div class="term-definition">System where inventory is updated only at period end</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Perpetual Inventory System</div>
+                <div class="term-definition">System where inventory is updated continuously</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Specific Identification</div>
+                <div class="term-definition">Inventory method tracking each item's specific cost</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Weighted Average</div>
+                <div class="term-definition">Inventory method using average cost for all units</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Days Sales in Inventory</div>
+                <div class="term-definition">Average number of days inventory is held before sale</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

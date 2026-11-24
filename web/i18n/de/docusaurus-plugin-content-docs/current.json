@@ -1,0 +1,62 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.mainSidebar.category.Volume 1 – Financial Accounting": {
+    "message": "Volume 1 – Financial Accounting",
+    "description": "The label for category 'Volume 1 – Financial Accounting' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-01": {
+    "message": "chapter-01",
+    "description": "The label for category 'chapter-01' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-02": {
+    "message": "chapter-02",
+    "description": "The label for category 'chapter-02' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-03": {
+    "message": "chapter-03",
+    "description": "The label for category 'chapter-03' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-04": {
+    "message": "chapter-04",
+    "description": "The label for category 'chapter-04' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-05": {
+    "message": "chapter-05",
+    "description": "The label for category 'chapter-05' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-06": {
+    "message": "chapter-06",
+    "description": "The label for category 'chapter-06' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-07": {
+    "message": "chapter-07",
+    "description": "The label for category 'chapter-07' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-08": {
+    "message": "chapter-08",
+    "description": "The label for category 'chapter-08' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-09": {
+    "message": "chapter-09",
+    "description": "The label for category 'chapter-09' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.chapter-10": {
+    "message": "chapter-10",
+    "description": "The label for category 'chapter-10' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.Volume 2 – Managerial Accounting": {
+    "message": "Volume 2 – Managerial Accounting",
+    "description": "The label for category 'Volume 2 – Managerial Accounting' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.Volume 3 – Luxembourg Compliance": {
+    "message": "Volume 3 – Luxembourg Compliance",
+    "description": "The label for category 'Volume 3 – Luxembourg Compliance' in sidebar 'mainSidebar'"
+  },
+  "sidebar.mainSidebar.category.Appendices": {
+    "message": "Appendices",
+    "description": "The label for category 'Appendices' in sidebar 'mainSidebar'"
+  }
+}

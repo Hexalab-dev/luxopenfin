@@ -1,0 +1,29 @@
+accounting:
+  label: Accounting
+  permalink: /accounting
+  description: Accounting concepts and best practices for Luxembourg SMEs
+
+compliance:
+  label: Compliance
+  permalink: /compliance
+  description: Regulatory compliance updates and guidance
+
+vat:
+  label: VAT
+  permalink: /vat
+  description: VAT compliance, filing, and calculator tips
+
+pcn:
+  label: PCN 2020
+  permalink: /pcn
+  description: Plan Comptable Normalisé updates and guidance
+
+tools:
+  label: Tools
+  permalink: /tools
+  description: Interactive tools and calculators updates
+
+platform:
+  label: Platform
+  permalink: /platform
+  description: LuxOpenFin platform news and updates

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 16: Statement of Cash Flows - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 16: Statement of Cash Flows</div>
+        <div class="slide-subtitle">Chapter 16 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Explain the purpose of the statement of cash flows</div>
+            <div class="objective-item">Differentiate between operating, investing, and financing activities</div>
+            <div class="objective-item">Prepare the statement of cash flows using the indirect method</div>
+            <div class="objective-item">Prepare the completed statement of cash flows using the indirect method</div>
+            <div class="objective-item">Use information from the statement of cash flows to prepare ratios to assess liquidity and solvency</div>
+            <div class="objective-item">Prepare a completed statement of cash flows using the direct method (appendix)</div>
+            <div class="objective-item">Understand Luxembourg cash flow statement requirements</div>
+            <div class="objective-item">Explain Luxembourg PCN cash flow presentation</div>
+        </div>
+    </div>
+    
+    <!-- Section 16.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.1 Explain the Purpose of the Statement of Cash Flows</div>
+            <div class="subsection-title">Purpose</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Shows cash receipts and payments</li>
+                <li class="bullet-item">Explains change in cash balance</li>
+                <li class="bullet-item">Complements income statement and balance sheet</li>
+                <li class="bullet-item">Shows cash from three activities</li>
+            </ul>
+            <div class="subsection-title">Why It's Needed</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Revenues and expenses</li>
+                <li class="bullet-item">Net income</li>
+                <li class="bullet-item">But not cash flows</li>
+                <li class="bullet-item">Assets, liabilities, equity</li>
+                <li class="bullet-item">Cash balance</li>
+                <li class="bullet-item">But not cash flows</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.2 Differentiate between Operating, Investing, and Financing Activities</div>
+            <div class="subsection-title">Three Types of Activities</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Day-to-day business operations</li>
+                <li class="bullet-item">Cash from customers</li>
+                <li class="bullet-item">Cash to suppliers and employees</li>
+                <li class="bullet-item">Cash from operations</li>
+                <li class="bullet-item">Cash from sales</li>
+                <li class="bullet-item">Cash paid to suppliers</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Compliance Note</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must follow PCN format</li>
+                <li class="bullet-item">Must classify correctly</li>
+                <li class="bullet-item">Must comply with standards</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.3 Prepare the Statement of Cash Flows Using the Indirect Method</div>
+            <div class="subsection-title">Indirect Method</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Starts with net income</li>
+                <li class="bullet-item">Adjusts for non-cash items</li>
+                <li class="bullet-item">Adjusts for changes in current assets/liabilities</li>
+                <li class="bullet-item">Shows cash from operations</li>
+            </ul>
+            <div class="subsection-title">Operating Activities (Indirect Method)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Gain on Sale of Assets</li>
+                <li class="bullet-item">Increase in Current Assets</li>
+                <li class="bullet-item">Decrease in Current Liabilities</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.4 Prepare the Completed Statement of Cash Flows Using the Indirect Method</div>
+            <div class="subsection-title">Complete Statement</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Luxembourg PCN Format</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must follow PCN structure</li>
+                <li class="bullet-item">Must use proper classifications</li>
+                <li class="bullet-item">Must show all activities</li>
+                <li class="bullet-item">Must comply with standards</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.5 Use Information from the Statement of Cash Flows to Prepare Ratios to Assess Liquidity and Solvency</div>
+            <div class="subsection-title">Cash Flow Ratios</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Luxembourg Considerations</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Assess liquidity</li>
+                <li class="bullet-item">Evaluate solvency</li>
+                <li class="bullet-item">Compare performance</li>
+                <li class="bullet-item">Make decisions</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.6 Appendix: Prepare a Completed Statement of Cash Flows Using the Direct Method</div>
+            <div class="subsection-title">Direct Method</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Shows actual cash receipts and payments</li>
+                <li class="bullet-item">More detailed</li>
+                <li class="bullet-item">Less common</li>
+                <li class="bullet-item">Shows cash from customers, cash to suppliers, etc.</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Compliance Note</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Less common</li>
+                <li class="bullet-item">More detailed</li>
+                <li class="bullet-item">Must follow PCN format</li>
+                <li class="bullet-item">Must comply with standards</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.7 Luxembourg Cash Flow Statement Requirements</div>
+            <div class="subsection-title">Requirements</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Larger companies (based on size thresholds)</li>
+                <li class="bullet-item">May be required for RCS filing</li>
+                <li class="bullet-item">Useful for all businesses</li>
+                <li class="bullet-item">Must follow PCN format</li>
+                <li class="bullet-item">Must include all sections</li>
+                <li class="bullet-item">Must be accurate</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Compliance Note</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Size-based requirements</li>
+                <li class="bullet-item">Must follow PCN format</li>
+                <li class="bullet-item">Must file with RCS if required</li>
+                <li class="bullet-item">Must comply with standards</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 16.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">16.8 Luxembourg PCN Cash Flow Presentation</div>
+            <div class="subsection-title">PCN Format</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Operating activities</li>
+                <li class="bullet-item">Investing activities</li>
+                <li class="bullet-item">Financing activities</li>
+                <li class="bullet-item">Must follow PCN classifications</li>
+                <li class="bullet-item">Must use proper format</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Compliance Note</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must follow PCN structure</li>
+                <li class="bullet-item">Must use proper classifications</li>
+                <li class="bullet-item">Must comply with format</li>
+                <li class="bullet-item">Must be accurate</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Direct Method</div>
+                <div class="term-definition">Shows actual cash receipts and payments</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Financing Activities</div>
+                <div class="term-definition">Cash from borrowing, equity, dividends</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Indirect Method</div>
+                <div class="term-definition">Starts with net income and adjusts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Investing Activities</div>
+                <div class="term-definition">Cash from purchase/sale of assets</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Operating Activities</div>
+                <div class="term-definition">Cash from day-to-day operations</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Statement of Cash Flows</div>
+                <div class="term-definition">Shows cash receipts and payments</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

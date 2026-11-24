@@ -1,0 +1,742 @@
+{
+  "tools.title": {
+    "message": "Outils interactifs pour les PME luxembourgeoises",
+    "description": "Title of the interactive tools page"
+  },
+  "tools.subtitle": {
+    "message": "Tous les outils fonctionnent hors ligne dans Docusaurus, reflètent les prototypes HTML autonomes et seront plus tard intégrés directement dans les sections pertinentes du manuel.",
+    "description": "Subtitle of the interactive tools page"
+  },
+  "tools.quickNav": {
+    "message": "Navigation rapide :",
+    "description": "Quick navigation label"
+  },
+  "tools.vat": {
+    "message": "Calculateur de TVA",
+    "description": "VAT Calculator tool name"
+  },
+  "tools.breakEven": {
+    "message": "Analyse du seuil de rentabilité",
+    "description": "Break-even Analysis tool name"
+  },
+  "tools.payroll": {
+    "message": "Aperçu de la paie",
+    "description": "Payroll Snapshot tool name"
+  },
+  "tools.ratios": {
+    "message": "Ratios financiers",
+    "description": "Financial Ratios tool name"
+  },
+  "tools.statements": {
+    "message": "Générateur d'états financiers",
+    "description": "Financial Statement Builder tool name"
+  },
+  "tools.pcn": {
+    "message": "Recherche PCN",
+    "description": "PCN Lookup tool name"
+  },
+  "tools.journal": {
+    "message": "Pratique des écritures comptables",
+    "description": "Journal Entry Practice tool name"
+  },
+  "tools.taccounts": {
+    "message": "Simulateur de comptes en T",
+    "description": "T-Account Simulator tool name"
+  },
+  "vat.title": {
+    "message": "🇱🇺 Calculateur de TVA luxembourgeois",
+    "description": "VAT Calculator title"
+  },
+  "vat.description": {
+    "message": "Prend en charge les quatre taux de TVA luxembourgeois (3%, 8%, 14%, 17%) avec des calculs simples et multi-lignes. Utile pour les déclarations de TVA, les vérifications de factures ou les scénarios de formation.",
+    "description": "VAT Calculator description"
+  },
+  "vat.singleCalculation": {
+    "message": "Calcul unique",
+    "description": "Single Calculation section title"
+  },
+  "vat.calculationType": {
+    "message": "Type de calcul",
+    "description": "Calculation Type label"
+  },
+  "vat.netToGross": {
+    "message": "Net → Brut",
+    "description": "Net to Gross option"
+  },
+  "vat.grossToNet": {
+    "message": "Brut → Net",
+    "description": "Gross to Net option"
+  },
+  "vat.vatRate": {
+    "message": "Taux de TVA",
+    "description": "VAT Rate label"
+  },
+  "vat.rateSuperReduced": {
+    "message": "3% · Super-réduit",
+    "description": "Super-Reduced VAT rate"
+  },
+  "vat.rateReduced": {
+    "message": "8% · Réduit",
+    "description": "Reduced VAT rate"
+  },
+  "vat.rateIntermediate": {
+    "message": "14% · Intermédiaire",
+    "description": "Intermediate VAT rate"
+  },
+  "vat.rateStandard": {
+    "message": "17% · Standard",
+    "description": "Standard VAT rate"
+  },
+  "vat.amount": {
+    "message": "Montant (€)",
+    "description": "Amount label"
+  },
+  "vat.calculate": {
+    "message": "Calculer",
+    "description": "Calculate button"
+  },
+  "vat.clear": {
+    "message": "Effacer",
+    "description": "Clear button"
+  },
+  "vat.netAmount": {
+    "message": "Montant net",
+    "description": "Net Amount label"
+  },
+  "vat.vatAmount": {
+    "message": "Montant TVA",
+    "description": "VAT Amount label"
+  },
+  "vat.grossAmount": {
+    "message": "Montant brut",
+    "description": "Gross Amount label"
+  },
+  "vat.multiLineWorksheet": {
+    "message": "Feuille de calcul multi-lignes",
+    "description": "Multi-Line Worksheet section title"
+  },
+  "vat.descriptionLabel": {
+    "message": "Description",
+    "description": "Description label"
+  },
+  "vat.descriptionPlaceholder": {
+    "message": "ex. : Fournitures de bureau",
+    "description": "Description placeholder"
+  },
+  "vat.netAmountLabel": {
+    "message": "Montant net (€)",
+    "description": "Net Amount label for multi-line"
+  },
+  "vat.addItem": {
+    "message": "Ajouter un article",
+    "description": "Add Item button"
+  },
+  "vat.clearItems": {
+    "message": "Effacer les articles",
+    "description": "Clear Items button"
+  },
+  "vat.tableDescription": {
+    "message": "Description",
+    "description": "Table Description header"
+  },
+  "vat.tableRate": {
+    "message": "Taux",
+    "description": "Table Rate header"
+  },
+  "vat.tableNet": {
+    "message": "Net",
+    "description": "Table Net header"
+  },
+  "vat.tableVAT": {
+    "message": "TVA",
+    "description": "Table VAT header"
+  },
+  "vat.tableGross": {
+    "message": "Brut",
+    "description": "Table Gross header"
+  },
+  "vat.remove": {
+    "message": "Supprimer",
+    "description": "Remove button"
+  },
+  "vat.totalNet": {
+    "message": "Total net",
+    "description": "Total Net label"
+  },
+  "vat.totalVAT": {
+    "message": "Total TVA",
+    "description": "Total VAT label"
+  },
+  "vat.totalGross": {
+    "message": "Total brut",
+    "description": "Total Gross label"
+  },
+  "breakeven.title": {
+    "message": "Seuil de rentabilité et sensibilité",
+    "description": "Break-Even Calculator title"
+  },
+  "breakeven.description": {
+    "message": "Estimez rapidement les structures de coûts des PME luxembourgeoises. Entrez des valeurs mensuelles pour comprendre l'économie unitaire derrière de nouveaux produits ou services.",
+    "description": "Break-Even Calculator description"
+  },
+  "breakeven.fixedCosts": {
+    "message": "Coûts fixes (€)",
+    "description": "Fixed Costs label"
+  },
+  "breakeven.pricePerUnit": {
+    "message": "Prix de vente / Unité (€)",
+    "description": "Selling Price per Unit label"
+  },
+  "breakeven.variableCostPerUnit": {
+    "message": "Coût variable / Unité (€)",
+    "description": "Variable Cost per Unit label"
+  },
+  "breakeven.targetProfit": {
+    "message": "Bénéfice cible (€)",
+    "description": "Target Profit label"
+  },
+  "breakeven.expectedUnits": {
+    "message": "Unités de vente attendues",
+    "description": "Expected Sales Units label"
+  },
+  "breakeven.errorMessage": {
+    "message": "Le prix de vente doit être supérieur au coût variable pour calculer une marge sur coûts variables.",
+    "description": "Error message when price <= variable cost"
+  },
+  "breakeven.snapshotTitle": {
+    "message": "Aperçu du seuil de rentabilité",
+    "description": "Break-Even Snapshot section title"
+  },
+  "breakeven.contributionMargin": {
+    "message": "Marge sur coûts variables / Unité",
+    "description": "Contribution Margin per Unit label"
+  },
+  "breakeven.contributionRatio": {
+    "message": "Ratio de marge sur coûts variables",
+    "description": "Contribution Ratio label"
+  },
+  "breakeven.breakEvenUnits": {
+    "message": "Unités au seuil de rentabilité",
+    "description": "Break-Even Units label"
+  },
+  "breakeven.breakEvenRevenue": {
+    "message": "Chiffre d'affaires au seuil de rentabilité",
+    "description": "Break-Even Revenue label"
+  },
+  "breakeven.targetTitle": {
+    "message": "Cible et sécurité",
+    "description": "Target & Safety section title"
+  },
+  "breakeven.targetUnits": {
+    "message": "Unités nécessaires pour le bénéfice cible",
+    "description": "Units Needed for Target Profit label"
+  },
+  "breakeven.targetRevenue": {
+    "message": "Chiffre d'affaires nécessaire pour le bénéfice cible",
+    "description": "Revenue Needed for Target Profit label"
+  },
+  "breakeven.marginOfSafetyUnits": {
+    "message": "Marge de sécurité (unités)",
+    "description": "Margin of Safety (units) label"
+  },
+  "breakeven.marginOfSafetyPct": {
+    "message": "Marge de sécurité (%)",
+    "description": "Margin of Safety (%) label"
+  },
+  "breakeven.units": {
+    "message": "unités",
+    "description": "Units suffix"
+  },
+  "payroll.title": {
+    "message": "Aperçu de la paie luxembourgeoise",
+    "description": "Payroll Calculator title"
+  },
+  "payroll.description": {
+    "message": "Estimez la paie mensuelle luxembourgeoise en entrant un salaire brut, une classe d'imposition et des avantages/prime optionnels. La sécurité sociale utilise les taux CCSS au 1er janvier 2026 (à vérifier chaque année sur ccss.lu) ; les pourcentages de retenue d'impôt sont purement illustratifs — la retenue réelle suit la fiche de retenue d'impôt du salarié. À des fins de formation.",
+    "description": "Payroll Calculator description"
+  },
+  "payroll.grossSalary": {
+    "message": "Salaire brut mensuel (€)",
+    "description": "Monthly Gross Salary label"
+  },
+  "payroll.benefits": {
+    "message": "Avantages mensuels (€)",
+    "description": "Monthly Benefits label"
+  },
+  "payroll.bonus": {
+    "message": "Prime / 13e mois (€)",
+    "description": "Bonus / 13th Month label"
+  },
+  "payroll.taxClass": {
+    "message": "Classe d'imposition",
+    "description": "Tax Class label"
+  },
+  "payroll.taxClass1": {
+    "message": "Classe 1 · Célibataire",
+    "description": "Tax Class 1 - Single"
+  },
+  "payroll.taxClass1a": {
+    "message": "Classe 1a · Parent isolé",
+    "description": "Tax Class 1a - Single Parent"
+  },
+  "payroll.taxClass2": {
+    "message": "Classe 2 · Marié/Partenaire",
+    "description": "Tax Class 2 - Married/Partnered"
+  },
+  "payroll.taxClassCustom": {
+    "message": "Personnalisé (15%)",
+    "description": "Tax Class Custom"
+  },
+  "payroll.employeePays": {
+    "message": "L'employé paie",
+    "description": "Employee Pays section title"
+  },
+  "payroll.taxableBase": {
+    "message": "Base imposable",
+    "description": "Taxable Base label"
+  },
+  "payroll.employeeSocial": {
+    "message": "Sécurité sociale employé (11,55 % + 1,40 % dépendance sur brut − ¼ salaire social minimum)",
+    "description": "Employee Social Security label"
+  },
+  "payroll.withholdingTax": {
+    "message": "Impôt retenu à la source",
+    "description": "Withholding Tax label"
+  },
+  "payroll.netPay": {
+    "message": "Salaire net (incl. avantages)",
+    "description": "Net Pay label"
+  },
+  "payroll.employerCost": {
+    "message": "Coût employeur",
+    "description": "Employer Cost section title"
+  },
+  "payroll.employerSocial": {
+    "message": "Charges sociales employeur (11,92 %, Mutualité classe 1)",
+    "description": "Employer Social Charges label"
+  },
+  "payroll.accidentInsurance": {
+    "message": "Assurance accident (0,65 %)",
+    "description": "Accident Insurance label"
+  },
+  "payroll.benefitsLabel": {
+    "message": "Avantages",
+    "description": "Benefits label"
+  },
+  "payroll.totalEmployerCost": {
+    "message": "Coût total employeur",
+    "description": "Total Employer Cost label"
+  },
+  "payroll.note": {
+    "message": "Note : Les charges employeur supposent la Mutualité des employeurs classe 1 (0,23 % ; classes 2 à 4 : 0,95 %, 1,56 %, 2,66 %) et un facteur bonus-malus accident de 1,00. Les cotisations, sauf l'assurance dépendance, sont plafonnées à 5 × le salaire social minimum (13 518,70 €/mois). Pour les calculs statutaires, consultez ccss.lu.",
+    "description": "Payroll note about rates"
+  },
+  "ratios.title": {
+    "message": "Références de ratios financiers",
+    "description": "Ratio Calculator title"
+  },
+  "ratios.description": {
+    "message": "Entrez des chiffres récapitulatifs pour calculer les ratios de liquidité, de levier et de rentabilité. Idéal pour des diagnostics rapides de PME luxembourgeoises ou des exercices en classe.",
+    "description": "Ratio Calculator description"
+  },
+  "ratios.currentAssets": {
+    "message": "Actifs courants (€)",
+    "description": "Current Assets label"
+  },
+  "ratios.inventory": {
+    "message": "Inventaire (€)",
+    "description": "Inventory label"
+  },
+  "ratios.currentLiabilities": {
+    "message": "Passifs courants (€)",
+    "description": "Current Liabilities label"
+  },
+  "ratios.totalDebt": {
+    "message": "Dette totale (€)",
+    "description": "Total Debt label"
+  },
+  "ratios.totalEquity": {
+    "message": "Capitaux propres totaux (€)",
+    "description": "Total Equity label"
+  },
+  "ratios.netIncome": {
+    "message": "Revenu net (€)",
+    "description": "Net Income label"
+  },
+  "ratios.netSales": {
+    "message": "Ventes nettes (€)",
+    "description": "Net Sales label"
+  },
+  "ratios.totalAssets": {
+    "message": "Actifs totaux (€)",
+    "description": "Total Assets label"
+  },
+  "ratios.liquidity": {
+    "message": "Liquidité",
+    "description": "Liquidity section title"
+  },
+  "ratios.currentRatio": {
+    "message": "Ratio de liquidité générale",
+    "description": "Current Ratio label"
+  },
+  "ratios.quickRatio": {
+    "message": "Ratio de liquidité immédiate",
+    "description": "Quick Ratio label"
+  },
+  "ratios.workingCapital": {
+    "message": "Fonds de roulement",
+    "description": "Working Capital label"
+  },
+  "ratios.leverage": {
+    "message": "Levier",
+    "description": "Leverage section title"
+  },
+  "ratios.debtToEquity": {
+    "message": "Dette sur capitaux propres",
+    "description": "Debt-to-Equity label"
+  },
+  "ratios.profitability": {
+    "message": "Rentabilité",
+    "description": "Profitability section title"
+  },
+  "ratios.netProfitMargin": {
+    "message": "Marge bénéficiaire nette",
+    "description": "Net Profit Margin label"
+  },
+  "ratios.returnOnAssets": {
+    "message": "Rendement des actifs",
+    "description": "Return on Assets label"
+  },
+  "ratios.tip": {
+    "message": "Astuce : Comparez les résultats aux médianes sectorielles des tableaux de bord STATEC ou de la Maison de l'Entreprise du Luxembourg lors du coaching des PME.",
+    "description": "Tip about comparing ratios"
+  },
+  "statements.title": {
+    "message": "Générateur d'états financiers mini",
+    "description": "Financial Statement Generator title"
+  },
+  "statements.description": {
+    "message": "Entrez des hypothèses principales pour générer un aperçu d'état des résultats et de bilan simplifié pour des discussions en classe ou des sessions de coaching PME.",
+    "description": "Financial Statement Generator description"
+  },
+  "statements.incomeStatementInputs": {
+    "message": "Entrées de l'état des résultats",
+    "description": "Income Statement Inputs section title"
+  },
+  "statements.revenue": {
+    "message": "Revenus (€)",
+    "description": "Revenue label"
+  },
+  "statements.cogs": {
+    "message": "Coût des marchandises vendues (€)",
+    "description": "COGS label"
+  },
+  "statements.operatingExpenses": {
+    "message": "Charges d'exploitation (€)",
+    "description": "Operating Expenses label"
+  },
+  "statements.otherIncome": {
+    "message": "Autres revenus (€)",
+    "description": "Other Income label"
+  },
+  "statements.interestExpense": {
+    "message": "Charges d'intérêts (€)",
+    "description": "Interest Expense label"
+  },
+  "statements.taxRate": {
+    "message": "Taux d'imposition",
+    "description": "Tax Rate label"
+  },
+  "statements.taxRateNote": {
+    "message": "Entrez en décimal (0,21 = 21%)",
+    "description": "Tax Rate note"
+  },
+  "statements.balanceSheetInputs": {
+    "message": "Entrées du bilan",
+    "description": "Balance Sheet Inputs section title"
+  },
+  "statements.currentAssets": {
+    "message": "Actifs courants (€)",
+    "description": "Current Assets label"
+  },
+  "statements.nonCurrentAssets": {
+    "message": "Actifs non courants (€)",
+    "description": "Non-Current Assets label"
+  },
+  "statements.currentLiabilities": {
+    "message": "Passifs courants (€)",
+    "description": "Current Liabilities label"
+  },
+  "statements.nonCurrentLiabilities": {
+    "message": "Passifs non courants (€)",
+    "description": "Non-Current Liabilities label"
+  },
+  "statements.incomeStatement": {
+    "message": "État des résultats",
+    "description": "Income Statement section title"
+  },
+  "statements.grossProfit": {
+    "message": "Bénéfice brut",
+    "description": "Gross Profit label"
+  },
+  "statements.operatingIncome": {
+    "message": "Revenu d'exploitation",
+    "description": "Operating Income label"
+  },
+  "statements.otherIncomeExpense": {
+    "message": "Autres revenus / (Charges)",
+    "description": "Other Income / (Expense) label"
+  },
+  "statements.pretaxIncome": {
+    "message": "Revenu avant impôts",
+    "description": "Pretax Income label"
+  },
+  "statements.taxes": {
+    "message": "Impôts",
+    "description": "Taxes label"
+  },
+  "statements.netIncome": {
+    "message": "Revenu net",
+    "description": "Net Income label"
+  },
+  "statements.balanceSheet": {
+    "message": "Bilan",
+    "description": "Balance Sheet section title"
+  },
+  "statements.totalAssets": {
+    "message": "Actifs totaux",
+    "description": "Total Assets label"
+  },
+  "statements.totalLiabilities": {
+    "message": "Passifs totaux",
+    "description": "Total Liabilities label"
+  },
+  "statements.equity": {
+    "message": "Capitaux propres (chiffre d'équilibrage)",
+    "description": "Equity label"
+  },
+  "pcn.title": {
+    "message": "Recherche PCN 2020",
+    "description": "PCN Lookup title"
+  },
+  "pcn.description": {
+    "message": "Recherchez rapidement les comptes PCN luxembourgeois pour les écritures comptables, l'enseignement ou le coaching PME.",
+    "description": "PCN Lookup description"
+  },
+  "pcn.searchLabel": {
+    "message": "Rechercher un code ou un mot-clé",
+    "description": "Search code or keyword label"
+  },
+  "pcn.searchPlaceholder": {
+    "message": "ex. TVA, 461411, salaires",
+    "description": "Search placeholder"
+  },
+  "pcn.classLabel": {
+    "message": "Classe PCN",
+    "description": "PCN Class label"
+  },
+  "pcn.allClasses": {
+    "message": "Toutes les classes",
+    "description": "All classes option"
+  },
+  "pcn.tableCode": {
+    "message": "Code",
+    "description": "Table Code header"
+  },
+  "pcn.tableAccount": {
+    "message": "Compte",
+    "description": "Table Account header"
+  },
+  "pcn.tableClass": {
+    "message": "Classe",
+    "description": "Table Class header"
+  },
+  "pcn.tableDescription": {
+    "message": "Description",
+    "description": "Table Description header"
+  },
+  "pcn.noAccounts": {
+    "message": "Aucun compte ne correspond à vos critères.",
+    "description": "No accounts match message"
+  },
+  "pcn.note": {
+    "message": "Sélection de comptes du PCN 2020 officiel. Voir l'annexe A pour le fonctionnement de la numérotation ; le plan complet figure dans le règlement grand-ducal du 12 septembre 2019.",
+    "description": "PCN Lookup note"
+  },
+  "journal.title": {
+    "message": "Pratique des écritures comptables",
+    "description": "Journal Entry Practice title"
+  },
+  "journal.description": {
+    "message": "Utilisez des invites authentiques pour pratiquer la comptabilité en partie double avec des codes PCN. Le retour d'équilibrage est immédiat.",
+    "description": "Journal Entry Practice description"
+  },
+  "journal.scenario": {
+    "message": "Scénario",
+    "description": "Scenario label"
+  },
+  "journal.prompt": {
+    "message": "Invite",
+    "description": "Prompt label"
+  },
+  "journal.hint": {
+    "message": "Indice :",
+    "description": "Hint label prefix"
+  },
+  "journal.scenarioVatSale": {
+    "message": "Vente avec TVA luxembourgeoise (17%)",
+    "description": "VAT Sale scenario title"
+  },
+  "journal.scenarioVatSaleDesc": {
+    "message": "Facture de 1 200 € net plus TVA à un client local, payée par virement bancaire.",
+    "description": "VAT Sale scenario description"
+  },
+  "journal.scenarioVatSaleHint": {
+    "message": "Utilisez 5131 (banque), 7061 (ventes de marchandises) ou 703 (prestations de services), 461411 (TVA en aval).",
+    "description": "VAT Sale scenario hint"
+  },
+  "journal.scenarioPayroll": {
+    "message": "Enregistrement de paie mensuel",
+    "description": "Payroll scenario title"
+  },
+  "journal.scenarioPayrollDesc": {
+    "message": "Salaires bruts de 15 000 €, sécurité sociale salarié 1 942,50 €, impôt retenu à la source 1 800 €, le reste payé par banque.",
+    "description": "Payroll scenario description"
+  },
+  "journal.scenarioPayrollHint": {
+    "message": "Comptes 6211 (salaires bruts), 4621 (CCSS), 46124 (retenue d'impôt sur salaires), 5131 (banque).",
+    "description": "Payroll scenario hint"
+  },
+  "journal.scenarioAssetPurchase": {
+    "message": "Achat d'actif avec acompte",
+    "description": "Asset purchase scenario title"
+  },
+  "journal.scenarioAssetPurchaseDesc": {
+    "message": "Achat d'une machine de 40 000 € + 17 % TVA (46 800 € au total). 20 % du total payé immédiatement par banque, solde dû au fournisseur dans 30 jours.",
+    "description": "Asset purchase scenario description"
+  },
+  "journal.scenarioAssetPurchaseHint": {
+    "message": "Comptes 222 (installations techniques et machines), 421611 (TVA en amont), 5131 (banque), 44111 (fournisseur).",
+    "description": "Asset purchase scenario hint"
+  },
+  "journal.tableAccount": {
+    "message": "Compte PCN",
+    "description": "Table PCN Account header"
+  },
+  "journal.tableDescription": {
+    "message": "Description",
+    "description": "Table Description header"
+  },
+  "journal.tableDebit": {
+    "message": "Débit (€)",
+    "description": "Table Debit header"
+  },
+  "journal.tableCredit": {
+    "message": "Crédit (€)",
+    "description": "Table Credit header"
+  },
+  "journal.accountPlaceholder": {
+    "message": "ex. : 7061",
+    "description": "Account placeholder"
+  },
+  "journal.addLine": {
+    "message": "Ajouter une ligne",
+    "description": "Add Line button"
+  },
+  "journal.reset": {
+    "message": "Réinitialiser",
+    "description": "Reset button"
+  },
+  "journal.totalDebits": {
+    "message": "Total débits",
+    "description": "Total Debits label"
+  },
+  "journal.totalCredits": {
+    "message": "Total crédits",
+    "description": "Total Credits label"
+  },
+  "journal.balanced": {
+    "message": "Équilibré ! Les débits égalent les crédits.",
+    "description": "Balanced message"
+  },
+  "journal.notBalanced": {
+    "message": "L'écriture n'est pas encore équilibrée — ajustez vos montants.",
+    "description": "Not balanced message"
+  },
+  "taccount.title": {
+    "message": "Simulateur de comptes en T",
+    "description": "T-Account Simulator title"
+  },
+  "taccount.description": {
+    "message": "Construisez des écritures comptables et visualisez instantanément les soldes PCN au format débit/crédit.",
+    "description": "T-Account Simulator description"
+  },
+  "taccount.accountCode": {
+    "message": "Code de compte",
+    "description": "Account Code label"
+  },
+  "taccount.accountCodePlaceholder": {
+    "message": "461411",
+    "description": "Account Code placeholder"
+  },
+  "taccount.accountLabel": {
+    "message": "Libellé de compte",
+    "description": "Account Label label"
+  },
+  "taccount.accountLabelPlaceholder": {
+    "message": "TVA due",
+    "description": "Account Label placeholder"
+  },
+  "taccount.debit": {
+    "message": "Débit (€)",
+    "description": "Debit label"
+  },
+  "taccount.credit": {
+    "message": "Crédit (€)",
+    "description": "Credit label"
+  },
+  "taccount.memo": {
+    "message": "Mémo",
+    "description": "Memo label"
+  },
+  "taccount.memoPlaceholder": {
+    "message": "Facture 2025-031",
+    "description": "Memo placeholder"
+  },
+  "taccount.addPosting": {
+    "message": "Ajouter une écriture",
+    "description": "Add Posting button"
+  },
+  "taccount.clearLedger": {
+    "message": "Effacer le grand livre",
+    "description": "Clear Ledger button"
+  },
+  "taccount.noPostings": {
+    "message": "Aucune écriture pour le moment. Ajoutez des entrées pour construire votre grand livre.",
+    "description": "No postings yet message"
+  },
+  "taccount.tableMemo": {
+    "message": "Mémo",
+    "description": "Table Memo header"
+  },
+  "taccount.tableDebit": {
+    "message": "Débit",
+    "description": "Table Debit header"
+  },
+  "taccount.tableCredit": {
+    "message": "Crédit",
+    "description": "Table Credit header"
+  },
+  "taccount.debitBalance": {
+    "message": "Débit",
+    "description": "Debit balance prefix"
+  },
+  "taccount.creditBalance": {
+    "message": "Crédit",
+    "description": "Credit balance prefix"
+  },
+  "taccount.total": {
+    "message": "Total",
+    "description": "Total label"
+  }
+}
