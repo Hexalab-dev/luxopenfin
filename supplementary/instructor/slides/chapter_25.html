@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 25: Capital Budgeting Decisions - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 25: Capital Budgeting Decisions</div>
+        <div class="slide-subtitle">Chapter 25 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe capital investment decisions and how they are applied</div>
+            <div class="objective-item">Evaluate the payback and accounting rate of return in capital investment decisions</div>
+            <div class="objective-item">Explain the time value of money and calculate present and future values of lump sums and annuities</div>
+            <div class="objective-item">Use discounted cash flow models (NPV, IRR, PI) to make capital investment decisions</div>
+            <div class="objective-item">Compare and contrast non-time-value-based methods and time-value-based methods</div>
+            <div class="objective-item">Determine and evaluate payback periods and discounted payback</div>
+            <div class="objective-item">Incorporate tax, depreciation, and working capital effects into cash flow estimates</div>
+            <div class="objective-item">Understand Luxembourg SME investment decision making, including cost of capital and financing</div>
+            <div class="objective-item">Evaluate Luxembourg government grants and investment incentives</div>
+        </div>
+    </div>
+    
+    <!-- Section 25.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.1 Describe Capital Investment Decisions and How They Are Applied</div>
+            <div class="subsection-title">What Are Capital Investment Decisions?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Opening new locations</li>
+                <li class="bullet-item">Purchasing machinery or equipment</li>
+                <li class="bullet-item">Developing new products or services</li>
+                <li class="bullet-item">Expanding into new markets</li>
+                <li class="bullet-item">Implementing new IT systems</li>
+                <li class="bullet-item">Acquiring another company</li>
+            </ul>
+            <div class="subsection-title">Capital Budgeting Process</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.2 Evaluate the Payback and Accounting Rate of Return in Capital Investment Decisions</div>
+            <div class="subsection-title">Payback Period</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Accumulate cash inflows until they equal the initial investment</li>
+                <li class="bullet-item">Initial investment: €150,000</li>
+                <li class="bullet-item">Annual cash inflow: €50,000</li>
+                <li class="bullet-item">Payback: €150,000 ÷ €50,000 = 3 years</li>
+                <li class="bullet-item">Initial investment: €200,000</li>
+                <li class="bullet-item">Year 1: €60,000</li>
+            </ul>
+            <div class="subsection-title">Discounted Payback Period</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Initial investment: €200,000</li>
+                <li class="bullet-item">Discount rate: 8%</li>
+                <li class="bullet-item">Cash inflows: €60,000, €70,000, €80,000, €90,000</li>
+                <li class="bullet-item">Discount each inflow: Year 1 PV = €60,000 / (1.08)^1 = €55,556</li>
+                <li class="bullet-item">Accumulate PVs until payback achieved</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.3 Explain the Time Value of Money and Calculate Present and Future Values of Lump Sums and Annuities</div>
+            <div class="subsection-title">Time Value of Money (TVM)</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Future Value (FV)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">PV = present value</li>
+                <li class="bullet-item">r = interest rate per period</li>
+                <li class="bullet-item">n = number of periods</li>
+                <li class="bullet-item">Invest €10,000 at 5% for 3 years</li>
+                <li class="bullet-item">FV = €10,000 × (1.05)^3 = €11,576.25</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.4 Use Discounted Cash Flow Models to Make Capital Investment Decisions</div>
+            <div class="subsection-title">Net Present Value (NPV)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Ct = cash flow at time t</li>
+                <li class="bullet-item">r = discount rate</li>
+                <li class="bullet-item">C0 = initial investment</li>
+                <li class="bullet-item">NPV > 0: Accept project</li>
+                <li class="bullet-item">NPV < 0: Reject project</li>
+                <li class="bullet-item">Initial investment: €250,000</li>
+            </ul>
+            <div class="subsection-title">Internal Rate of Return (IRR)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">IRR > required rate of return: Accept</li>
+                <li class="bullet-item">IRR < required rate of return: Reject</li>
+                <li class="bullet-item">Use Excel IRR function or financial calculator</li>
+                <li class="bullet-item">Considers time value of money</li>
+                <li class="bullet-item">Provides rate of return</li>
+                <li class="bullet-item">Can have multiple IRRs (non-conventional cash flows)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.5 Compare and Contrast Non-Time-Value-Based Methods and Time-Value-Based Methods</div>
+            <div class="subsection-title">Non-Time-Value-Based Methods</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Focus: Liquidity</li>
+                <li class="bullet-item">Pros: Simple, highlights risk</li>
+                <li class="bullet-item">Cons: Ignores time value and cash flows after payback</li>
+                <li class="bullet-item">Accounts for time value but still ignores post-payback cash flows</li>
+                <li class="bullet-item">Focus: Accounting profitability</li>
+                <li class="bullet-item">Pros: Uses familiar accounting data</li>
+            </ul>
+            <div class="subsection-title">Time-Value-Based Methods</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Focus: Value creation</li>
+                <li class="bullet-item">Pros: Considers time value, cash flows, risk</li>
+                <li class="bullet-item">Cons: Requires accurate discount rate</li>
+                <li class="bullet-item">Focus: Rate of return</li>
+                <li class="bullet-item">Pros: Intuitive, considers time value</li>
+                <li class="bullet-item">Cons: Multiple IRRs possible, reinvestment assumption</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.6 Determine and Evaluate Payback Periods and Discounted Payback</div>
+            <div class="subsection-title">Payback in Practice</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Initial investment: €350,000</li>
+                <li class="bullet-item">Cash inflows: €90k, €100k, €110k, €120k, €130k</li>
+                <li class="bullet-item">Payback: 3.4 years</li>
+                <li class="bullet-item">If maximum acceptable payback = 4 years → Acceptable</li>
+            </ul>
+            <div class="subsection-title">Discounted Payback Example</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Discount rate: 8%</li>
+                <li class="bullet-item">Discounted inflows:</li>
+                <li class="bullet-item">Year 1: €90k / 1.08 = €83,333</li>
+                <li class="bullet-item">Year 2: €100k / 1.08^2 = €85,733</li>
+                <li class="bullet-item">Year 3: €110k / 1.08^3 = €87,032</li>
+                <li class="bullet-item">Year 4: €120k / 1.08^4 = €88,073</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.7 Incorporate Tax, Depreciation, and Working Capital Effects into Cash Flow Estimates</div>
+            <div class="subsection-title">Incremental Cash Flows</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Depreciation and Tax Shield</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Depreciation: €50,000 per year</li>
+                <li class="bullet-item">Tax rate: 20%</li>
+                <li class="bullet-item">Tax shield: €10,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.8 Understand Luxembourg SME Investment Decision Making</div>
+            <div class="subsection-title">Cost of Capital for Luxembourg SMEs</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Bank loans (fixed or variable rates)</li>
+                <li class="bullet-item">Government-backed loans (SNCI, House of Entrepreneurship)</li>
+                <li class="bullet-item">Equity injections from owners or investors</li>
+                <li class="bullet-item">Leasing (equipment, vehicles)</li>
+                <li class="bullet-item">Cost of debt: Bank lending rate × (1 - tax rate)</li>
+                <li class="bullet-item">Cost of equity: Owner's required return (risk-based)</li>
+            </ul>
+            <div class="subsection-title">Financing Structure</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Use conservative leverage (debt ≦ 60%) to manage risk</li>
+                <li class="bullet-item">Consider covenants from banks (debt service coverage ratio)</li>
+                <li class="bullet-item">Evaluate leasing vs. buying (NPV of lease vs. purchase)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 25.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">25.9 Evaluate Luxembourg Government Grants and Investment Incentives</div>
+            <div class="subsection-title">Government Support Programs</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Luxinnovation</strong>: Support for innovation, digitalization, R&D</li>
+                <li class="bullet-item"><strong>House of Entrepreneurship</strong>: Guidance, grants, financing support</li>
+                <li class="bullet-item"><strong>SNCI (Société Nationale de Crédit et d'Investissement)</strong>: Loans, quasi-equity</li>
+                <li class="bullet-item"><strong>Ministry of the Economy</strong>: Investment aid (regional, environmental, tourism)</li>
+                <li class="bullet-item"><strong>Chamber of Commerce</strong>: Training, subsidies</li>
+            </ul>
+            <div class="subsection-title">Investment Aid Types</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Capital Budgeting</div>
+                <div class="term-definition">Process of evaluating long-term investments</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Payback Period</div>
+                <div class="term-definition">Time to recover initial investment</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Discounted Payback</div>
+                <div class="term-definition">Payback considering time value of money</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accounting Rate of Return (ARR)</div>
+                <div class="term-definition">Average accounting profit ÷ investment</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Time Value of Money (TVM)</div>
+                <div class="term-definition">Concept that money today is worth more than future money</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Net Present Value (NPV)</div>
+                <div class="term-definition">Present value of cash flows minus initial investment</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Internal Rate of Return (IRR)</div>
+                <div class="term-definition">Discount rate that makes NPV = 0</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Profitability Index (PI)</div>
+                <div class="term-definition">PV of inflows ÷ Initial investment</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Discount Rate</div>
+                <div class="term-definition">Required rate of return, often WACC</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Depreciation Tax Shield</div>
+                <div class="term-definition">Tax savings from depreciation</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Working Capital</div>
+                <div class="term-definition">Current assets minus current liabilities</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Terminal Cash Flow</div>
+                <div class="term-definition">Final cash inflow at project end</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Sensitivity Analysis</div>
+                <div class="term-definition">Vary assumptions to see impact on NPV/IRR</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Scenario Analysis</div>
+                <div class="term-definition">Evaluate different cases (best, base, worst)</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cost of Capital</div>
+                <div class="term-definition">Required return from investors and lenders</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">State Aid</div>
+                <div class="term-definition">Government grants or subsidies for investments</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

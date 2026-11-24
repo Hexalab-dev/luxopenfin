@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14: Corporation Accounting - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 14: Corporation Accounting</div>
+        <div class="slide-subtitle">Chapter 14 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Explain the process of securing equity financing through the issuance of stock</div>
+            <div class="objective-item">Analyze and record transactions for the issuance and repurchase of stock</div>
+            <div class="objective-item">Record transactions and the effects on financial statements for cash dividends, property dividends, stock dividends, and stock splits</div>
+            <div class="objective-item">Compare and contrast owners' equity versus retained earnings</div>
+            <div class="objective-item">Discuss the applicability of earnings per share as a method to measure performance</div>
+            <div class="objective-item">Understand Luxembourg corporate forms (SA, SARL, SCS, SNC)</div>
+            <div class="objective-item">Explain Luxembourg share capital accounting (PCN Class 1)</div>
+            <div class="objective-item">Understand Luxembourg dividend distribution rules</div>
+        </div>
+    </div>
+    
+    <!-- Section 14.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.1 Explain the Process of Securing Equity Financing through the Issuance of Stock</div>
+            <div class="subsection-title">Equity Financing</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Raising capital by selling ownership interests</li>
+                <li class="bullet-item">Issuing shares to investors</li>
+                <li class="bullet-item">Investors become owners (shareholders)</li>
+                <li class="bullet-item">No repayment required (unlike debt)</li>
+                <li class="bullet-item">Investors share in profits and losses</li>
+                <li class="bullet-item">No repayment obligation</li>
+            </ul>
+            <div class="subsection-title">Share Capital</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Amount invested by owners</li>
+                <li class="bullet-item">Recorded at par value or issue price</li>
+                <li class="bullet-item">Represents ownership stake</li>
+                <li class="bullet-item">Cannot be withdrawn (unlike loans)</li>
+                <li class="bullet-item">Permanent capital</li>
+                <li class="bullet-item">Nominal value per share</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.2 Analyze and Record Transactions for the Issuance and Repurchase of Stock</div>
+            <div class="subsection-title">Stock Issuance</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Issue price = Par value</li>
+                <li class="bullet-item">Record at par value</li>
+                <li class="bullet-item">Issue price > Par value</li>
+                <li class="bullet-item">Par value to Share Capital</li>
+                <li class="bullet-item">Excess to Share Premium</li>
+                <li class="bullet-item">Issue 1,000 shares, par value €1, issue price €10</li>
+            </ul>
+            <div class="subsection-title">Stock Repurchase</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Company buys back its own shares</li>
+                <li class="bullet-item">Reduces outstanding shares</li>
+                <li class="bullet-item">Recorded as contra-equity</li>
+                <li class="bullet-item">Repurchase 100 shares at €12 per share</li>
+                <li class="bullet-item"><strong>502</strong>: Treasury Stock (Actions Propres)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.3 Record Transactions and the Effects on Financial Statements for Cash Dividends, Property Dividends, Stock Dividends, and Stock Splits</div>
+            <div class="subsection-title">Cash Dividends</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Distribution of cash to shareholders</li>
+                <li class="bullet-item">Reduce retained earnings</li>
+                <li class="bullet-item">Create liability when declared</li>
+            </ul>
+            <div class="subsection-title">Stock Dividends</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Distribution of additional shares</li>
+                <li class="bullet-item">No cash paid</li>
+                <li class="bullet-item">Reduces retained earnings</li>
+                <li class="bullet-item">Increases share capital</li>
+                <li class="bullet-item">10% stock dividend on 10,000 shares</li>
+                <li class="bullet-item">Issue 1,000 new shares</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.4 Compare and Contrast Owners' Equity versus Retained Earnings</div>
+            <div class="subsection-title">Owners' Equity</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Share Capital</li>
+                <li class="bullet-item">Share Premium</li>
+                <li class="bullet-item">Retained Earnings</li>
+                <li class="bullet-item">Other Reserves</li>
+            </ul>
+            <div class="subsection-title">Retained Earnings</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Accumulated profits not distributed</li>
+                <li class="bullet-item">Increases with net income</li>
+                <li class="bullet-item">Decreases with net loss and dividends</li>
+                <li class="bullet-item">Part of total equity</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.5 Discuss the Applicability of Earnings per Share as a Method to Measure Performance</div>
+            <div class="subsection-title">Earnings per Share (EPS)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Measure profitability per share</li>
+                <li class="bullet-item">Compare across companies</li>
+                <li class="bullet-item">Important for investors</li>
+                <li class="bullet-item">Net Income: €50,000</li>
+                <li class="bullet-item">Shares Outstanding: 10,000</li>
+                <li class="bullet-item">EPS: €50,000 ÷ 10,000 = €5.00 per share</li>
+            </ul>
+            <div class="subsection-title">Luxembourg Considerations</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Required for public companies</li>
+                <li class="bullet-item">Optional for private companies</li>
+                <li class="bullet-item">Useful for performance measurement</li>
+                <li class="bullet-item">Can be calculated for any corporation</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.6 Luxembourg Corporate Forms (SA, SARL, SCS, SNC)</div>
+            <div class="subsection-title">Corporate Forms in Luxembourg</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Public limited company</li>
+                <li class="bullet-item">Minimum capital: €30,000</li>
+                <li class="bullet-item">Shares freely transferable</li>
+                <li class="bullet-item">More formal requirements</li>
+                <li class="bullet-item">Private limited company</li>
+                <li class="bullet-item">Minimum capital: €12,000</li>
+            </ul>
+            <div class="subsection-title">Accounting Implications</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Different capital requirements</li>
+                <li class="bullet-item">Different accounting requirements</li>
+                <li class="bullet-item">Different PCN classifications</li>
+                <li class="bullet-item">Different filing requirements</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.7 Luxembourg Share Capital Accounting (PCN Class 1)</div>
+            <div class="subsection-title">PCN Class 1: Financement Permanent</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">10–13: Share Capital (Capital Social)</li>
+                <li class="bullet-item">13: Reserves (Réserves)</li>
+                <li class="bullet-item">19: Long-Term Debt</li>
+            </ul>
+            <div class="subsection-title">Share Capital Accounts</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>101</strong>: Share Capital (Capital Social)</li>
+                <li class="bullet-item"><strong>111</strong>: Share Premium (Prime d'Émission)</li>
+                <li class="bullet-item"><strong>131</strong>: Legal Reserve (Réserve Légale)</li>
+                <li class="bullet-item"><strong>138</strong>: Other Reserves (Autres Réserves)</li>
+                <li class="bullet-item"><strong>141</strong>: Retained Earnings (Résultat Reporté)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 14.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">14.8 Luxembourg Dividend Distribution Rules</div>
+            <div class="subsection-title">Dividend Rules</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must have sufficient retained earnings</li>
+                <li class="bullet-item">Must comply with corporate law</li>
+                <li class="bullet-item">Must follow form-specific rules</li>
+                <li class="bullet-item">Must be approved by shareholders</li>
+                <li class="bullet-item">Tax implications apply</li>
+            </ul>
+            <div class="subsection-title">Restrictions</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Insufficient retained earnings</li>
+                <li class="bullet-item">Would impair capital</li>
+                <li class="bullet-item">Violates corporate law</li>
+                <li class="bullet-item">Not approved by shareholders</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Dividends</div>
+                <div class="term-definition">Distributions to shareholders</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Earnings per Share (EPS)</div>
+                <div class="term-definition">Net income per share</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Retained Earnings</div>
+                <div class="term-definition">Accumulated profits not distributed</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Share Capital</div>
+                <div class="term-definition">Amount invested by owners</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Stock Dividend</div>
+                <div class="term-definition">Distribution of additional shares</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Stock Split</div>
+                <div class="term-definition">Increase shares, decrease par value proportionally</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Treasury Stock</div>
+                <div class="term-definition">Company's own shares repurchased</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

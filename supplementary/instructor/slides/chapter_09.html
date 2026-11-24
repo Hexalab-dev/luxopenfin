@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9: Accounting for Receivables - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 9: Accounting for Receivables</div>
+        <div class="slide-subtitle">Chapter 9 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Explain the revenue recognition principle and how it relates to current and future sales and purchase transactions</div>
+            <div class="objective-item">Account for uncollectible accounts using the balance sheet and income statement approaches</div>
+            <div class="objective-item">Determine the efficiency of receivables management using financial ratios</div>
+            <div class="objective-item">Discuss the role of accounting for receivables in earnings management</div>
+            <div class="objective-item">Apply revenue recognition principles to long-term projects</div>
+            <div class="objective-item">Identify and account for other types of receivables</div>
+            <div class="objective-item">Explain how notes receivable and accounts receivable differ</div>
+            <div class="objective-item">Understand Luxembourg customer account management (PCN Class 4 - Tiers)</div>
+            <div class="objective-item">Explain Luxembourg VAT on receivables and bad debt provisions</div>
+        </div>
+    </div>
+    
+    <!-- Section 9.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.1 Explain the Revenue Recognition Principle and How It Relates to Current and Future Sales and Purchase Transactions</div>
+            <div class="subsection-title">Revenue Recognition Principle</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">When is Revenue Earned?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Revenue is earned when goods are delivered to the customer</li>
+                <li class="bullet-item">Ownership transfers to customer</li>
+                <li class="bullet-item">Customer has obligation to pay</li>
+                <li class="bullet-item">Revenue is earned when services are performed</li>
+                <li class="bullet-item">Service is complete or substantially complete</li>
+                <li class="bullet-item">Customer has obligation to pay</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.2 Account for Uncollectible Accounts Using the Balance Sheet and Income Statement Approaches</div>
+            <div class="subsection-title">Uncollectible Accounts</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer bankruptcy</li>
+                <li class="bullet-item">Customer financial difficulties</li>
+                <li class="bullet-item">Customer disputes</li>
+                <li class="bullet-item">Customer disappears</li>
+                <li class="bullet-item">Economic conditions</li>
+            </ul>
+            <div class="subsection-title">Accounting for Uncollectible Accounts</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.3 Determine the Efficiency of Receivables Management Using Financial Ratios</div>
+            <div class="subsection-title">Receivables Management Ratios</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Accounts Receivable Turnover Ratio</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">How many times receivables are collected during the period</li>
+                <li class="bullet-item">Higher ratio = faster collection = better</li>
+                <li class="bullet-item"><strong>Net Credit Sales</strong>: Total credit sales (excluding cash sales)</li>
+                <li class="bullet-item"><strong>Average Accounts Receivable</strong>: (Beginning Receivables + Ending Receivables) ÷ 2</li>
+                <li class="bullet-item">Net Credit Sales: €120,000</li>
+                <li class="bullet-item">Beginning Accounts Receivable: €10,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.4 Discuss the Role of Accounting for Receivables in Earnings Management</div>
+            <div class="subsection-title">Earnings Management</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">How Receivables Affect Earnings</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Credit sales increase revenue (and receivables)</li>
+                <li class="bullet-item">Revenue affects net income</li>
+                <li class="bullet-item">Timing of revenue recognition affects earnings</li>
+                <li class="bullet-item">Allowance for doubtful accounts affects expenses</li>
+                <li class="bullet-item">Higher allowance = lower net income</li>
+                <li class="bullet-item">Lower allowance = higher net income</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.5 Apply Revenue Recognition Principles to Long-Term Projects</div>
+            <div class="subsection-title">Long-Term Projects</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Revenue Recognition Methods</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.6 Identify and Account for Other Types of Receivables</div>
+            <div class="subsection-title">Types of Receivables</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Other Receivables</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Insurance claims</li>
+                <li class="bullet-item">Tax refunds</li>
+                <li class="bullet-item">Deposits with suppliers</li>
+                <li class="bullet-item">Advances to employees</li>
+                <li class="bullet-item">Miscellaneous receivables</li>
+                <li class="bullet-item">4218: Other Receivables (Class 4)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.7 Explain How Notes Receivable and Accounts Receivable Differ</div>
+            <div class="subsection-title">Notes Receivable vs. Accounts Receivable</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Informal credit arrangement</li>
+                <li class="bullet-item">Usually short-term (30-60 days)</li>
+                <li class="bullet-item">No written promise to pay</li>
+                <li class="bullet-item">No interest typically</li>
+                <li class="bullet-item">Based on invoice</li>
+                <li class="bullet-item">Formal written promise to pay</li>
+            </ul>
+            <div class="subsection-title">Notes Receivable</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Principal</strong>: Amount borrowed</li>
+                <li class="bullet-item"><strong>Interest Rate</strong>: Annual interest rate</li>
+                <li class="bullet-item"><strong>Maturity Date</strong>: Date payment is due</li>
+                <li class="bullet-item"><strong>Maker</strong>: Person/company who promises to pay</li>
+                <li class="bullet-item"><strong>Payee</strong>: Person/company who will receive payment</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.8 Luxembourg Customer Account Management (PCN Class 4 - Tiers)</div>
+            <div class="subsection-title">PCN Class 4: Tiers (Third Parties)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">44: Suppliers (Fournisseurs)</li>
+                <li class="bullet-item">40: Customers (Clients)</li>
+                <li class="bullet-item">42 / 47: Other Third Parties (Autres Tiers)</li>
+                <li class="bullet-item">4216 / 4614: VAT Accounts (TVA)</li>
+                <li class="bullet-item">462: Social Charges (Charges Sociales)</li>
+                <li class="bullet-item">461: Tax Accounts (Impôts)</li>
+            </ul>
+            <div class="subsection-title">Customer Accounts (40)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>4011</strong>: Accounts Receivable - Customers (Clients)</li>
+                <li class="bullet-item"><strong>4012</strong>: Notes Receivable (Effets à Recevoir)</li>
+                <li class="bullet-item"><strong>4012</strong>: Bills of Exchange Receivable (Lettres de Change à Recevoir)</li>
+                <li class="bullet-item"><strong>4012</strong>: Checks Receivable (Chèques à Recevoir)</li>
+                <li class="bullet-item"><strong>4311</strong>: Advances to Customers (Acomptes Reçus sur Commandes)</li>
+                <li class="bullet-item"><strong>4013</strong>: Doubtful Accounts (Clients Douteux)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 9.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">9.9 Luxembourg VAT on Receivables and Bad Debt Provisions</div>
+            <div class="subsection-title">VAT on Credit Sales</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">VAT is due when sale is made (revenue recognized)</li>
+                <li class="bullet-item">Not when cash is received</li>
+                <li class="bullet-item">VAT Payable created at time of sale</li>
+                <li class="bullet-item">Credit sale: €1,000 (excluding VAT), VAT 17%</li>
+                <li class="bullet-item">Revenue: €1,000</li>
+                <li class="bullet-item">VAT Payable: €170</li>
+            </ul>
+            <div class="subsection-title">VAT When Account Becomes Uncollectible</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">If account becomes uncollectible, VAT may be recoverable</li>
+                <li class="bullet-item">Must follow Luxembourg VAT rules</li>
+                <li class="bullet-item">Proper documentation required</li>
+                <li class="bullet-item">May need to adjust VAT Payable</li>
+                <li class="bullet-item">Account must be definitively uncollectible</li>
+                <li class="bullet-item">Proper documentation (legal proceedings, bankruptcy, etc.)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Accounts Receivable</div>
+                <div class="term-definition">Amounts owed to business by customers who purchased on credit</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accounts Receivable Turnover</div>
+                <div class="term-definition">Ratio measuring how many times receivables are collected</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Allowance for Doubtful Accounts</div>
+                <div class="term-definition">Contra-asset account estimating uncollectible receivables</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Allowance Method</div>
+                <div class="term-definition">Method of accounting for bad debts using estimates</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Average Collection Period</div>
+                <div class="term-definition">Average number of days to collect receivables</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Bad Debt Expense</div>
+                <div class="term-definition">Expense for uncollectible accounts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Direct Write-Off Method</div>
+                <div class="term-definition">Writing off bad debts when they occur (not preferred)</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Notes Receivable</div>
+                <div class="term-definition">Formal written promise to pay with interest</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Revenue Recognition Principle</div>
+                <div class="term-definition">Revenue recognized when earned, not when cash received</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Uncollectible Accounts</div>
+                <div class="term-definition">Accounts receivable that cannot be collected (bad debts)</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

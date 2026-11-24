@@ -1,0 +1,18 @@
+# robots.txt for LuxOpenFin
+# https://luxopenfin.com
+
+User-agent: *
+Allow: /
+
+# Block internal/utility paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /search
+Disallow: /search?*
+
+# Block SEO documentation pages (not user-facing content)
+Disallow: /docs/SEO_IMPLEMENTATION
+Disallow: /docs/SEO_CHECKLIST
+
+# Sitemap
+Sitemap: https://luxopenfin.com/sitemap.xml

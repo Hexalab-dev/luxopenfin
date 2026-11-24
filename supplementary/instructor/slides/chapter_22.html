@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 22: Activity-Based Costing - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 22: Activity-Based Costing</div>
+        <div class="slide-subtitle">Chapter 22 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Explain why and how activity-based costing is used</div>
+            <div class="objective-item">Calculate activity-based product costs</div>
+            <div class="objective-item">Compare and contrast traditional and activity-based costing systems</div>
+            <div class="objective-item">Compare and contrast traditional and activity-based costing methods</div>
+            <div class="objective-item">Explain and identify cost pools and cost drivers</div>
+            <div class="objective-item">Understand Luxembourg SME activity-based costing applications</div>
+        </div>
+    </div>
+    
+    <!-- Section 22.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.1 Explain Why and How Activity-Based Costing Is Used</div>
+            <div class="subsection-title">Limitations of Traditional Costing</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Overcosting</strong>: Some products are assigned too much overhead</li>
+                <li class="bullet-item"><strong>Undercosting</strong>: Some products are assigned too little overhead</li>
+                <li class="bullet-item"><strong>Single Allocation Base</strong>: May not reflect actual cost drivers</li>
+                <li class="bullet-item"><strong>Volume Bias</strong>: High-volume products may subsidize low-volume products</li>
+                <li class="bullet-item"><strong>Inaccurate Profitability</strong>: May show unprofitable products as profitable</li>
+            </ul>
+            <div class="subsection-title">Example: Traditional Costing Problem</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Total overhead: €30,000 per month</li>
+                <li class="bullet-item">Total direct labor hours: 2,000 hours</li>
+                <li class="bullet-item">Overhead rate: €30,000 ÷ 2,000 = €15 per direct labor hour</li>
+                <li class="bullet-item"><strong>Simple Dish</strong>: Takes 0.5 hours, uses simple equipment</li>
+                <li class="bullet-item"><strong>Complex Dish</strong>: Takes 1.0 hour, uses specialized equipment, requires setup time</li>
+                <li class="bullet-item">Simple Dish overhead: 0.5 × €15 = €7.50</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 22.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.2 Calculate Activity-Based Product Costs</div>
+            <div class="subsection-title">ABC Costing Process</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Step 1: Identify Activities and Create Cost Pools</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Setup activities</li>
+                <li class="bullet-item">Processing activities</li>
+                <li class="bullet-item">Inspection activities</li>
+                <li class="bullet-item">Ordering activities</li>
+                <li class="bullet-item">Packaging activities</li>
+                <li class="bullet-item">Other activities</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 22.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.3 Compare and Contrast Traditional and Activity-Based Costing Systems</div>
+            <div class="subsection-title">Traditional Costing System</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Single overhead rate</li>
+                <li class="bullet-item">Single allocation base (usually direct labor)</li>
+                <li class="bullet-item">Simple to implement</li>
+                <li class="bullet-item">Less accurate for diverse products</li>
+                <li class="bullet-item">Volume-based allocation</li>
+                <li class="bullet-item">Total overhead: €30,000</li>
+            </ul>
+            <div class="subsection-title">Activity-Based Costing System</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Multiple overhead rates</li>
+                <li class="bullet-item">Multiple allocation bases (cost drivers)</li>
+                <li class="bullet-item">More complex to implement</li>
+                <li class="bullet-item">More accurate for diverse products</li>
+                <li class="bullet-item">Activity-based allocation</li>
+                <li class="bullet-item">Setup activity: €5,000 ÷ 100 setups = €50 per setup</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 22.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.4 Compare and Contrast Traditional and Activity-Based Costing Methods</div>
+            <div class="subsection-title">Detailed Comparison</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cost Allocation Philosophy</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Assumes overhead is driven by volume (direct labor, machine hours)</li>
+                <li class="bullet-item">"All products consume overhead proportionally to volume"</li>
+                <li class="bullet-item">Simple assumption</li>
+                <li class="bullet-item">Assumes overhead is driven by activities</li>
+                <li class="bullet-item">"Different products consume different activities"</li>
+                <li class="bullet-item">More realistic assumption</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 22.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.5 Explain and Identify Cost Pools and Cost Drivers</div>
+            <div class="subsection-title">Cost Pools</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Group related costs together</li>
+                <li class="bullet-item">Simplify cost allocation</li>
+                <li class="bullet-item">Organize overhead costs</li>
+                <li class="bullet-item">Setup cost pool</li>
+                <li class="bullet-item">Inspection cost pool</li>
+                <li class="bullet-item">Ordering cost pool</li>
+            </ul>
+            <div class="subsection-title">Creating Cost Pools</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Setup activity: Setup labor €3,000 + Setup materials €500 + Setup equipment €1,500 = €5,000 cost pool</li>
+                <li class="bullet-item">Processing activity: Processing labor €10,000 + Equipment depreciation €3,000 + Utilities €2,000 = €15,000 cost pool</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 22.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">22.6 Luxembourg SME Activity-Based Costing Applications</div>
+            <div class="subsection-title">Luxembourg SME Characteristics</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Service companies with diverse services</li>
+                <li class="bullet-item">Manufacturing with multiple products</li>
+                <li class="bullet-item">Businesses with significant overhead</li>
+                <li class="bullet-item">Companies with complex operations</li>
+                <li class="bullet-item">Businesses needing accurate cost information</li>
+            </ul>
+            <div class="subsection-title">Example 1: Luxembourg Service Company</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Client acquisition: €10,000 (cost driver: number of new clients)</li>
+                <li class="bullet-item">Project setup: €8,000 (cost driver: number of projects)</li>
+                <li class="bullet-item">Research: €12,000 (cost driver: research hours)</li>
+                <li class="bullet-item">Client meetings: €6,000 (cost driver: meeting hours)</li>
+                <li class="bullet-item">Report preparation: €4,000 (cost driver: number of reports)</li>
+                <li class="bullet-item"><strong>Total overhead: €40,000</strong></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Activity-Based Costing (ABC)</div>
+                <div class="term-definition">Costing method that allocates overhead based on activities</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Activity</div>
+                <div class="term-definition">Task or action that consumes resources</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cost Pool</div>
+                <div class="term-definition">Grouping of costs by activity</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cost Driver</div>
+                <div class="term-definition">Factor that causes or drives activity cost</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Activity Rate</div>
+                <div class="term-definition">Cost per unit of cost driver</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Traditional Costing</div>
+                <div class="term-definition">Costing using single overhead rate</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Overcosting</div>
+                <div class="term-definition">Assigning too much cost to a product</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Undercosting</div>
+                <div class="term-definition">Assigning too little cost to a product</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Volume Bias</div>
+                <div class="term-definition">Tendency to overcost high-volume products</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Resource Consumption</div>
+                <div class="term-definition">Amount of resources used by a product</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Activity Consumption</div>
+                <div class="term-definition">Amount of activities used by a product</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

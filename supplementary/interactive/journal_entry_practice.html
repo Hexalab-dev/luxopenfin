@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry Practice - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --accent-warning: #f0ad4e;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --debit-color: #5cb85c;
+            --credit-color: #4a9eff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-success {
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #4cae4c;
+        }
+
+        .btn-danger {
+            background: var(--accent-danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c9302c;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 0.85em;
+        }
+
+        .entry-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 10px;
+            align-items: end;
+            margin-bottom: 10px;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .journal-preview {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .journal-header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .journal-date {
+            text-align: right;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .journal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .journal-table th {
+            background: var(--bg-tertiary);
+            padding: 10px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--accent-primary);
+        }
+
+        .journal-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .journal-debit {
+            text-align: right;
+            color: var(--debit-color);
+        }
+
+        .journal-credit {
+            text-align: right;
+            color: var(--credit-color);
+        }
+
+        .journal-description {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .journal-totals {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .journal-totals.debit {
+            color: var(--debit-color);
+        }
+
+        .journal-totals.credit {
+            color: var(--credit-color);
+        }
+
+        .account-search {
+            position: relative;
+        }
+
+        .account-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .account-results.show {
+            display: block;
+        }
+
+        .account-result-item {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .account-result-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .account-result-number {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .account-result-name {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .error-message {
+            background: rgba(217, 83, 79, 0.1);
+            border-left: 4px solid var(--accent-danger);
+            color: var(--accent-danger);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            background: rgba(92, 184, 92, 0.1);
+            border-left: 4px solid var(--accent-secondary);
+            color: var(--accent-secondary);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .hint-box {
+            background: rgba(240, 173, 78, 0.1);
+            border-left: 4px solid var(--accent-warning);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .practice-mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: var(--accent-secondary);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(26px);
+        }
+
+        .example-problems {
+            margin-top: 20px;
+        }
+
+        .example-problem {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent-warning);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .example-problem:hover {
+            background: var(--bg-primary);
+        }
+
+        .example-problem h4 {
+            color: var(--accent-warning);
+            margin-bottom: 5px;
+        }
+
+        .example-problem p {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .validation-status {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .validation-status.valid {
+            background: rgba(92, 184, 92, 0.1);
+            border-left: 4px solid var(--accent-secondary);
+        }
+
+        .validation-status.invalid {
+            background: rgba(217, 83, 79, 0.1);
+            border-left: 4px solid var(--accent-danger);
+        }
+
+        .step-indicator {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            padding: 8px 15px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+
+        .step.active {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .step.completed {
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Journal Entry Practice</h1>
+            <p class="subtitle">Practice creating journal entries with PCN account integration and step-by-step guidance</p>
+        </header>
+
+        <div class="info-box">
+            <h3>💡 Journal Entry Rules</h3>
+            <p><strong>Format:</strong> Date, Account Names/Numbers, Debit Amounts, Credit Amounts, Description</p>
+            <p><strong>Requirement:</strong> Total Debits must equal Total Credits (Double-Entry Bookkeeping)</p>
+            <p><strong>PCN 2020:</strong> Use official Luxembourg PCN account numbers (e.g., 5131 bank, 461411 output VAT). PCN numbers have no fixed length: each extra digit is a more specific account.</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Entry Form -->
+            <div class="card">
+                <h2>Create Journal Entry</h2>
+                
+                <div class="practice-mode-toggle">
+                    <span>Practice Mode</span>
+                    <div class="toggle-switch" id="practiceToggle" onclick="togglePracticeMode()"></div>
+                </div>
+
+                <div id="practiceHints" style="display: none;">
+                    <div class="hint-box">
+                        <strong>Hints Enabled:</strong> You'll receive step-by-step guidance on creating journal entries.
+                    </div>
+                </div>
+
+                <form id="journalEntryForm">
+                    <div class="form-group">
+                        <label for="entryDate">Date</label>
+                        <input type="date" id="entryDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entryDescription">Description</label>
+                        <textarea id="entryDescription" required placeholder="e.g., To record cash sale of services"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Journal Entries</label>
+                        <div id="entryRows">
+                            <div class="entry-row">
+                                <div>
+                                    <label>Account</label>
+                                    <div class="account-search">
+                                        <input type="text" class="entry-account-search" placeholder="Search account..." autocomplete="off">
+                                        <div class="account-results entry-account-results"></div>
+                                    </div>
+                                    <input type="text" class="entry-account-number" placeholder="Account #" readonly style="margin-top: 5px;">
+                                    <input type="text" class="entry-account-name" placeholder="Account Name" readonly style="margin-top: 5px;">
+                                </div>
+                                <div>
+                                    <label>Type</label>
+                                    <select class="entry-type" required>
+                                        <option value="">Select...</option>
+                                        <option value="debit">Debit</option>
+                                        <option value="credit">Credit</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>Amount (€)</label>
+                                    <input type="number" class="entry-amount" step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-danger btn-small" onclick="removeEntryRow(this)" style="width: 100%;">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="addEntryRow()" style="width: 100%; margin-top: 10px;">+ Add Entry</button>
+                    </div>
+
+                    <div id="validationStatus"></div>
+
+                    <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 15px;">Record Journal Entry</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()" style="width: 100%; margin-top: 10px;">Clear Form</button>
+                </form>
+            </div>
+
+            <!-- Preview and Examples -->
+            <div class="card">
+                <h2>Journal Entry Preview</h2>
+                <div id="journalPreview" class="journal-preview">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📄</div>
+                        <p>Journal entry preview will appear here</p>
+                    </div>
+                </div>
+
+                <div class="example-problems">
+                    <h3 style="font-size: 1em; margin-bottom: 15px; color: var(--accent-primary); border-bottom: 2px solid var(--accent-primary); padding-bottom: 10px;">Example Problems</h3>
+                    <div class="example-problem" onclick="loadExample('vat-sale')">
+                        <h4>Scenario 1: Sale with Luxembourg VAT (17%)</h4>
+                        <p><strong>Transaction:</strong> Invoice of €1,200 net plus VAT to a local customer, paid by bank transfer.</p>
+                        <p><strong>Hint:</strong> Use 5131 (bank), 7061 (sales of goods) or 703 (services), 461411 (output VAT).</p>
+                    </div>
+                    <div class="example-problem" onclick="loadExample('payroll')">
+                        <h4>Scenario 2: Monthly payroll</h4>
+                        <p><strong>Transaction:</strong> Gross salaries €15,000, employee social security €1,942.50, wage tax withheld €1,800, the rest paid by bank.</p>
+                        <p><strong>Hint:</strong> Accounts 6211 (gross salaries), 4621 (CCSS), 46124 (wage tax withheld), 5131 (bank).</p>
+                    </div>
+                    <div class="example-problem" onclick="loadExample('asset-purchase')">
+                        <h4>Scenario 3: Asset purchase with down payment</h4>
+                        <p><strong>Transaction:</strong> Machine bought for €40,000 + 17% VAT. 20% (of the invoice total incl. VAT) paid immediately, balance due in 30 days.</p>
+                        <p><strong>Hint:</strong> Accounts 222 (machinery), 421611 (input VAT), 5131 (bank), 44111 (supplier).</p>
+                    </div>
+                    <div class="example-problem" onclick="loadExample('vat-purchase')">
+                        <h4>Scenario 4: Purchase of goods with VAT</h4>
+                        <p><strong>Transaction:</strong> Purchase €1,000 of goods for resale (excluding VAT), 17% input VAT recoverable, paid by bank.</p>
+                        <p><strong>Hint:</strong> Accounts 6061 (purchases of goods for resale), 421611 (input VAT), 5131 (bank).</p>
+                    </div>
+                    <div class="example-problem" onclick="loadExample('pay-expense')">
+                        <h4>Scenario 5: Pay rent</h4>
+                        <p><strong>Transaction:</strong> Pay €800 office rent by bank transfer (rent of premises, VAT ignored).</p>
+                        <p><strong>Hint:</strong> Accounts 6111 (rent of premises), 5131 (bank).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // PCN Account Database (same as T-Account Simulator)
+        // Official PCN 2020 accounts (Règlement grand-ducal du 12 septembre 2019) used in the practice scenarios.
+        // Codes follow web/docs/appendices/pcn-chart-of-accounts.md; PCN numbers have no fixed length.
+        const pcnAccounts = {
+            '101': { name: 'Subscribed capital', class: 1, type: 'equity', normal: 'credit' },
+            '131': { name: 'Legal reserve', class: 1, type: 'equity', normal: 'credit' },
+            '138': { name: 'Other reserves', class: 1, type: 'equity', normal: 'credit' },
+            '141': { name: 'Results brought forward', class: 1, type: 'equity', normal: 'credit' },
+            '1941': { name: 'Bank loans due within one year', class: 1, type: 'liability', normal: 'credit' },
+            '1942': { name: 'Bank loans due after more than one year', class: 1, type: 'liability', normal: 'credit' },
+            '2211': { name: 'Land', class: 2, type: 'asset', normal: 'debit' },
+            '2213': { name: 'Buildings', class: 2, type: 'asset', normal: 'debit' },
+            '222': { name: 'Plant and machinery (equipment)', class: 2, type: 'asset', normal: 'debit' },
+            '2232': { name: 'Motor vehicles', class: 2, type: 'asset', normal: 'debit' },
+            '2235': { name: 'Computer hardware', class: 2, type: 'asset', normal: 'debit' },
+            '301': { name: 'Raw materials', class: 3, type: 'asset', normal: 'debit' },
+            '361': { name: 'Merchandise (goods for resale)', class: 3, type: 'asset', normal: 'debit' },
+            '4011': { name: 'Customers (accounts receivable)', class: 4, type: 'asset', normal: 'debit' },
+            '421611': { name: 'Input VAT (VAT recoverable)', class: 4, type: 'asset', normal: 'debit' },
+            '44111': { name: 'Suppliers (accounts payable)', class: 4, type: 'liability', normal: 'credit' },
+            '46124': { name: 'Wage tax withheld', class: 4, type: 'liability', normal: 'credit' },
+            '461411': { name: 'Output VAT', class: 4, type: 'liability', normal: 'credit' },
+            '461412': { name: 'VAT payable to the AED', class: 4, type: 'liability', normal: 'credit' },
+            '4621': { name: 'Social security payable (CCSS)', class: 4, type: 'liability', normal: 'credit' },
+            '4714': { name: 'Amounts owed to staff (salaries payable)', class: 4, type: 'liability', normal: 'credit' },
+            '5131': { name: 'Bank', class: 5, type: 'asset', normal: 'debit' },
+            '516': { name: 'Cash on hand', class: 5, type: 'asset', normal: 'debit' },
+            '6061': { name: 'Purchases of goods for resale', class: 6, type: 'expense', normal: 'debit' },
+            '6111': { name: 'Rent of premises', class: 6, type: 'expense', normal: 'debit' },
+            '6211': { name: 'Gross salaries and wages', class: 6, type: 'expense', normal: 'debit' },
+            '623': { name: 'Employer social security contributions', class: 6, type: 'expense', normal: 'debit' },
+            '633': { name: 'Depreciation of tangible assets', class: 6, type: 'expense', normal: 'debit' },
+            '703': { name: 'Services rendered', class: 7, type: 'revenue', normal: 'credit' },
+            '7061': { name: 'Sales of goods for resale', class: 7, type: 'revenue', normal: 'credit' }
+        };
+
+        // Model answers for the example scenarios (mirrors the scenarios in JournalEntryPractice.tsx)
+        const exampleEntries = {
+            'vat-sale': {
+                description: 'Sale of €1,200 net + 17% VAT (€204), paid by bank transfer',
+                lines: [['5131', 'debit', 1404], ['7061', 'credit', 1200], ['461411', 'credit', 204]]
+            },
+            'payroll': {
+                description: 'Monthly payroll: gross €15,000 less employee social security €1,942.50 and wage tax €1,800; net €11,257.50 paid by bank',
+                lines: [['6211', 'debit', 15000], ['4621', 'credit', 1942.50], ['46124', 'credit', 1800], ['5131', 'credit', 11257.50]]
+            },
+            'asset-purchase': {
+                description: 'Machine €40,000 + 17% VAT (€6,800) = €46,800; 20% (€9,360) paid by bank, balance €37,440 due to supplier',
+                lines: [['222', 'debit', 40000], ['421611', 'debit', 6800], ['5131', 'credit', 9360], ['44111', 'credit', 37440]]
+            },
+            'vat-purchase': {
+                description: 'Purchase of goods for resale €1,000 + 17% input VAT (€170), paid by bank',
+                lines: [['6061', 'debit', 1000], ['421611', 'debit', 170], ['5131', 'credit', 1170]]
+            },
+            'pay-expense': {
+                description: 'Payment of office rent by bank transfer',
+                lines: [['6111', 'debit', 800], ['5131', 'credit', 800]]
+            }
+        };
+
+        let practiceMode = false;
+
+        // Initialize
+        document.getElementById('entryDate').valueAsDate = new Date();
+
+        // Account Search
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('entry-account-search')) {
+                const query = e.target.value.toLowerCase();
+                const results = e.target.parentElement.querySelector('.entry-account-results');
+                
+                if (query.length < 2) {
+                    results.classList.remove('show');
+                    return;
+                }
+
+                const matches = Object.entries(pcnAccounts)
+                    .filter(([num, data]) => 
+                        num.includes(query) || 
+                        data.name.toLowerCase().includes(query)
+                    )
+                    .slice(0, 10);
+
+                if (matches.length === 0) {
+                    results.innerHTML = '<div class="account-result-item">No accounts found</div>';
+                } else {
+                    results.innerHTML = matches.map(([num, data]) => `
+                        <div class="account-result-item" onclick="selectAccount(this, '${num}', '${data.name}')">
+                            <div class="account-result-number">${num}</div>
+                            <div class="account-result-name">${data.name}</div>
+                        </div>
+                    `).join('');
+                }
+                
+                results.classList.add('show');
+            }
+        });
+
+        function selectAccount(element, number, name) {
+            const row = element.closest('.entry-row');
+            row.querySelector('.entry-account-number').value = number;
+            row.querySelector('.entry-account-name').value = name;
+            row.querySelector('.entry-account-search').value = '';
+            row.querySelector('.entry-account-results').classList.remove('show');
+            updatePreview();
+        }
+
+        // Add Entry Row
+        function addEntryRow() {
+            const container = document.getElementById('entryRows');
+            const newRow = document.createElement('div');
+            newRow.className = 'entry-row';
+            newRow.innerHTML = `
+                <div>
+                    <label>Account</label>
+                    <div class="account-search">
+                        <input type="text" class="entry-account-search" placeholder="Search account..." autocomplete="off">
+                        <div class="account-results entry-account-results"></div>
+                    </div>
+                    <input type="text" class="entry-account-number" placeholder="Account #" readonly style="margin-top: 5px;">
+                    <input type="text" class="entry-account-name" placeholder="Account Name" readonly style="margin-top: 5px;">
+                </div>
+                <div>
+                    <label>Type</label>
+                    <select class="entry-type" required>
+                        <option value="">Select...</option>
+                        <option value="debit">Debit</option>
+                        <option value="credit">Credit</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Amount (€)</label>
+                    <input type="number" class="entry-amount" step="0.01" min="0" placeholder="0.00">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-danger btn-small" onclick="removeEntryRow(this)" style="width: 100%;">Remove</button>
+                </div>
+            `;
+            container.appendChild(newRow);
+            
+            // Add event listeners
+            newRow.querySelector('.entry-amount').addEventListener('input', updatePreview);
+            newRow.querySelector('.entry-type').addEventListener('change', updatePreview);
+        }
+
+        function removeEntryRow(button) {
+            const row = button.closest('.entry-row');
+            if (document.querySelectorAll('.entry-row').length > 1) {
+                row.remove();
+                updatePreview();
+            } else {
+                alert('At least one entry is required');
+            }
+        }
+
+        // Update Preview
+        function updatePreview() {
+            const rows = document.querySelectorAll('.entry-row');
+            const entries = Array.from(rows).map(row => {
+                const accountNum = row.querySelector('.entry-account-number').value;
+                const accountName = row.querySelector('.entry-account-name').value;
+                const type = row.querySelector('.entry-type').value;
+                const amount = parseFloat(row.querySelector('.entry-amount').value) || 0;
+                
+                return { accountNum, accountName, type, amount };
+            }).filter(e => e.accountNum && e.type && e.amount > 0);
+
+            const date = document.getElementById('entryDate').value;
+            const description = document.getElementById('entryDescription').value;
+
+            const preview = document.getElementById('journalPreview');
+            
+            if (entries.length === 0) {
+                preview.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📄</div>
+                        <p>Journal entry preview will appear here</p>
+                    </div>
+                `;
+                document.getElementById('validationStatus').innerHTML = '';
+                return;
+            }
+
+            const totalDebits = entries.filter(e => e.type === 'debit').reduce((sum, e) => sum + e.amount, 0);
+            const totalCredits = entries.filter(e => e.type === 'credit').reduce((sum, e) => sum + e.amount, 0);
+            const isBalanced = Math.abs(totalDebits - totalCredits) < 0.01;
+
+            // Preview
+            preview.innerHTML = `
+                <div class="journal-header">GENERAL JOURNAL</div>
+                <div class="journal-date">Date: ${date || 'YYYY-MM-DD'}</div>
+                <table class="journal-table">
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th style="text-align: right;">Debit</th>
+                            <th style="text-align: right;">Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${entries.map(e => `
+                            <tr>
+                                <td>${e.accountNum} ${e.accountName}</td>
+                                <td class="journal-${e.type}">${e.type === 'debit' ? '€' + e.amount.toFixed(2) : ''}</td>
+                                <td class="journal-${e.type}">${e.type === 'credit' ? '€' + e.amount.toFixed(2) : ''}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                <div class="journal-description">${description || 'Description'}</div>
+                <div class="journal-totals">
+                    <span class="journal-totals debit">Total Debits: €${totalDebits.toFixed(2)}</span>
+                    <span class="journal-totals credit">Total Credits: €${totalCredits.toFixed(2)}</span>
+                </div>
+            `;
+
+            // Validation
+            const validationDiv = document.getElementById('validationStatus');
+            if (isBalanced && entries.length >= 2) {
+                validationDiv.innerHTML = `
+                    <div class="validation-status valid">
+                        <strong>✓ Valid Journal Entry</strong>
+                        <p>Total Debits (€${totalDebits.toFixed(2)}) = Total Credits (€${totalCredits.toFixed(2)})</p>
+                        <p>Ready to record!</p>
+                    </div>
+                `;
+            } else if (entries.length < 2) {
+                validationDiv.innerHTML = `
+                    <div class="validation-status invalid">
+                        <strong>⚠ Incomplete Entry</strong>
+                        <p>At least 2 entries required for double-entry bookkeeping</p>
+                    </div>
+                `;
+            } else {
+                const difference = Math.abs(totalDebits - totalCredits);
+                validationDiv.innerHTML = `
+                    <div class="validation-status invalid">
+                        <strong>✗ Unbalanced Entry</strong>
+                        <p>Total Debits (€${totalDebits.toFixed(2)}) ≠ Total Credits (€${totalCredits.toFixed(2)})</p>
+                        <p>Difference: €${difference.toFixed(2)}</p>
+                        <p>Please adjust amounts to balance the entry</p>
+                    </div>
+                `;
+            }
+
+            // Practice mode hints
+            if (practiceMode && entries.length > 0) {
+                let hints = [];
+                entries.forEach(entry => {
+                    const accountData = pcnAccounts[entry.accountNum];
+                    if (accountData) {
+                        const isNormal = (entry.type === 'debit' && accountData.normal === 'debit') ||
+                                       (entry.type === 'credit' && accountData.normal === 'credit');
+                        if (!isNormal && entry.amount > 0) {
+                            hints.push(`${accountData.name} (${entry.accountNum}) is ${/^[aeiou]/.test(accountData.type) ? 'an' : 'a'} ${accountData.type} with normal balance ${accountData.normal}. ${entry.type === 'debit' ? 'Debit' : 'Credit'} entry is a ${entry.type === 'debit' ? 'decrease' : 'increase'}.`);
+                        }
+                    }
+                });
+                if (hints.length > 0) {
+                    validationDiv.innerHTML += `
+                        <div class="hint-box" style="margin-top: 10px;">
+                            <strong>Practice Hint:</strong>
+                            <ul style="margin-top: 5px; padding-left: 20px;">
+                                ${hints.map(h => `<li>${h}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('entryDate').addEventListener('change', updatePreview);
+        document.getElementById('entryDescription').addEventListener('input', updatePreview);
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('entry-amount') || e.target.classList.contains('entry-type')) {
+                updatePreview();
+            }
+        });
+
+        // Form Submit
+        document.getElementById('journalEntryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const rows = document.querySelectorAll('.entry-row');
+            const entries = Array.from(rows).map(row => {
+                const accountNum = row.querySelector('.entry-account-number').value;
+                const accountName = row.querySelector('.entry-account-name').value;
+                const type = row.querySelector('.entry-type').value;
+                const amount = parseFloat(row.querySelector('.entry-amount').value) || 0;
+                
+                return { accountNum, accountName, type, amount };
+            }).filter(e => e.accountNum && e.type && e.amount > 0);
+
+            if (entries.length < 2) {
+                alert('At least 2 entries required');
+                return;
+            }
+
+            const totalDebits = entries.filter(e => e.type === 'debit').reduce((sum, e) => sum + e.amount, 0);
+            const totalCredits = entries.filter(e => e.type === 'credit').reduce((sum, e) => sum + e.amount, 0);
+
+            if (Math.abs(totalDebits - totalCredits) > 0.01) {
+                alert('Journal entry must balance! Debits must equal Credits.');
+                return;
+            }
+
+            alert('Journal entry recorded successfully! ✓\n\nThis is a practice tool. In a real system, this would be saved to the journal.');
+            clearForm();
+        });
+
+        function clearForm() {
+            document.getElementById('journalEntryForm').reset();
+            document.getElementById('entryDate').valueAsDate = new Date();
+            document.getElementById('entryRows').innerHTML = `
+                <div class="entry-row">
+                    <div>
+                        <label>Account</label>
+                        <div class="account-search">
+                            <input type="text" class="entry-account-search" placeholder="Search account..." autocomplete="off">
+                            <div class="account-results entry-account-results"></div>
+                        </div>
+                        <input type="text" class="entry-account-number" placeholder="Account #" readonly style="margin-top: 5px;">
+                        <input type="text" class="entry-account-name" placeholder="Account Name" readonly style="margin-top: 5px;">
+                    </div>
+                    <div>
+                        <label>Type</label>
+                        <select class="entry-type" required>
+                            <option value="">Select...</option>
+                            <option value="debit">Debit</option>
+                            <option value="credit">Credit</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Amount (€)</label>
+                        <input type="number" class="entry-amount" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-danger btn-small" onclick="removeEntryRow(this)" style="width: 100%;">Remove</button>
+                    </div>
+                </div>
+            `;
+            updatePreview();
+        }
+
+        // Practice Mode
+        function togglePracticeMode() {
+            practiceMode = !practiceMode;
+            const toggle = document.getElementById('practiceToggle');
+            const hints = document.getElementById('practiceHints');
+            
+            if (practiceMode) {
+                toggle.classList.add('active');
+                hints.style.display = 'block';
+            } else {
+                toggle.classList.remove('active');
+                hints.style.display = 'none';
+            }
+            updatePreview();
+        }
+
+        // Example Problems
+        function loadExample(type) {
+            const example = exampleEntries[type];
+            if (!example) return;
+            clearForm();
+            document.getElementById('entryDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('entryDescription').value = example.description;
+
+            example.lines.forEach(([accountNum, side, amount], index) => {
+                if (index > 0) addEntryRow();
+                const rows = document.querySelectorAll('.entry-row');
+                const row = rows[rows.length - 1];
+                row.querySelector('.entry-account-number').value = accountNum;
+                row.querySelector('.entry-account-name').value = pcnAccounts[accountNum].name;
+                row.querySelector('.entry-type').value = side;
+                row.querySelector('.entry-amount').value = amount.toFixed(2);
+            });
+
+            updatePreview();
+        }
+
+        // Close account results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.account-search')) {
+                document.querySelectorAll('.entry-account-results').forEach(results => {
+                    results.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

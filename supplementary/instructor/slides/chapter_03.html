@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Analyzing and Recording Transactions - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 3: Analyzing and Recording Transactions</div>
+        <div class="slide-subtitle">Chapter 3 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe principles, assumptions, and concepts of accounting and their relationship to financial statements</div>
+            <div class="objective-item">Define and describe the expanded accounting equation and its relationship to analyzing transactions</div>
+            <div class="objective-item">Define and describe the initial steps in the accounting cycle</div>
+            <div class="objective-item">Analyze business transactions using the accounting equation and show the impact of business transactions on financial statements</div>
+            <div class="objective-item">Use journal entries to record transactions and post to T-accounts</div>
+            <div class="objective-item">Prepare a trial balance</div>
+            <div class="objective-item">Understand the Luxembourg PCN account numbering system and transaction mapping</div>
+            <div class="objective-item">Explain Luxembourg double-entry requirements and legal obligations</div>
+        </div>
+    </div>
+    
+    <!-- Section 3.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.1 Describe Principles, Assumptions, and Concepts of Accounting and Their Relationship to Financial Statements</div>
+            <div class="subsection-title">The Foundation of Accounting</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Accounting Principles</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Provides objective, verifiable basis for recording</li>
+                <li class="bullet-item">Prevents subjective valuation</li>
+                <li class="bullet-item">Ensures consistency</li>
+                <li class="bullet-item">Matches revenue with the period in which it was earned</li>
+                <li class="bullet-item">Provides accurate picture of performance</li>
+                <li class="bullet-item">Follows accrual basis accounting</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.2 Define and Describe the Expanded Accounting Equation and Its Relationship to Analyzing Transactions</div>
+            <div class="subsection-title">The Basic Accounting Equation</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">The Expanded Accounting Equation</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.3 Define and Describe the Initial Steps in the Accounting Cycle</div>
+            <div class="subsection-title">The Accounting Cycle Overview</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Step 1: Identify Transactions</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Must be a business transaction (affects the business entity)</li>
+                <li class="bullet-item">Must be measurable in monetary terms (euros)</li>
+                <li class="bullet-item">Must affect assets, liabilities, or equity</li>
+                <li class="bullet-item">Sales to customers</li>
+                <li class="bullet-item">Purchases from suppliers</li>
+                <li class="bullet-item">Payment of expenses</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.4 Analyze Business Transactions Using the Accounting Equation and Show the Impact of Business Transactions on Financial Statements</div>
+            <div class="subsection-title">Transaction Analysis Framework</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Comprehensive Transaction Examples</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Equipment (Asset) increases: +€15,000</li>
+                <li class="bullet-item">Cash (Asset) decreases: -€5,000</li>
+                <li class="bullet-item">Notes Payable (Liability) increases: +€10,000</li>
+                <li class="bullet-item">Debit: 222 Equipment (Class 2) €15,000</li>
+                <li class="bullet-item">Credit: 5131 Cash (Class 5) €5,000</li>
+                <li class="bullet-item">Credit: 4421 Notes Payable (Class 4) €10,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.5 Use Journal Entries to Record Transactions and Post to T-Accounts</div>
+            <div class="subsection-title">Journal Entries</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Journal Entry Format</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.6 Prepare a Trial Balance</div>
+            <div class="subsection-title">What is a Trial Balance?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Verify mathematical accuracy</li>
+                <li class="bullet-item">Identify posting errors</li>
+                <li class="bullet-item">Prepare for financial statements</li>
+                <li class="bullet-item">Required step in accounting cycle</li>
+            </ul>
+            <div class="subsection-title">Trial Balance Format</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.7 Luxembourg PCN Account Numbering System and Transaction Mapping</div>
+            <div class="subsection-title">PCN Account Numbering Structure</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>First digit (1-7)</strong>: Account class</li>
+                <li class="bullet-item"><strong>Two digits</strong>: Account group (e.g., 40 = trade receivables)</li>
+                <li class="bullet-item"><strong>Three or more digits</strong>: Increasingly detailed accounts (e.g., 401 → 4011 Customers; 461 → 4614 → 46141 → 461411 Output VAT)</li>
+                <li class="bullet-item"><strong>Format</strong>: hierarchical, no fixed length (e.g., 5 → 51 → 513 → 5131)</li>
+            </ul>
+            <div class="subsection-title">Account Class Ranges</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 3.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">3.8 Luxembourg Double-Entry Requirements and Legal Obligations</div>
+            <div class="subsection-title">Legal Requirement for Double-Entry Bookkeeping</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Commercial Code (Code de Commerce)</li>
+                <li class="bullet-item">Applies to all commercial entities</li>
+                <li class="bullet-item">Required regardless of business size (above certain thresholds)</li>
+            </ul>
+            <div class="subsection-title">What is Double-Entry Bookkeeping?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Every transaction affects <strong>at least two accounts</strong></li>
+                <li class="bullet-item">Total <strong>debits equal total credits</strong></li>
+                <li class="bullet-item">The accounting equation <strong>always balances</strong></li>
+                <li class="bullet-item">Complete <strong>audit trail</strong> is maintained</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Accounting Cycle</div>
+                <div class="term-definition">Process of recording, classifying, and summarizing transactions</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accounting Equation</div>
+                <div class="term-definition">Assets = Liabilities + Equity</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Accrual Basis</div>
+                <div class="term-definition">Recording transactions when they occur, not when cash changes hands</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Credit (Crédit)</div>
+                <div class="term-definition">Right side of account; increases liabilities, equity, revenue; decreases assets, expenses</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Debit (Débit)</div>
+                <div class="term-definition">Left side of account; increases assets, expenses; decreases liabilities, equity, revenue</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Double-Entry Bookkeeping</div>
+                <div class="term-definition">System where every transaction affects at least two accounts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Expanded Accounting Equation</div>
+                <div class="term-definition">Assets = Liabilities + Share Capital + Retained Earnings + Revenue - Expenses - Withdrawals</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Journal (Journal)</div>
+                <div class="term-definition">Chronological record of all transactions</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Journal Entry (Écriture Comptable)</div>
+                <div class="term-definition">Formal recording of a transaction</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Ledger (Grand Livre)</div>
+                <div class="term-definition">Collection of all accounts showing balances</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Matching Principle</div>
+                <div class="term-definition">Expenses recorded in same period as related revenues</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Normal Balance</div>
+                <div class="term-definition">Side of account where increases are recorded</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Posting (Report)</div>
+                <div class="term-definition">Transferring journal entries to ledger accounts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Revenue Recognition Principle</div>
+                <div class="term-definition">Revenue recorded when earned, not when cash received</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Source Document</div>
+                <div class="term-definition">Original document supporting a transaction (invoice, receipt, etc.)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">T-Account</div>
+                <div class="term-definition">Visual representation of a ledger account</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Trial Balance (Balance)</div>
+                <div class="term-definition">List of all accounts and balances to verify debits equal credits</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

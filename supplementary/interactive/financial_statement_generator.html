@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Statement Generator - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --accent-warning: #f0ad4e;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1em;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-success {
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #4cae4c;
+        }
+
+        .btn-danger {
+            background: var(--accent-danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c9302c;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 0.85em;
+        }
+
+        .trial-balance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .trial-balance-table th,
+        .trial-balance-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trial-balance-table th {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .trial-balance-table tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .trial-balance-entry {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+            gap: 10px;
+            align-items: end;
+            margin-bottom: 10px;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        .statement {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            padding: 30px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .statement-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .statement-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 5px;
+        }
+
+        .statement-company {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .statement-date {
+            color: var(--text-secondary);
+        }
+
+        .statement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .statement-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .statement-table .label {
+            padding-left: 20px;
+        }
+
+        .statement-table .subtotal {
+            font-weight: 600;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .statement-table .total {
+            font-weight: 700;
+            font-size: 1.1em;
+            border-top: 3px solid var(--accent-primary);
+            border-bottom: 3px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .statement-table .amount {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .error-message {
+            background: rgba(217, 83, 79, 0.1);
+            border-left: 4px solid var(--accent-danger);
+            color: var(--accent-danger);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            background: rgba(92, 184, 92, 0.1);
+            border-left: 4px solid var(--accent-secondary);
+            color: var(--accent-secondary);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media print {
+            .tabs, .btn, .form-group, .card:not(.statement-card) {
+                display: none;
+            }
+            .statement {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Financial Statement Generator</h1>
+            <p class="subtitle">Generate Balance Sheet, Income Statement, and Cash Flow Statement from Trial Balance</p>
+        </header>
+
+        <div class="info-box">
+            <h3>💡 How to Use</h3>
+            <p>1. Enter company information and period dates</p>
+            <p>2. Input trial balance data (PCN 2020 account number, name, debit, credit balances). Accounts are classified by PCN class: 1 equity, provisions and financial debts; 2 fixed assets; 3 inventories; 4 receivables and payables; 5 bank and cash; 6 charges; 7 income.</p>
+            <p>3. Click "Generate Statements" to create financial statements</p>
+            <p>4. Export to Excel or print for your records</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('input')">Input Data</button>
+            <button class="tab" onclick="switchTab('balance-sheet')">Balance Sheet</button>
+            <button class="tab" onclick="switchTab('income-statement')">Income Statement</button>
+            <button class="tab" onclick="switchTab('cash-flow')">Cash Flow</button>
+        </div>
+
+        <!-- Input Tab -->
+        <div id="input" class="tab-content active">
+            <div class="card">
+                <h2>Company Information</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" placeholder="e.g., Le Petit Bistro" value="Example Company SARL">
+                    </div>
+                    <div class="form-group">
+                        <label for="periodEnd">Period End Date</label>
+                        <input type="date" id="periodEnd" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Trial Balance</h2>
+                <div id="trialBalanceEntries">
+                    <div class="trial-balance-entry">
+                        <input type="text" class="tb-account-number" placeholder="PCN account #" title="PCN 2020 account number (no fixed length, e.g., 222, 5131, 461411)">
+                        <input type="text" class="tb-account-name" placeholder="Account Name">
+                        <input type="number" class="tb-debit" step="0.01" min="0" placeholder="Debit">
+                        <input type="number" class="tb-credit" step="0.01" min="0" placeholder="Credit">
+                        <button class="btn btn-danger btn-small" onclick="removeTrialBalanceRow(this)">Remove</button>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="addTrialBalanceRow()" style="width: 100%; margin-top: 10px;">+ Add Account</button>
+                <button class="btn btn-success" onclick="loadExampleTrialBalance()" style="width: 100%; margin-top: 10px;">Load Example</button>
+                <div id="trialBalanceValidation" style="margin-top: 15px;"></div>
+                <button class="btn btn-primary" onclick="generateStatements()" style="width: 100%; margin-top: 15px;">Generate Financial Statements</button>
+            </div>
+        </div>
+
+        <!-- Balance Sheet Tab -->
+        <div id="balance-sheet" class="tab-content">
+            <div class="card statement-card">
+                <div class="export-buttons">
+                    <button class="btn btn-primary" onclick="exportToExcel('balance-sheet')">Export to Excel</button>
+                    <button class="btn btn-secondary" onclick="window.print()">Print</button>
+                </div>
+                <div id="balanceSheetStatement" class="statement">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <p>Generate statements from the Input Data tab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Income Statement Tab -->
+        <div id="income-statement" class="tab-content">
+            <div class="card statement-card">
+                <div class="export-buttons">
+                    <button class="btn btn-primary" onclick="exportToExcel('income-statement')">Export to Excel</button>
+                    <button class="btn btn-secondary" onclick="window.print()">Print</button>
+                </div>
+                <div id="incomeStatementStatement" class="statement">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📈</div>
+                        <p>Generate statements from the Input Data tab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cash Flow Tab -->
+        <div id="cash-flow" class="tab-content">
+            <div class="card statement-card">
+                <div class="export-buttons">
+                    <button class="btn btn-primary" onclick="exportToExcel('cash-flow')">Export to Excel</button>
+                    <button class="btn btn-secondary" onclick="window.print()">Print</button>
+                </div>
+                <div id="cashFlowStatement" class="statement">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💰</div>
+                        <p>Generate statements from the Input Data tab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let trialBalanceData = [];
+        let generatedStatements = {};
+
+        // Initialize
+        document.getElementById('periodEnd').valueAsDate = new Date();
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            const button = document.querySelector(`.tab[onclick*="'${tabName}'"]`);
+            if (button) button.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function trialBalanceRowHtml(acc) {
+            const v = (x) => (x === undefined || x === null) ? '' : escapeHtml(String(x));
+            return `
+                <input type="text" class="tb-account-number" placeholder="PCN account #" title="PCN 2020 account number (no fixed length, e.g., 222, 5131, 461411)" value="${v(acc && acc.number)}">
+                <input type="text" class="tb-account-name" placeholder="Account Name" value="${v(acc && acc.name)}">
+                <input type="number" class="tb-debit" step="0.01" min="0" placeholder="Debit" value="${v(acc && acc.debit)}">
+                <input type="number" class="tb-credit" step="0.01" min="0" placeholder="Credit" value="${v(acc && acc.credit)}">
+                <button class="btn btn-danger btn-small" onclick="removeTrialBalanceRow(this)">Remove</button>
+            `;
+        }
+
+        function addTrialBalanceRow() {
+            const container = document.getElementById('trialBalanceEntries');
+            const newRow = document.createElement('div');
+            newRow.className = 'trial-balance-entry';
+            newRow.innerHTML = trialBalanceRowHtml(null);
+            container.appendChild(newRow);
+        }
+
+        function removeTrialBalanceRow(button) {
+            const row = button.closest('.trial-balance-entry');
+            if (document.querySelectorAll('.trial-balance-entry').length > 1) {
+                row.remove();
+            } else {
+                alert('At least one entry is required');
+            }
+        }
+
+        // Balanced example trial balance (before closing) using official PCN 2020 accounts.
+        // 2229 = accumulated depreciation sub-account opened under 222 (textbook convention, Appendix A).
+        const EXAMPLE_TRIAL_BALANCE = [
+            { number: '222', name: 'Plant and machinery (equipment)', debit: 25000, credit: 0 },
+            { number: '2229', name: 'Accumulated depreciation - plant and machinery', debit: 0, credit: 5000 },
+            { number: '361', name: 'Merchandise (goods for resale)', debit: 9000, credit: 0 },
+            { number: '4011', name: 'Customers (accounts receivable)', debit: 6000, credit: 0 },
+            { number: '5131', name: 'Bank', debit: 20300, credit: 0 },
+            { number: '101', name: 'Subscribed capital', debit: 0, credit: 20000 },
+            { number: '131', name: 'Legal reserve', debit: 0, credit: 1000 },
+            { number: '141', name: 'Results brought forward', debit: 0, credit: 4000 },
+            { number: '1942', name: 'Bank loans due after more than one year', debit: 0, credit: 10000 },
+            { number: '44111', name: 'Suppliers (accounts payable)', debit: 0, credit: 7000 },
+            { number: '461411', name: 'Output VAT', debit: 0, credit: 1700 },
+            { number: '7061', name: 'Sales of goods for resale', debit: 0, credit: 80000 },
+            { number: '6061', name: 'Purchases of goods for resale', debit: 38000, credit: 0 },
+            { number: '6211', name: 'Gross salaries and wages', debit: 18000, credit: 0 },
+            { number: '623', name: 'Employer social security contributions', debit: 2300, credit: 0 },
+            { number: '6111', name: 'Rent of premises', debit: 6000, credit: 0 },
+            { number: '6184', name: 'Utilities (energy and water)', debit: 1200, credit: 0 },
+            { number: '633', name: 'Depreciation of tangible assets', debit: 2500, credit: 0 },
+            { number: '6552', name: 'Bank interest expense', debit: 400, credit: 0 }
+        ];
+
+        function loadExampleTrialBalance() {
+            const container = document.getElementById('trialBalanceEntries');
+            container.innerHTML = '';
+            EXAMPLE_TRIAL_BALANCE.forEach(acc => {
+                const row = document.createElement('div');
+                row.className = 'trial-balance-entry';
+                row.innerHTML = trialBalanceRowHtml(acc);
+                container.appendChild(row);
+            });
+        }
+
+        function validateTrialBalance() {
+            const rows = document.querySelectorAll('.trial-balance-entry');
+            const data = [];
+            let totalDebits = 0;
+            let totalCredits = 0;
+            const invalidNumbers = [];
+
+            rows.forEach(row => {
+                const number = row.querySelector('.tb-account-number').value.trim();
+                const name = row.querySelector('.tb-account-name').value.trim();
+                const debit = parseFloat(row.querySelector('.tb-debit').value) || 0;
+                const credit = parseFloat(row.querySelector('.tb-credit').value) || 0;
+
+                if (number && name && (debit > 0 || credit > 0)) {
+                    if (!/^[1-7][0-9]+$/.test(number)) invalidNumbers.push(number);
+                    data.push({ number, name, debit, credit });
+                    totalDebits += debit;
+                    totalCredits += credit;
+                }
+            });
+
+            const validationDiv = document.getElementById('trialBalanceValidation');
+            const difference = Math.abs(totalDebits - totalCredits);
+
+            if (data.length === 0) {
+                validationDiv.innerHTML = '<div class="error-message">Please enter at least one account</div>';
+                return null;
+            }
+
+            if (invalidNumbers.length > 0) {
+                validationDiv.innerHTML = `<div class="error-message">Invalid PCN account number(s): ${escapeHtml(invalidNumbers.join(', '))}. A PCN number starts with its class (1-7) and has at least two digits (e.g., 101, 5131, 461411).</div>`;
+                return null;
+            }
+
+            if (difference > 0.01) {
+                validationDiv.innerHTML = `<div class="error-message">Trial balance does not balance! Debits (€${totalDebits.toFixed(2)}) ≠ Credits (€${totalCredits.toFixed(2)}). Difference: €${difference.toFixed(2)}</div>`;
+                return null;
+            }
+
+            validationDiv.innerHTML = `<div class="success-message">✓ Trial balance is balanced. Total: €${totalDebits.toFixed(2)}</div>`;
+            return data;
+        }
+
+        function getAccountClass(number) {
+            return parseInt(number.charAt(0), 10);
+        }
+
+        // Classification by PCN 2020 class and group (see Appendix A of the textbook)
+        function getAccountType(number) {
+            const classNum = getAccountClass(number);
+
+            if (classNum === 1) {
+                if (/^1[0-5]/.test(number)) return 'equity';      // 10-15 capital, premiums, reserves, results, interim dividends
+                if (number.startsWith('18')) return 'provision';  // 18 provisions
+                return 'liability';                                // 19 financial debts
+            }
+            if (classNum === 2) return 'asset';                    // formation expenses and fixed assets (incl. accumulated depreciation sub-accounts)
+            if (classNum === 3) return 'asset';                    // inventories
+            if (classNum === 4) {
+                if (/^4[0-2]/.test(number) || number.startsWith('481')) return 'asset'; // 40-42 receivables, 481 prepaid expenses
+                return 'liability';                                // 43-47 payables, 482 deferred income
+            }
+            if (classNum === 5) return number.startsWith('5132') ? 'liability' : 'asset'; // 5132 bank overdrafts
+            if (classNum === 6) return 'expense';
+            if (classNum === 7) return 'revenue';
+            return 'asset';
+        }
+
+        function computeResult(accounts) {
+            const values = Object.values(accounts);
+            const totalRevenue = values.filter(a => a.type === 'revenue').reduce((s, a) => s - a.balance, 0);
+            const totalExpenses = values.filter(a => a.type === 'expense').reduce((s, a) => s + a.balance, 0);
+            return {
+                totalRevenue,
+                totalExpenses,
+                netIncome: totalRevenue - totalExpenses,
+                hasPL: values.some(a => a.type === 'revenue' || a.type === 'expense')
+            };
+        }
+
+        function buildAccounts(data) {
+            const accounts = {};
+            data.forEach(acc => {
+                if (!accounts[acc.number]) {
+                    accounts[acc.number] = {
+                        number: acc.number,
+                        name: acc.name,
+                        balance: 0,
+                        debit: 0,
+                        credit: 0,
+                        class: getAccountClass(acc.number),
+                        type: getAccountType(acc.number)
+                    };
+                }
+                const a = accounts[acc.number];
+                a.debit += acc.debit;
+                a.credit += acc.credit;
+                a.balance = a.debit - a.credit;
+            });
+            return accounts;
+        }
+
+        function generateStatements() {
+            const data = validateTrialBalance();
+            if (!data) return;
+
+            trialBalanceData = data;
+            const companyName = document.getElementById('companyName').value || 'Company';
+            const periodEnd = document.getElementById('periodEnd').value;
+
+            const accounts = buildAccounts(data);
+
+            generateBalanceSheet(accounts, companyName, periodEnd);
+            generateIncomeStatement(accounts, companyName, periodEnd);
+            generateCashFlowStatement(accounts, companyName, periodEnd);
+
+            generatedStatements = { balanceSheet: accounts, incomeStatement: accounts, cashFlow: accounts };
+
+            alert('Financial statements generated successfully! Switch to the tabs to view them.');
+        }
+
+        function statementRow(acc) {
+            return `<tr><td class="label">${escapeHtml(acc.number)} ${escapeHtml(acc.name)}</td><td class="amount">${formatCurrency(acc.balance)}</td></tr>`;
+        }
+
+        function statementSection(title, items, totalLabel, extraStyle) {
+            if (items.length === 0) return '';
+            let html = `<tr><td colspan="2" style="padding-left: 10px; font-weight: 600;${extraStyle || ''}">${title}</td></tr>`;
+            items.forEach(acc => { html += statementRow(acc); });
+            const total = items.reduce((sum, a) => sum + a.balance, 0);
+            html += `<tr class="subtotal"><td>${totalLabel}</td><td class="amount">${formatCurrency(total)}</td></tr>`;
+            return html;
+        }
+
+        function computeBalanceSheet(accounts) {
+            const assets = [];
+            const equity = [];
+            const provisions = [];
+            const liabilities = [];
+
+            // Contra balances (e.g., accumulated depreciation 2229, allowance 4019) are netted and shown as negatives.
+            Object.values(accounts).forEach(acc => {
+                if (Math.abs(acc.balance) < 0.005) return;
+                if (acc.type === 'asset') assets.push({ ...acc });
+                else if (acc.type === 'equity') equity.push({ ...acc, balance: -acc.balance });
+                else if (acc.type === 'provision') provisions.push({ ...acc, balance: -acc.balance });
+                else if (acc.type === 'liability') liabilities.push({ ...acc, balance: -acc.balance });
+            });
+
+            // The result of the year in the open P&L accounts (classes 6 and 7) belongs to equity until it is closed to 142.
+            const result = computeResult(accounts);
+            if (result.hasPL) {
+                equity.push({ number: '142', name: 'Result for the financial year (from classes 6 and 7)', balance: result.netIncome, class: 1 });
+            }
+
+            const byNumber = (a, b) => a.number.localeCompare(b.number);
+            [assets, equity, provisions, liabilities].forEach(list => list.sort(byNumber));
+
+            const sum = (list) => list.reduce((s, a) => s + a.balance, 0);
+            const totalAssets = sum(assets);
+            const totalCapitalAndLiabilities = sum(equity) + sum(provisions) + sum(liabilities);
+            return { assets, equity, provisions, liabilities, totalAssets, totalCapitalAndLiabilities };
+        }
+
+        function generateBalanceSheet(accounts, companyName, periodEnd) {
+            const bs = computeBalanceSheet(accounts);
+
+            let html = `
+                <div class="statement-header">
+                    <div class="statement-title">BALANCE SHEET</div>
+                    <div class="statement-company">${escapeHtml(companyName)}</div>
+                    <div class="statement-date">As at ${formatDate(periodEnd)}</div>
+                </div>
+                <table class="statement-table">
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">ASSETS</td>
+                    </tr>
+            `;
+
+            html += statementSection('Formation Expenses and Fixed Assets (class 2)', bs.assets.filter(a => a.class === 2), 'Total Fixed Assets');
+            html += statementSection('Current Assets (classes 3-5)', bs.assets.filter(a => a.class !== 2), 'Total Current Assets', ' padding-top: 10px;');
+            html += `<tr class="total"><td>TOTAL ASSETS</td><td class="amount">${formatCurrency(bs.totalAssets)}</td></tr>`;
+
+            html += `
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">CAPITAL, RESERVES AND LIABILITIES</td>
+                    </tr>
+            `;
+            html += statementSection('Capital and Reserves (Equity)', bs.equity, 'Total Capital and Reserves');
+            html += statementSection('Provisions', bs.provisions, 'Total Provisions', ' padding-top: 10px;');
+            html += statementSection('Creditors (Liabilities)', bs.liabilities, 'Total Creditors', ' padding-top: 10px;');
+            html += `<tr class="total"><td>TOTAL CAPITAL, RESERVES AND LIABILITIES</td><td class="amount">${formatCurrency(bs.totalCapitalAndLiabilities)}</td></tr>`;
+            html += '</table>';
+
+            const diff = bs.totalAssets - bs.totalCapitalAndLiabilities;
+            html += Math.abs(diff) < 0.01
+                ? '<p style="margin-top: 15px; color: var(--accent-secondary);">✓ Balance sheet balances (assets = capital, reserves and liabilities).</p>'
+                : `<p style="margin-top: 15px; color: var(--accent-danger);">Balance sheet difference: ${formatCurrency(diff)}. Check the account numbers (e.g., a 142 balance entered together with open class 6/7 accounts counts the result twice).</p>`;
+
+            document.getElementById('balanceSheetStatement').innerHTML = html;
+        }
+
+        function generateIncomeStatement(accounts, companyName, periodEnd) {
+            // Contra accounts (709 discounts granted, 609 discounts received) are netted and shown as negatives
+            const byNumber = (a, b) => a.number.localeCompare(b.number);
+            const revenues = Object.values(accounts).filter(a => a.type === 'revenue' && Math.abs(a.balance) >= 0.005).sort(byNumber);
+            const expenses = Object.values(accounts).filter(a => a.type === 'expense' && Math.abs(a.balance) >= 0.005).sort(byNumber);
+            const { totalRevenue, totalExpenses, netIncome } = computeResult(accounts);
+
+            let html = `
+                <div class="statement-header">
+                    <div class="statement-title">PROFIT AND LOSS ACCOUNT</div>
+                    <div class="statement-company">${escapeHtml(companyName)}</div>
+                    <div class="statement-date">For the period ended ${formatDate(periodEnd)}</div>
+                </div>
+                <table class="statement-table">
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">INCOME (class 7)</td>
+                    </tr>
+            `;
+            revenues.forEach(acc => { html += statementRow({ ...acc, balance: -acc.balance }); });
+            html += `<tr class="subtotal"><td>Total Income</td><td class="amount">${formatCurrency(totalRevenue)}</td></tr>`;
+
+            html += `
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">CHARGES (class 6)</td>
+                    </tr>
+            `;
+            expenses.forEach(acc => { html += statementRow(acc); });
+            html += `<tr class="subtotal"><td>Total Charges</td><td class="amount">${formatCurrency(totalExpenses)}</td></tr>`;
+
+            html += `<tr class="total"><td>${netIncome >= 0 ? 'PROFIT FOR THE FINANCIAL YEAR' : 'LOSS FOR THE FINANCIAL YEAR'}</td><td class="amount">${formatCurrency(netIncome)}</td></tr>`;
+            html += '</table>';
+            html += '<p style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;"><em>Simplified layout by PCN class. The legal Luxembourg GAAP profit and loss account (eCDF) groups these accounts into prescribed captions; there are no extraordinary items since the 2015 reform.</em></p>';
+
+            document.getElementById('incomeStatementStatement').innerHTML = html;
+        }
+
+        function generateCashFlowStatement(accounts, companyName, periodEnd) {
+            // A trial balance at one date cannot give cash movements: opening balances are needed.
+            // This view shows the indirect-method starting point and the closing cash position only.
+            const values = Object.values(accounts);
+            const { netIncome, hasPL } = computeResult(accounts);
+            const depreciation = values.filter(a => /^63/.test(a.number)).reduce((s, a) => s + a.balance, 0);
+            const closingCash = values.filter(a => a.class === 5).reduce((s, a) => s + a.balance, 0); // overdrafts (5132) have credit balances
+
+            const html = `
+                <div class="statement-header">
+                    <div class="statement-title">STATEMENT OF CASH FLOWS (OUTLINE)</div>
+                    <div class="statement-company">${escapeHtml(companyName)}</div>
+                    <div class="statement-date">For the period ended ${formatDate(periodEnd)}</div>
+                </div>
+                <table class="statement-table">
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">OPERATING ACTIVITIES (indirect method)</td>
+                    </tr>
+                    <tr><td class="label">Profit or loss for the financial year</td><td class="amount">${hasPL ? formatCurrency(netIncome) : 'n/a'}</td></tr>
+                    <tr><td class="label">Add back: value adjustments / depreciation (63)</td><td class="amount">${formatCurrency(depreciation)}</td></tr>
+                    <tr><td class="label">Changes in working capital (needs opening balances)</td><td class="amount">-</td></tr>
+                    <tr class="subtotal"><td>Net Cash from Operating Activities</td><td class="amount">-</td></tr>
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">INVESTING ACTIVITIES</td>
+                    </tr>
+                    <tr><td class="label">Purchase / disposal of fixed assets (needs opening balances)</td><td class="amount">-</td></tr>
+                    <tr class="subtotal"><td>Net Cash from Investing Activities</td><td class="amount">-</td></tr>
+                    <tr>
+                        <td colspan="2" style="font-weight: 600; padding-top: 20px;">FINANCING ACTIVITIES</td>
+                    </tr>
+                    <tr><td class="label">Proceeds from / repayment of loans (needs opening balances)</td><td class="amount">-</td></tr>
+                    <tr class="subtotal"><td>Net Cash from Financing Activities</td><td class="amount">-</td></tr>
+                    <tr><td class="label">Cash at Beginning of Period</td><td class="amount">-</td></tr>
+                    <tr class="total"><td>Cash at bank and in hand at End of Period (class 5, net of overdrafts)</td><td class="amount">${formatCurrency(closingCash)}</td></tr>
+                </table>
+                <p style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9em;">
+                    <em>Note: a trial balance at a single date cannot produce cash flows. To complete the statement you need the opening balance sheet (or the cash transactions of the period).</em>
+                </p>
+            `;
+
+            document.getElementById('cashFlowStatement').innerHTML = html;
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-LU', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return 'Date';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function exportToExcel(type) {
+            alert('Excel export coming soon. Use Print function and "Save as PDF" for now.');
+        }
+    </script>
+</body>
+</html>
+

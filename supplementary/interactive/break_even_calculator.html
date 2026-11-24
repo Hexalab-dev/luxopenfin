@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break-Even Calculator - LuxOpenFin</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #4a9eff;
+            --accent-secondary: #5cb85c;
+            --accent-danger: #d9534f;
+            --accent-warning: #f0ad4e;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3a8eef;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+        }
+
+        .calculation-result {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--accent-primary);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--accent-primary);
+        }
+
+        .result-label {
+            color: var(--text-secondary);
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .sensitivity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .sensitivity-table th,
+        .sensitivity-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sensitivity-table th {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .sensitivity-table tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .info-box {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 4px solid var(--accent-primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .formula-box {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Break-Even Calculator</h1>
+            <p class="subtitle">Calculate break-even point and perform sensitivity analysis</p>
+        </header>
+
+        <div class="info-box">
+            <h3>💡 Break-Even Analysis</h3>
+            <p><strong>Break-Even Point:</strong> The point where total revenue equals total costs (no profit, no loss)</p>
+            <p><strong>Formula:</strong> Break-Even Units = Fixed Costs ÷ (Selling Price - Variable Cost per Unit)</p>
+            <p><strong>Contribution Margin:</strong> Selling Price - Variable Cost per Unit (amount contributing to covering fixed costs)</p>
+            <p><strong>Note:</strong> Use prices and costs excluding VAT (VAT collected is owed to the AED, not income). Break-even units are rounded up to whole units.</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>Input Data</h2>
+                <form id="breakEvenForm">
+                    <div class="form-group">
+                        <label for="fixedCosts">Fixed Costs (€)</label>
+                        <input type="number" id="fixedCosts" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="variableCostPerUnit">Variable Cost per Unit (€, excl. recoverable VAT)</label>
+                        <input type="number" id="variableCostPerUnit" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sellingPrice">Selling Price per Unit (€, excl. VAT)</label>
+                        <input type="number" id="sellingPrice" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetUnits">Target Units (Optional - for profit analysis)</label>
+                        <input type="number" id="targetUnits" step="1" min="0" placeholder="0">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Calculate</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()" style="width: 100%; margin-top: 10px;">Clear</button>
+                </form>
+
+                <div id="calculationResult" class="calculation-result" style="display: none;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 15px;">Break-Even Analysis</h3>
+                    
+                    <div class="result-row">
+                        <span class="result-label">Contribution Margin per Unit:</span>
+                        <span class="result-value" id="contributionMargin">€0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Contribution Margin Ratio:</span>
+                        <span class="result-value" id="contributionMarginRatio">0%</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Break-Even Units:</span>
+                        <span class="result-value" id="breakEvenUnits">0</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Break-Even Sales (€):</span>
+                        <span class="result-value" id="breakEvenSales">€0.00</span>
+                    </div>
+                    <div id="targetProfitSection" style="display: none;">
+                        <div class="result-row">
+                            <span class="result-label">Target Units:</span>
+                            <span class="result-value" id="targetUnitsDisplay">0</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Total Revenue at Target:</span>
+                            <span class="result-value" id="targetRevenue">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Total Costs at Target:</span>
+                            <span class="result-value" id="targetCosts">€0.00</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Profit/(Loss) at Target:</span>
+                            <span class="result-value" id="targetProfit">€0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Margin of Safety:</span>
+                        <span class="result-value" id="marginOfSafety">-</span>
+                    </div>
+
+                    <div class="formula-box">
+                        <strong>Formulas Used:</strong><br>
+                        Contribution Margin = Selling Price - Variable Cost<br>
+                        Break-Even Units = Fixed Costs ÷ Contribution Margin<br>
+                        Break-Even Sales = Break-Even Units × Selling Price<br>
+                        Margin of Safety = (Target Units - Break-Even Units) ÷ Target Units × 100%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results and Sensitivity -->
+            <div class="card">
+                <h2>Sensitivity Analysis</h2>
+                <div id="sensitivityResults">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <p>Enter data and calculate to see sensitivity analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // silent = true when called from live input: do not raise alerts while the user is still typing
+        function calculateBreakEven(silent) {
+            const fixedCosts = parseFloat(document.getElementById('fixedCosts').value) || 0;
+            const variableCostPerUnit = parseFloat(document.getElementById('variableCostPerUnit').value) || 0;
+            const sellingPrice = parseFloat(document.getElementById('sellingPrice').value) || 0;
+            const targetUnits = parseFloat(document.getElementById('targetUnits').value) || 0;
+
+            if (fixedCosts <= 0 || variableCostPerUnit < 0 || sellingPrice <= 0) {
+                if (silent) return;
+                alert('Please enter valid values. Fixed costs and selling price must be greater than 0.');
+                return;
+            }
+
+            if (variableCostPerUnit >= sellingPrice) {
+                if (silent) return;
+                alert('Variable cost per unit must be less than selling price for break-even to be possible.');
+                return;
+            }
+
+            // Calculate contribution margin
+            const contributionMargin = sellingPrice - variableCostPerUnit;
+            const contributionMarginRatio = (contributionMargin / sellingPrice) * 100;
+
+            // Calculate break-even
+            const breakEvenUnits = Math.ceil(fixedCosts / contributionMargin);
+            const breakEvenSales = breakEvenUnits * sellingPrice;
+
+            // Display results
+            document.getElementById('contributionMargin').textContent = formatCurrency(contributionMargin);
+            document.getElementById('contributionMarginRatio').textContent = contributionMarginRatio.toFixed(2) + '%';
+            document.getElementById('breakEvenUnits').textContent = breakEvenUnits.toLocaleString();
+            document.getElementById('breakEvenSales').textContent = formatCurrency(breakEvenSales);
+
+            // Target profit analysis
+            const targetSection = document.getElementById('targetProfitSection');
+            if (targetUnits > 0) {
+                const targetRevenue = targetUnits * sellingPrice;
+                const targetCosts = fixedCosts + (targetUnits * variableCostPerUnit);
+                const targetProfit = targetRevenue - targetCosts;
+                const marginOfSafety = ((targetUnits - breakEvenUnits) / targetUnits) * 100;
+
+                document.getElementById('targetUnitsDisplay').textContent = targetUnits.toLocaleString();
+                document.getElementById('targetRevenue').textContent = formatCurrency(targetRevenue);
+                document.getElementById('targetCosts').textContent = formatCurrency(targetCosts);
+                document.getElementById('targetProfit').textContent = formatCurrency(targetProfit);
+                document.getElementById('targetProfit').style.color = targetProfit >= 0 ? 'var(--accent-secondary)' : 'var(--accent-danger)';
+                document.getElementById('marginOfSafety').textContent = marginOfSafety.toFixed(2) + '%';
+                document.getElementById('marginOfSafety').style.color = marginOfSafety >= 0 ? 'var(--accent-secondary)' : 'var(--accent-danger)';
+                targetSection.style.display = 'block';
+            } else {
+                targetSection.style.display = 'none';
+                document.getElementById('marginOfSafety').textContent = '-';
+            }
+
+            document.getElementById('calculationResult').style.display = 'block';
+
+            // Generate sensitivity analysis
+            generateSensitivityAnalysis(fixedCosts, variableCostPerUnit, sellingPrice, breakEvenUnits);
+        }
+
+        function generateSensitivityAnalysis(fixedCosts, variableCostPerUnit, sellingPrice, baseBreakEven) {
+            const sensitivityData = [];
+
+            // Vary selling price
+            for (let i = -20; i <= 20; i += 5) {
+                const newPrice = sellingPrice * (1 + i / 100);
+                if (newPrice > variableCostPerUnit) {
+                    const newCM = newPrice - variableCostPerUnit;
+                    const newBE = Math.ceil(fixedCosts / newCM);
+                    const change = ((newBE - baseBreakEven) / baseBreakEven) * 100;
+                    sensitivityData.push({
+                        factor: 'Selling Price',
+                        change: i + '%',
+                        value: formatCurrency(newPrice),
+                        breakEven: newBE,
+                        changePercent: change.toFixed(1) + '%'
+                    });
+                }
+            }
+
+            // Vary variable cost
+            for (let i = -20; i <= 20; i += 5) {
+                const newVC = variableCostPerUnit * (1 + i / 100);
+                if (newVC < sellingPrice) {
+                    const newCM = sellingPrice - newVC;
+                    const newBE = Math.ceil(fixedCosts / newCM);
+                    const change = ((newBE - baseBreakEven) / baseBreakEven) * 100;
+                    sensitivityData.push({
+                        factor: 'Variable Cost',
+                        change: i + '%',
+                        value: formatCurrency(newVC),
+                        breakEven: newBE,
+                        changePercent: change.toFixed(1) + '%'
+                    });
+                }
+            }
+
+            // Vary fixed costs
+            for (let i = -20; i <= 20; i += 5) {
+                const newFC = fixedCosts * (1 + i / 100);
+                const newCM = sellingPrice - variableCostPerUnit;
+                const newBE = Math.ceil(newFC / newCM);
+                const change = ((newBE - baseBreakEven) / baseBreakEven) * 100;
+                sensitivityData.push({
+                    factor: 'Fixed Costs',
+                    change: i + '%',
+                    value: formatCurrency(newFC),
+                    breakEven: newBE,
+                    changePercent: change.toFixed(1) + '%'
+                });
+            }
+
+            // Display sensitivity table
+            const resultsDiv = document.getElementById('sensitivityResults');
+            let html = '<h3 style="color: var(--accent-primary); margin-bottom: 15px;">Sensitivity Analysis</h3>';
+            html += '<p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9em;">How changes in key variables affect break-even point</p>';
+            
+            html += '<table class="sensitivity-table">';
+            html += '<thead><tr><th>Factor</th><th>Change</th><th>New Value</th><th>Break-Even Units</th><th>Change %</th></tr></thead>';
+            html += '<tbody>';
+            
+            sensitivityData.forEach(row => {
+                const changeColor = parseFloat(row.changePercent) >= 0 ? 'var(--accent-danger)' : 'var(--accent-secondary)';
+                html += `<tr>
+                    <td>${row.factor}</td>
+                    <td>${row.change}</td>
+                    <td>${row.value}</td>
+                    <td>${row.breakEven.toLocaleString()}</td>
+                    <td style="color: ${changeColor}">${row.changePercent}</td>
+                </tr>`;
+            });
+            
+            html += '</tbody></table>';
+            resultsDiv.innerHTML = html;
+        }
+
+        function clearForm() {
+            document.getElementById('breakEvenForm').reset();
+            document.getElementById('calculationResult').style.display = 'none';
+            document.getElementById('sensitivityResults').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">📊</div>
+                    <p>Enter data and calculate to see sensitivity analysis</p>
+                </div>
+            `;
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-LU', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        document.getElementById('breakEvenForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateBreakEven();
+        });
+
+        // Auto-calculate on input change
+        ['fixedCosts', 'variableCostPerUnit', 'sellingPrice', 'targetUnits'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                if (this.value && document.getElementById('fixedCosts').value && 
+                    document.getElementById('variableCostPerUnit').value && 
+                    document.getElementById('sellingPrice').value) {
+                    calculateBreakEven(true);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

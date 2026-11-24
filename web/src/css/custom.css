@@ -1,0 +1,108 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0059b8;
+  --ifm-color-primary-dark: #0050a6;
+  --ifm-color-primary-darker: #004696;
+  --ifm-color-primary-darkest: #003775;
+  --ifm-color-primary-light: #1a6ed2;
+  --ifm-color-primary-lighter: #2a7be1;
+  --ifm-color-primary-lightest: #4a90f5;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'Georgia', 'Times New Roman', serif;
+  --ifm-heading-font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 30, 84, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #5aa8ff;
+  --ifm-color-primary-dark: #489cff;
+  --ifm-color-primary-darker: #378fff;
+  --ifm-color-primary-darkest: #0d74ff;
+  --ifm-color-primary-light: #6cb4ff;
+  --ifm-color-primary-lighter: #7ec0ff;
+  --ifm-color-primary-lightest: #9cd1ff;
+  --docusaurus-highlighted-code-line-bg: rgba(90, 168, 255, 0.2);
+}
+
+.hero--primary {
+  background: linear-gradient(135deg, #003775, #0059b8);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  font-weight: 600;
+}
+
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: rgba(0, 89, 184, 0.04);
+  padding: 0.75rem 1rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.markdown table {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.markdown table thead {
+  background: rgba(0, 89, 184, 0.08);
+}
+
+.markdown table th,
+.markdown table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.docStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.docStatusBadge[data-state='DRAFT'] {
+  background: rgba(250, 176, 5, 0.15);
+  color: #a45a00;
+}
+
+.docStatusBadge[data-state='DEV'] {
+  background: rgba(45, 156, 219, 0.15);
+  color: #0059b8;
+}
+
+.docStatusBadge[data-state='TEST'] {
+  background: rgba(111, 66, 193, 0.12);
+  color: #4c1d95;
+}
+
+.docStatusBadge[data-state='READY'] {
+  background: rgba(16, 185, 129, 0.18);
+  color: #0f766e;
+}
+
+.docStatusBadge[data-state='LIVE'] {
+  background: rgba(14, 165, 233, 0.18);
+  color: #0369a1;
+}
+
+.docStatusBadge[data-state='DEPRECATED'] {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}

@@ -1,0 +1,742 @@
+{
+  "tools.title": {
+    "message": "Interaktive Tools für luxemburgische KMU",
+    "description": "Title of the interactive tools page"
+  },
+  "tools.subtitle": {
+    "message": "Alle Tools funktionieren offline in Docusaurus, spiegeln die eigenständigen HTML-Prototypen wider und werden später direkt in die relevanten Lehrbuchabschnitte eingebettet.",
+    "description": "Subtitle of the interactive tools page"
+  },
+  "tools.quickNav": {
+    "message": "Schnellnavigation:",
+    "description": "Quick navigation label"
+  },
+  "tools.vat": {
+    "message": "MwSt-Rechner",
+    "description": "VAT Calculator tool name"
+  },
+  "tools.breakEven": {
+    "message": "Break-Even-Analyse",
+    "description": "Break-even Analysis tool name"
+  },
+  "tools.payroll": {
+    "message": "Lohnübersicht",
+    "description": "Payroll Snapshot tool name"
+  },
+  "tools.ratios": {
+    "message": "Finanzkennzahlen",
+    "description": "Financial Ratios tool name"
+  },
+  "tools.statements": {
+    "message": "Finanzbericht-Generator",
+    "description": "Financial Statement Builder tool name"
+  },
+  "tools.pcn": {
+    "message": "PCN-Suche",
+    "description": "PCN Lookup tool name"
+  },
+  "tools.journal": {
+    "message": "Buchungssatz-Übung",
+    "description": "Journal Entry Practice tool name"
+  },
+  "tools.taccounts": {
+    "message": "T-Konten-Simulator",
+    "description": "T-Account Simulator tool name"
+  },
+  "vat.title": {
+    "message": "🇱🇺 Luxemburgischer MwSt-Rechner",
+    "description": "VAT Calculator title"
+  },
+  "vat.description": {
+    "message": "Unterstützt die vier luxemburgischen MwSt-Sätze (3%, 8%, 14%, 17%) mit einfachen und mehrzeiligen Berechnungen. Nützlich für MwSt-Erklärungen, Rechnungsprüfungen oder Schulungsszenarien.",
+    "description": "VAT Calculator description"
+  },
+  "vat.singleCalculation": {
+    "message": "Einzelberechnung",
+    "description": "Single Calculation section title"
+  },
+  "vat.calculationType": {
+    "message": "Berechnungstyp",
+    "description": "Calculation Type label"
+  },
+  "vat.netToGross": {
+    "message": "Netto → Brutto",
+    "description": "Net to Gross option"
+  },
+  "vat.grossToNet": {
+    "message": "Brutto → Netto",
+    "description": "Gross to Net option"
+  },
+  "vat.vatRate": {
+    "message": "MwSt-Satz",
+    "description": "VAT Rate label"
+  },
+  "vat.rateSuperReduced": {
+    "message": "3% · Superreduziert",
+    "description": "Super-Reduced VAT rate"
+  },
+  "vat.rateReduced": {
+    "message": "8% · Reduziert",
+    "description": "Reduced VAT rate"
+  },
+  "vat.rateIntermediate": {
+    "message": "14% · Zwischenstufe",
+    "description": "Intermediate VAT rate"
+  },
+  "vat.rateStandard": {
+    "message": "17% · Standard",
+    "description": "Standard VAT rate"
+  },
+  "vat.amount": {
+    "message": "Betrag (€)",
+    "description": "Amount label"
+  },
+  "vat.calculate": {
+    "message": "Berechnen",
+    "description": "Calculate button"
+  },
+  "vat.clear": {
+    "message": "Löschen",
+    "description": "Clear button"
+  },
+  "vat.netAmount": {
+    "message": "Nettobetrag",
+    "description": "Net Amount label"
+  },
+  "vat.vatAmount": {
+    "message": "MwSt-Betrag",
+    "description": "VAT Amount label"
+  },
+  "vat.grossAmount": {
+    "message": "Bruttobetrag",
+    "description": "Gross Amount label"
+  },
+  "vat.multiLineWorksheet": {
+    "message": "Mehrzeiliges Arbeitsblatt",
+    "description": "Multi-Line Worksheet section title"
+  },
+  "vat.descriptionLabel": {
+    "message": "Beschreibung",
+    "description": "Description label"
+  },
+  "vat.descriptionPlaceholder": {
+    "message": "z. B. Büromaterial",
+    "description": "Description placeholder"
+  },
+  "vat.netAmountLabel": {
+    "message": "Nettobetrag (€)",
+    "description": "Net Amount label for multi-line"
+  },
+  "vat.addItem": {
+    "message": "Artikel hinzufügen",
+    "description": "Add Item button"
+  },
+  "vat.clearItems": {
+    "message": "Artikel löschen",
+    "description": "Clear Items button"
+  },
+  "vat.tableDescription": {
+    "message": "Beschreibung",
+    "description": "Table Description header"
+  },
+  "vat.tableRate": {
+    "message": "Satz",
+    "description": "Table Rate header"
+  },
+  "vat.tableNet": {
+    "message": "Netto",
+    "description": "Table Net header"
+  },
+  "vat.tableVAT": {
+    "message": "MwSt",
+    "description": "Table VAT header"
+  },
+  "vat.tableGross": {
+    "message": "Brutto",
+    "description": "Table Gross header"
+  },
+  "vat.remove": {
+    "message": "Entfernen",
+    "description": "Remove button"
+  },
+  "vat.totalNet": {
+    "message": "Gesamt netto",
+    "description": "Total Net label"
+  },
+  "vat.totalVAT": {
+    "message": "Gesamt MwSt",
+    "description": "Total VAT label"
+  },
+  "vat.totalGross": {
+    "message": "Gesamt brutto",
+    "description": "Total Gross label"
+  },
+  "breakeven.title": {
+    "message": "Break-Even & Sensitivität",
+    "description": "Break-Even Calculator title"
+  },
+  "breakeven.description": {
+    "message": "Schätzen Sie schnell die Kostenstrukturen luxemburgischer KMU. Geben Sie monatliche Werte ein, um die Stückkostenökonomie hinter neuen Produkten oder Dienstleistungen zu verstehen.",
+    "description": "Break-Even Calculator description"
+  },
+  "breakeven.fixedCosts": {
+    "message": "Fixkosten (€)",
+    "description": "Fixed Costs label"
+  },
+  "breakeven.pricePerUnit": {
+    "message": "Verkaufspreis / Einheit (€)",
+    "description": "Selling Price per Unit label"
+  },
+  "breakeven.variableCostPerUnit": {
+    "message": "Variable Kosten / Einheit (€)",
+    "description": "Variable Cost per Unit label"
+  },
+  "breakeven.targetProfit": {
+    "message": "Zielgewinn (€)",
+    "description": "Target Profit label"
+  },
+  "breakeven.expectedUnits": {
+    "message": "Erwartete Verkaufseinheiten",
+    "description": "Expected Sales Units label"
+  },
+  "breakeven.errorMessage": {
+    "message": "Der Verkaufspreis muss höher sein als die variablen Kosten, um einen Deckungsbeitrag zu berechnen.",
+    "description": "Error message when price <= variable cost"
+  },
+  "breakeven.snapshotTitle": {
+    "message": "Break-Even-Übersicht",
+    "description": "Break-Even Snapshot section title"
+  },
+  "breakeven.contributionMargin": {
+    "message": "Deckungsbeitrag / Einheit",
+    "description": "Contribution Margin per Unit label"
+  },
+  "breakeven.contributionRatio": {
+    "message": "Deckungsbeitragsquote",
+    "description": "Contribution Ratio label"
+  },
+  "breakeven.breakEvenUnits": {
+    "message": "Break-Even-Einheiten",
+    "description": "Break-Even Units label"
+  },
+  "breakeven.breakEvenRevenue": {
+    "message": "Break-Even-Umsatz",
+    "description": "Break-Even Revenue label"
+  },
+  "breakeven.targetTitle": {
+    "message": "Ziel & Sicherheit",
+    "description": "Target & Safety section title"
+  },
+  "breakeven.targetUnits": {
+    "message": "Einheiten für Zielgewinn erforderlich",
+    "description": "Units Needed for Target Profit label"
+  },
+  "breakeven.targetRevenue": {
+    "message": "Umsatz für Zielgewinn erforderlich",
+    "description": "Revenue Needed for Target Profit label"
+  },
+  "breakeven.marginOfSafetyUnits": {
+    "message": "Sicherheitsmarge (Einheiten)",
+    "description": "Margin of Safety (units) label"
+  },
+  "breakeven.marginOfSafetyPct": {
+    "message": "Sicherheitsmarge (%)",
+    "description": "Margin of Safety (%) label"
+  },
+  "breakeven.units": {
+    "message": "Einheiten",
+    "description": "Units suffix"
+  },
+  "payroll.title": {
+    "message": "Luxemburgische Lohnübersicht",
+    "description": "Payroll Calculator title"
+  },
+  "payroll.description": {
+    "message": "Schätzen Sie die monatliche luxemburgische Lohnabrechnung, indem Sie ein Bruttogehalt, eine Steuerklasse und optionale Leistungen/Prämien eingeben. Die Sozialversicherung verwendet die CCSS-Sätze zum 1. Januar 2026 (jedes Jahr auf ccss.lu prüfen); die Lohnsteuer-Prozentsätze sind nur illustrativ — der tatsächliche Abzug richtet sich nach der Steuerkarte des Arbeitnehmers. Für Schulungszwecke.",
+    "description": "Payroll Calculator description"
+  },
+  "payroll.grossSalary": {
+    "message": "Monatliches Bruttogehalt (€)",
+    "description": "Monthly Gross Salary label"
+  },
+  "payroll.benefits": {
+    "message": "Monatliche Leistungen (€)",
+    "description": "Monthly Benefits label"
+  },
+  "payroll.bonus": {
+    "message": "Prämie / 13. Monat (€)",
+    "description": "Bonus / 13th Month label"
+  },
+  "payroll.taxClass": {
+    "message": "Steuerklasse",
+    "description": "Tax Class label"
+  },
+  "payroll.taxClass1": {
+    "message": "Klasse 1 · Ledig",
+    "description": "Tax Class 1 - Single"
+  },
+  "payroll.taxClass1a": {
+    "message": "Klasse 1a · Alleinerziehend",
+    "description": "Tax Class 1a - Single Parent"
+  },
+  "payroll.taxClass2": {
+    "message": "Klasse 2 · Verheiratet/Partnerschaft",
+    "description": "Tax Class 2 - Married/Partnered"
+  },
+  "payroll.taxClassCustom": {
+    "message": "Benutzerdefiniert (15%)",
+    "description": "Tax Class Custom"
+  },
+  "payroll.employeePays": {
+    "message": "Der Arbeitnehmer zahlt",
+    "description": "Employee Pays section title"
+  },
+  "payroll.taxableBase": {
+    "message": "Steuerpflichtige Basis",
+    "description": "Taxable Base label"
+  },
+  "payroll.employeeSocial": {
+    "message": "Sozialversicherung Arbeitnehmer (11,55 % + 1,40 % Pflege auf Brutto − ¼ Mindestlohn)",
+    "description": "Employee Social Security label"
+  },
+  "payroll.withholdingTax": {
+    "message": "Quellensteuer",
+    "description": "Withholding Tax label"
+  },
+  "payroll.netPay": {
+    "message": "Nettolohn (inkl. Leistungen)",
+    "description": "Net Pay label"
+  },
+  "payroll.employerCost": {
+    "message": "Arbeitgeberkosten",
+    "description": "Employer Cost section title"
+  },
+  "payroll.employerSocial": {
+    "message": "Sozialabgaben Arbeitgeber (11,92 %, Mutualité-Klasse 1)",
+    "description": "Employer Social Charges label"
+  },
+  "payroll.accidentInsurance": {
+    "message": "Unfallversicherung (0,65 %)",
+    "description": "Accident Insurance label"
+  },
+  "payroll.benefitsLabel": {
+    "message": "Leistungen",
+    "description": "Benefits label"
+  },
+  "payroll.totalEmployerCost": {
+    "message": "Gesamtkosten Arbeitgeber",
+    "description": "Total Employer Cost label"
+  },
+  "payroll.note": {
+    "message": "Hinweis: Die Arbeitgeberabgaben setzen Mutualité-des-employeurs-Klasse 1 (0,23 %; Klassen 2–4: 0,95 %, 1,56 %, 2,66 %) und einen Unfall-Bonus-Malus-Faktor von 1,00 voraus. Die Beiträge außer der Pflegeversicherung sind auf 5 × den sozialen Mindestlohn (13.518,70 €/Monat) gedeckelt. Für gesetzliche Berechnungen konsultieren Sie ccss.lu.",
+    "description": "Payroll note about rates"
+  },
+  "ratios.title": {
+    "message": "Finanzkennzahlen-Benchmarks",
+    "description": "Ratio Calculator title"
+  },
+  "ratios.description": {
+    "message": "Geben Sie zusammenfassende Zahlen ein, um Liquiditäts-, Hebel- und Rentabilitätskennzahlen zu berechnen. Ideal für schnelle Diagnosen luxemburgischer KMU oder Klassenübungen.",
+    "description": "Ratio Calculator description"
+  },
+  "ratios.currentAssets": {
+    "message": "Umlaufvermögen (€)",
+    "description": "Current Assets label"
+  },
+  "ratios.inventory": {
+    "message": "Lagerbestand (€)",
+    "description": "Inventory label"
+  },
+  "ratios.currentLiabilities": {
+    "message": "Kurzfristige Verbindlichkeiten (€)",
+    "description": "Current Liabilities label"
+  },
+  "ratios.totalDebt": {
+    "message": "Gesamtverschuldung (€)",
+    "description": "Total Debt label"
+  },
+  "ratios.totalEquity": {
+    "message": "Gesamteigenkapital (€)",
+    "description": "Total Equity label"
+  },
+  "ratios.netIncome": {
+    "message": "Nettoeinkommen (€)",
+    "description": "Net Income label"
+  },
+  "ratios.netSales": {
+    "message": "Nettoumsatz (€)",
+    "description": "Net Sales label"
+  },
+  "ratios.totalAssets": {
+    "message": "Gesamtvermögen (€)",
+    "description": "Total Assets label"
+  },
+  "ratios.liquidity": {
+    "message": "Liquidität",
+    "description": "Liquidity section title"
+  },
+  "ratios.currentRatio": {
+    "message": "Liquiditätsgrad",
+    "description": "Current Ratio label"
+  },
+  "ratios.quickRatio": {
+    "message": "Schnellliquidität",
+    "description": "Quick Ratio label"
+  },
+  "ratios.workingCapital": {
+    "message": "Betriebskapital",
+    "description": "Working Capital label"
+  },
+  "ratios.leverage": {
+    "message": "Verschuldung",
+    "description": "Leverage section title"
+  },
+  "ratios.debtToEquity": {
+    "message": "Verschuldungsgrad",
+    "description": "Debt-to-Equity label"
+  },
+  "ratios.profitability": {
+    "message": "Rentabilität",
+    "description": "Profitability section title"
+  },
+  "ratios.netProfitMargin": {
+    "message": "Nettogewinnmarge",
+    "description": "Net Profit Margin label"
+  },
+  "ratios.returnOnAssets": {
+    "message": "Gesamtkapitalrentabilität",
+    "description": "Return on Assets label"
+  },
+  "ratios.tip": {
+    "message": "Tipp: Vergleichen Sie die Ergebnisse mit Branchenmedianen von STATEC oder Luxemburg House of Entrepreneurship Dashboards beim Coaching von KMU.",
+    "description": "Tip about comparing ratios"
+  },
+  "statements.title": {
+    "message": "Mini-Finanzbericht-Generator",
+    "description": "Financial Statement Generator title"
+  },
+  "statements.description": {
+    "message": "Geben Sie Hauptannahmen ein, um eine vereinfachte Gewinn- und Verlustrechnung und Bilanzübersicht für Klassendiskussionen oder KMU-Coaching-Sitzungen zu generieren.",
+    "description": "Financial Statement Generator description"
+  },
+  "statements.incomeStatementInputs": {
+    "message": "Gewinn- und Verlustrechnung Eingaben",
+    "description": "Income Statement Inputs section title"
+  },
+  "statements.revenue": {
+    "message": "Umsatz (€)",
+    "description": "Revenue label"
+  },
+  "statements.cogs": {
+    "message": "Wareneinsatz (€)",
+    "description": "COGS label"
+  },
+  "statements.operatingExpenses": {
+    "message": "Betriebsausgaben (€)",
+    "description": "Operating Expenses label"
+  },
+  "statements.otherIncome": {
+    "message": "Sonstige Erträge (€)",
+    "description": "Other Income label"
+  },
+  "statements.interestExpense": {
+    "message": "Zinsaufwendungen (€)",
+    "description": "Interest Expense label"
+  },
+  "statements.taxRate": {
+    "message": "Steuersatz",
+    "description": "Tax Rate label"
+  },
+  "statements.taxRateNote": {
+    "message": "Als Dezimalzahl eingeben (0,21 = 21%)",
+    "description": "Tax Rate note"
+  },
+  "statements.balanceSheetInputs": {
+    "message": "Bilanz Eingaben",
+    "description": "Balance Sheet Inputs section title"
+  },
+  "statements.currentAssets": {
+    "message": "Umlaufvermögen (€)",
+    "description": "Current Assets label"
+  },
+  "statements.nonCurrentAssets": {
+    "message": "Anlagevermögen (€)",
+    "description": "Non-Current Assets label"
+  },
+  "statements.currentLiabilities": {
+    "message": "Kurzfristige Verbindlichkeiten (€)",
+    "description": "Current Liabilities label"
+  },
+  "statements.nonCurrentLiabilities": {
+    "message": "Langfristige Verbindlichkeiten (€)",
+    "description": "Non-Current Liabilities label"
+  },
+  "statements.incomeStatement": {
+    "message": "Gewinn- und Verlustrechnung",
+    "description": "Income Statement section title"
+  },
+  "statements.grossProfit": {
+    "message": "Bruttogewinn",
+    "description": "Gross Profit label"
+  },
+  "statements.operatingIncome": {
+    "message": "Betriebsergebnis",
+    "description": "Operating Income label"
+  },
+  "statements.otherIncomeExpense": {
+    "message": "Sonstige Erträge / (Aufwendungen)",
+    "description": "Other Income / (Expense) label"
+  },
+  "statements.pretaxIncome": {
+    "message": "Ergebnis vor Steuern",
+    "description": "Pretax Income label"
+  },
+  "statements.taxes": {
+    "message": "Steuern",
+    "description": "Taxes label"
+  },
+  "statements.netIncome": {
+    "message": "Nettoeinkommen",
+    "description": "Net Income label"
+  },
+  "statements.balanceSheet": {
+    "message": "Bilanz",
+    "description": "Balance Sheet section title"
+  },
+  "statements.totalAssets": {
+    "message": "Gesamtvermögen",
+    "description": "Total Assets label"
+  },
+  "statements.totalLiabilities": {
+    "message": "Gesamtverbindlichkeiten",
+    "description": "Total Liabilities label"
+  },
+  "statements.equity": {
+    "message": "Eigenkapital (Ausgleichsposten)",
+    "description": "Equity label"
+  },
+  "pcn.title": {
+    "message": "PCN 2020 Suche",
+    "description": "PCN Lookup title"
+  },
+  "pcn.description": {
+    "message": "Suchen Sie schnell nach luxemburgischen PCN-Konten für Buchungssätze, Unterricht oder KMU-Coaching.",
+    "description": "PCN Lookup description"
+  },
+  "pcn.searchLabel": {
+    "message": "Code oder Stichwort suchen",
+    "description": "Search code or keyword label"
+  },
+  "pcn.searchPlaceholder": {
+    "message": "z. B. MwSt, 461411, Gehälter",
+    "description": "Search placeholder"
+  },
+  "pcn.classLabel": {
+    "message": "PCN-Klasse",
+    "description": "PCN Class label"
+  },
+  "pcn.allClasses": {
+    "message": "Alle Klassen",
+    "description": "All classes option"
+  },
+  "pcn.tableCode": {
+    "message": "Code",
+    "description": "Table Code header"
+  },
+  "pcn.tableAccount": {
+    "message": "Konto",
+    "description": "Table Account header"
+  },
+  "pcn.tableClass": {
+    "message": "Klasse",
+    "description": "Table Class header"
+  },
+  "pcn.tableDescription": {
+    "message": "Beschreibung",
+    "description": "Table Description header"
+  },
+  "pcn.noAccounts": {
+    "message": "Keine Konten entsprechen Ihren Kriterien.",
+    "description": "No accounts match message"
+  },
+  "pcn.note": {
+    "message": "Auswahl von Konten des offiziellen PCN 2020. Wie die Nummerierung funktioniert, erklärt Anhang A; der vollständige Kontenplan steht in der großherzoglichen Verordnung vom 12. September 2019.",
+    "description": "PCN Lookup note"
+  },
+  "journal.title": {
+    "message": "Buchungssatz-Übung",
+    "description": "Journal Entry Practice title"
+  },
+  "journal.description": {
+    "message": "Verwenden Sie authentische Aufforderungen, um die doppelte Buchführung mit PCN-Codes zu üben. Das Ausgleichsfeedback ist sofort.",
+    "description": "Journal Entry Practice description"
+  },
+  "journal.scenario": {
+    "message": "Szenario",
+    "description": "Scenario label"
+  },
+  "journal.prompt": {
+    "message": "Aufforderung",
+    "description": "Prompt label"
+  },
+  "journal.hint": {
+    "message": "Hinweis:",
+    "description": "Hint label prefix"
+  },
+  "journal.scenarioVatSale": {
+    "message": "Verkauf mit luxemburgischer MwSt (17%)",
+    "description": "VAT Sale scenario title"
+  },
+  "journal.scenarioVatSaleDesc": {
+    "message": "Rechnung über 1.200 € netto plus MwSt an einen lokalen Kunden, bezahlt per Banküberweisung.",
+    "description": "VAT Sale scenario description"
+  },
+  "journal.scenarioVatSaleHint": {
+    "message": "Verwenden Sie 5131 (Bank), 7061 (Warenverkäufe) oder 703 (Dienstleistungen), 461411 (Umsatzsteuer).",
+    "description": "VAT Sale scenario hint"
+  },
+  "journal.scenarioPayroll": {
+    "message": "Monatliche Lohnbuchung",
+    "description": "Payroll scenario title"
+  },
+  "journal.scenarioPayrollDesc": {
+    "message": "Bruttogehälter von 15.000 €, Sozialversicherung Arbeitnehmer 1.942,50 €, einbehaltene Lohnsteuer 1.800 €, Rest per Bank bezahlt.",
+    "description": "Payroll scenario description"
+  },
+  "journal.scenarioPayrollHint": {
+    "message": "Konten 6211 (Bruttolöhne), 4621 (CCSS), 46124 (einbehaltene Lohnsteuer), 5131 (Bank).",
+    "description": "Payroll scenario hint"
+  },
+  "journal.scenarioAssetPurchase": {
+    "message": "Anlagenkauf mit Anzahlung",
+    "description": "Asset purchase scenario title"
+  },
+  "journal.scenarioAssetPurchaseDesc": {
+    "message": "Kauf einer Maschine für 40.000 € + 17 % MwSt. (insgesamt 46.800 €). 20 % des Gesamtbetrags sofort per Bank bezahlt, Restbetrag in 30 Tagen an den Lieferanten fällig.",
+    "description": "Asset purchase scenario description"
+  },
+  "journal.scenarioAssetPurchaseHint": {
+    "message": "Konten 222 (technische Anlagen und Maschinen), 421611 (Vorsteuer), 5131 (Bank), 44111 (Lieferant).",
+    "description": "Asset purchase scenario hint"
+  },
+  "journal.tableAccount": {
+    "message": "PCN-Konto",
+    "description": "Table PCN Account header"
+  },
+  "journal.tableDescription": {
+    "message": "Beschreibung",
+    "description": "Table Description header"
+  },
+  "journal.tableDebit": {
+    "message": "Soll (€)",
+    "description": "Table Debit header"
+  },
+  "journal.tableCredit": {
+    "message": "Haben (€)",
+    "description": "Table Credit header"
+  },
+  "journal.accountPlaceholder": {
+    "message": "z. B. 7061",
+    "description": "Account placeholder"
+  },
+  "journal.addLine": {
+    "message": "Zeile hinzufügen",
+    "description": "Add Line button"
+  },
+  "journal.reset": {
+    "message": "Zurücksetzen",
+    "description": "Reset button"
+  },
+  "journal.totalDebits": {
+    "message": "Gesamt Soll",
+    "description": "Total Debits label"
+  },
+  "journal.totalCredits": {
+    "message": "Gesamt Haben",
+    "description": "Total Credits label"
+  },
+  "journal.balanced": {
+    "message": "Ausgeglichen! Soll entspricht Haben.",
+    "description": "Balanced message"
+  },
+  "journal.notBalanced": {
+    "message": "Buchung noch nicht ausgeglichen — passen Sie Ihre Beträge an.",
+    "description": "Not balanced message"
+  },
+  "taccount.title": {
+    "message": "T-Konten-Simulator",
+    "description": "T-Account Simulator title"
+  },
+  "taccount.description": {
+    "message": "Erstellen Sie Buchungen und visualisieren Sie sofort PCN-Salden im Soll/Haben-Format.",
+    "description": "T-Account Simulator description"
+  },
+  "taccount.accountCode": {
+    "message": "Kontonummer",
+    "description": "Account Code label"
+  },
+  "taccount.accountCodePlaceholder": {
+    "message": "461411",
+    "description": "Account Code placeholder"
+  },
+  "taccount.accountLabel": {
+    "message": "Kontobezeichnung",
+    "description": "Account Label label"
+  },
+  "taccount.accountLabelPlaceholder": {
+    "message": "MwSt fällig",
+    "description": "Account Label placeholder"
+  },
+  "taccount.debit": {
+    "message": "Soll (€)",
+    "description": "Debit label"
+  },
+  "taccount.credit": {
+    "message": "Haben (€)",
+    "description": "Credit label"
+  },
+  "taccount.memo": {
+    "message": "Notiz",
+    "description": "Memo label"
+  },
+  "taccount.memoPlaceholder": {
+    "message": "Rechnung 2025-031",
+    "description": "Memo placeholder"
+  },
+  "taccount.addPosting": {
+    "message": "Buchung hinzufügen",
+    "description": "Add Posting button"
+  },
+  "taccount.clearLedger": {
+    "message": "Hauptbuch löschen",
+    "description": "Clear Ledger button"
+  },
+  "taccount.noPostings": {
+    "message": "Noch keine Buchungen. Fügen Sie Einträge hinzu, um Ihr Hauptbuch zu erstellen.",
+    "description": "No postings yet message"
+  },
+  "taccount.tableMemo": {
+    "message": "Notiz",
+    "description": "Table Memo header"
+  },
+  "taccount.tableDebit": {
+    "message": "Soll",
+    "description": "Table Debit header"
+  },
+  "taccount.tableCredit": {
+    "message": "Haben",
+    "description": "Table Credit header"
+  },
+  "taccount.debitBalance": {
+    "message": "Soll",
+    "description": "Debit balance prefix"
+  },
+  "taccount.creditBalance": {
+    "message": "Haben",
+    "description": "Credit balance prefix"
+  },
+  "taccount.total": {
+    "message": "Gesamt",
+    "description": "Total label"
+  }
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Introduction to Financial Statements - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 2: Introduction to Financial Statements</div>
+        <div class="slide-subtitle">Chapter 2 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe the Income Statement, Statement of Owner's Equity, Balance Sheet, and Statement of Cash Flows, and explain how they interrelate</div>
+            <div class="objective-item">Define, explain, and provide examples of current and noncurrent assets, current and noncurrent liabilities, equity, revenues, and expenses</div>
+            <div class="objective-item">Prepare an Income Statement, Statement of Owner's Equity, and Balance Sheet</div>
+            <div class="objective-item">Understand Luxembourg PCN Account Classifications (Classes 1-7) and how they relate to financial statements</div>
+            <div class="objective-item">Explain Luxembourg legal entity forms (SA, SARL, SNC, SCS, etc.) and their accounting implications</div>
+        </div>
+    </div>
+    
+    <!-- Section 2.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">2.1 Describe the Income Statement, Statement of Owner's Equity, Balance Sheet, and Statement of Cash Flows, and How They Interrelate</div>
+            <div class="subsection-title">The Four Primary Financial Statements</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">The Income Statement (Compte de Résultat)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Revenue</strong> (Chiffre d'Affaires): Money earned from selling goods or services</li>
+                <li class="bullet-item"><strong>Expenses</strong> (Charges): Costs incurred to generate revenue</li>
+                <li class="bullet-item"><strong>Net Income</strong> (Résultat Net): Revenue minus expenses (profit)</li>
+                <li class="bullet-item"><strong>Net Loss</strong> (Perte): When expenses exceed revenue</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 2.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">2.2 Define, Explain, and Provide Examples of Current and Noncurrent Assets, Current and Noncurrent Liabilities, Equity, Revenues, and Expenses</div>
+            <div class="subsection-title">Assets (Actif)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Owned or controlled by the business</li>
+                <li class="bullet-item">Have economic value</li>
+                <li class="bullet-item">Result from past transactions</li>
+                <li class="bullet-item">Expected to provide future benefits</li>
+                <li class="bullet-item"><strong>Cash</strong> (Liquidités): Money in bank accounts and on hand</li>
+                <li class="bullet-item"><strong>Accounts Receivable</strong> (Créances Clients): Money owed by customers</li>
+            </ul>
+            <div class="subsection-title">Liabilities (Passif)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Result from past transactions</li>
+                <li class="bullet-item">Require future payment or service</li>
+                <li class="bullet-item">Cannot be avoided</li>
+                <li class="bullet-item"><strong>Accounts Payable</strong> (Dettes Fournisseurs): Money owed to suppliers</li>
+                <li class="bullet-item"><strong>Short-Term Loans</strong> (Emprunts à Court Terme): Loans due within one year</li>
+                <li class="bullet-item"><strong>Accrued Expenses</strong> (Charges à Payer): Expenses incurred but not yet paid (salaries, utilities)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 2.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">2.3 Prepare an Income Statement, Statement of Owner's Equity, and Balance Sheet</div>
+            <div class="subsection-title">Preparing Financial Statements</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Example: Tech Solutions SARL</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 2.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">2.4 Luxembourg PCN Account Classifications (Classes 1-7)</div>
+            <div class="subsection-title">Understanding PCN Structure</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Class 1: Capital Accounts, Provisions, and Financial Debts (10–19)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>101</strong>: Share Capital (Capital Social)</li>
+                <li class="bullet-item"><strong>111</strong>: Share Premium (Prime d'Émission)</li>
+                <li class="bullet-item"><strong>138</strong>: Reserves (Réserves)</li>
+                <li class="bullet-item"><strong>141</strong>: Retained Earnings (Bénéfices Reportés)</li>
+                <li class="bullet-item"><strong>142</strong>: Current Year Profit/Loss (Résultat de l'Exercice)</li>
+                <li class="bullet-item"><strong>18</strong>: Provisions (Provisions)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 2.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">2.5 Luxembourg Legal Entity Forms (SA, SARL, SNC, SCS, etc.) and Their Accounting Implications</div>
+            <div class="subsection-title">Overview of Luxembourg Business Entities</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Société Anonyme (SA) - Public Limited Company</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Minimum share capital: €30,000</li>
+                <li class="bullet-item">Shareholders have limited liability</li>
+                <li class="bullet-item">Managed by Board of Directors</li>
+                <li class="bullet-item">Can issue shares to public</li>
+                <li class="bullet-item">Subject to audit requirements (if exceeds certain thresholds)</li>
+                <li class="bullet-item"><strong>Equity Section:</strong></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Assets (Actif)</div>
+                <div class="term-definition">Resources owned by a business with economic value</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Balance Sheet (Bilan)</div>
+                <div class="term-definition">Financial statement showing assets, liabilities, and equity at a point in time</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Current Assets (Actif Circulant)</div>
+                <div class="term-definition">Assets expected to be converted to cash or used within one year</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Current Liabilities (Passif Circulant)</div>
+                <div class="term-definition">Obligations due within one year</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Equity (Capitaux Propres)</div>
+                <div class="term-definition">Owner's interest in the business (Assets - Liabilities)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Expenses (Charges)</div>
+                <div class="term-definition">Decreases in equity from business operations</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Income Statement (Compte de Résultat)</div>
+                <div class="term-definition">Financial statement showing revenues, expenses, and net income over a period</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Liabilities (Passif)</div>
+                <div class="term-definition">Obligations owed by a business</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Net Income (Résultat Net)</div>
+                <div class="term-definition">Revenue minus expenses (profit)</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Net Loss (Perte)</div>
+                <div class="term-definition">When expenses exceed revenue</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Noncurrent Assets (Immobilisations)</div>
+                <div class="term-definition">Long-term assets not expected to be converted to cash within one year</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Noncurrent Liabilities (Passif Non Circulant)</div>
+                <div class="term-definition">Long-term obligations due after one year</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Plan Comptable Normalisé (PCN)</div>
+                <div class="term-definition">Luxembourg's standardized chart of accounts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Revenue (Produits/Chiffre d'Affaires)</div>
+                <div class="term-definition">Increases in equity from business operations</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">SARL (Société à Responsabilité Limitée)</div>
+                <div class="term-definition">Private limited company, most common Luxembourg SME form</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">SA (Société Anonyme)</div>
+                <div class="term-definition">Public limited company</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Statement of Cash Flows (Tableau des Flux de Trésorerie)</div>
+                <div class="term-definition">Financial statement showing cash inflows and outflows</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Statement of Owner's Equity (État des Variations des Capitaux Propres)</div>
+                <div class="term-definition">Financial statement showing changes in equity</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

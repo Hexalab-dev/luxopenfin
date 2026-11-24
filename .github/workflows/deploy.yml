@@ -1,0 +1,48 @@
+name: Build & Publish OpenStaxLU
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Upload static artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: luxopenfin-site
+          path: web/build
+
+      - name: Configure SSH
+        if: ${{ secrets.LUX_SSH_KEY != '' && secrets.LUX_DEPLOY_HOST != '' && secrets.LUX_DEPLOY_PATH != '' && secrets.LUX_DEPLOY_USER != '' }}
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.LUX_SSH_KEY }}
+
+      - name: Deploy via rsync
+        if: ${{ secrets.LUX_DEPLOY_HOST != '' && secrets.LUX_DEPLOY_PATH != '' && secrets.LUX_DEPLOY_USER != '' }}
+        run: |
+          rsync -az --delete web/build/ "${{ secrets.LUX_DEPLOY_USER }}@${{ secrets.LUX_DEPLOY_HOST }}:${{ secrets.LUX_DEPLOY_PATH }}"
+

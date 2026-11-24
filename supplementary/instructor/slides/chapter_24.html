@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 24: Balanced Scorecard and Other Performance Measures - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 24: Balanced Scorecard and Other Performance Measures</div>
+        <div class="slide-subtitle">Chapter 24 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe the balanced scorecard framework</div>
+            <div class="objective-item">Explain the four perspectives of the balanced scorecard</div>
+            <div class="objective-item">Develop balanced scorecard objectives aligned with strategy</div>
+            <div class="objective-item">Select and define performance measures for each perspective</div>
+            <div class="objective-item">Integrate balanced scorecard metrics with budgeting and variance analysis</div>
+            <div class="objective-item">Describe how companies use variance analysis beyond financial metrics</div>
+            <div class="objective-item">Use non-financial performance measures to improve decision-making</div>
+            <div class="objective-item">Apply balanced scorecard concepts to Luxembourg SMEs</div>
+            <div class="objective-item">Evaluate the benefits and challenges of implementing a balanced scorecard</div>
+        </div>
+    </div>
+    
+    <!-- Section 24.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.1 Describe the Balanced Scorecard Framework</div>
+            <div class="subsection-title">What Is the Balanced Scorecard?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Focuses on four perspectives: Financial, Customer, Internal Processes, Learning & Growth</li>
+                <li class="bullet-item">Connects long-term strategy to daily operations</li>
+                <li class="bullet-item">Balances lagging indicators (financial) with leading indicators (non-financial)</li>
+                <li class="bullet-item">Provides a framework for strategy execution</li>
+                <li class="bullet-item">Encourages continuous improvement</li>
+            </ul>
+            <div class="subsection-title">Four Perspectives of the Balanced Scorecard</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Measures profitability, growth, shareholder value</li>
+                <li class="bullet-item">Lagging indicators (results of past efforts)</li>
+                <li class="bullet-item">Measures customer satisfaction, loyalty, market share</li>
+                <li class="bullet-item">Leading indicators that drive financial results</li>
+                <li class="bullet-item">Measures process efficiency, quality, innovation</li>
+                <li class="bullet-item">Ensures operations support strategy</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.2 Explain the Four Perspectives of the Balanced Scorecard</div>
+            <div class="subsection-title">1. Financial Perspective</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Increase revenue</li>
+                <li class="bullet-item">Improve profitability</li>
+                <li class="bullet-item">Enhance cash flow</li>
+                <li class="bullet-item">Manage risk</li>
+                <li class="bullet-item">Increase shareholder value</li>
+                <li class="bullet-item">Revenue growth rate</li>
+            </ul>
+            <div class="subsection-title">2. Customer Perspective</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Improve customer satisfaction</li>
+                <li class="bullet-item">Increase customer loyalty</li>
+                <li class="bullet-item">Expand market share</li>
+                <li class="bullet-item">Improve brand reputation</li>
+                <li class="bullet-item">Enhance customer experience</li>
+                <li class="bullet-item">Customer satisfaction score (CSAT)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.3 Develop Balanced Scorecard Objectives Aligned with Strategy</div>
+            <div class="subsection-title">Aligning Objectives with Strategy</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Strategy Example: <em>Le Petit Bistro</em></div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer experience</li>
+                <li class="bullet-item">Operational excellence</li>
+                <li class="bullet-item">Sustainable growth</li>
+                <li class="bullet-item">Increase revenue from catering by 20%</li>
+                <li class="bullet-item">Improve profit margin by 5%</li>
+                <li class="bullet-item">Achieve 95% customer satisfaction</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.4 Select and Define Performance Measures for Each Perspective</div>
+            <div class="subsection-title">Selecting Key Performance Indicators (KPIs)</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Align with objectives</li>
+                <li class="bullet-item">Are measurable and reliable</li>
+                <li class="bullet-item">Provide insight (leading indicators)</li>
+                <li class="bullet-item">Are actionable (managers can influence)</li>
+                <li class="bullet-item">Are balanced (not too many metrics)</li>
+            </ul>
+            <div class="subsection-title">KPI Selection Criteria</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.5 Integrate Balanced Scorecard Metrics with Budgeting and Variance Analysis</div>
+            <div class="subsection-title">Linking BSC to Budgeting</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Balanced Scorecard Variance Analysis</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer satisfaction target: 90%</li>
+                <li class="bullet-item">Actual: 85%</li>
+                <li class="bullet-item">Variance: -5% (unfavorable)</li>
+                <li class="bullet-item">Investigate causes (service issues, quality)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.6 Describe How Companies Use Variance Analysis Beyond Financial Metrics</div>
+            <div class="subsection-title">Extending Variance Analysis</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer satisfaction variance (target vs. actual)</li>
+                <li class="bullet-item">Process efficiency variance (e.g., cycle time)</li>
+                <li class="bullet-item">Quality variance (defect rate vs. target)</li>
+                <li class="bullet-item">Learning variance (training hours vs. target)</li>
+            </ul>
+            <div class="subsection-title">Non-Financial Variance Example</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Target: 90%</li>
+                <li class="bullet-item">Actual: 85%</li>
+                <li class="bullet-item">Variance: -5% (unfavorable)</li>
+                <li class="bullet-item">Investigate causes: Service delays, quality issues, staff attitude</li>
+                <li class="bullet-item">Action: Training, process improvement, more staffing</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.7 Use Non-Financial Performance Measures to Improve Decision-Making</div>
+            <div class="subsection-title">Non-Financial Metrics</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer feedback</li>
+                <li class="bullet-item">Employee engagement</li>
+                <li class="bullet-item">Quality indicators</li>
+                <li class="bullet-item">Innovation metrics</li>
+                <li class="bullet-item">Compliance metrics</li>
+            </ul>
+            <div class="subsection-title">Leading Indicators</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer satisfaction predicts future sales</li>
+                <li class="bullet-item">Employee engagement predicts retention</li>
+                <li class="bullet-item">Process quality predicts rework costs</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.8 Apply Balanced Scorecard Concepts to Luxembourg SMEs</div>
+            <div class="subsection-title">Balanced Scorecard Implementation Steps</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Clarify mission and strategic goals</li>
+                <li class="bullet-item">Identify strategic themes (customer focus, innovation, efficiency)</li>
+                <li class="bullet-item">Link objectives across four perspectives</li>
+                <li class="bullet-item">Show cause-and-effect relationships</li>
+                <li class="bullet-item">Choose relevant metrics for each objective</li>
+                <li class="bullet-item">Set targets and define data sources</li>
+            </ul>
+            <div class="subsection-title">Balanced Scorecard Example: Luxembourg Trust and Finance Firm</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Objectives: Increase assets under management, improve profitability</li>
+                <li class="bullet-item">KPIs: Assets under management (AUM), fee income growth, cost-to-income ratio</li>
+                <li class="bullet-item">Objectives: Improve client satisfaction, expand international clientele</li>
+                <li class="bullet-item">KPIs: Client satisfaction score, client retention rate, number of new clients</li>
+                <li class="bullet-item">Objectives: Improve compliance, reduce onboarding time</li>
+                <li class="bullet-item">KPIs: Compliance audit results, onboarding cycle time, error rate</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 24.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">24.9 Evaluate the Benefits and Challenges of Implementing a Balanced Scorecard</div>
+            <div class="subsection-title">Benefits</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Aligns strategy and operations</li>
+                <li class="bullet-item">Balances short-term and long-term priorities</li>
+                <li class="bullet-item">Improves communication and understanding of strategy</li>
+                <li class="bullet-item">Provides comprehensive performance view</li>
+                <li class="bullet-item">Supports decision-making with data</li>
+                <li class="bullet-item">Encourages continuous improvement</li>
+            </ul>
+            <div class="subsection-title">Challenges</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Requires cultural change and management commitment</li>
+                <li class="bullet-item">Needs clear strategy and objectives</li>
+                <li class="bullet-item">Requires data collection and IT systems</li>
+                <li class="bullet-item">Potential for metric overload</li>
+                <li class="bullet-item">Must be maintained and updated</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

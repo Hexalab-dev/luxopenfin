@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 23: Budgeting - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 23: Budgeting</div>
+        <div class="slide-subtitle">Chapter 23 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Describe how and why managers use budgets</div>
+            <div class="objective-item">Prepare operating budgets</div>
+            <div class="objective-item">Prepare financial budgets</div>
+            <div class="objective-item">Prepare operating and financial budgets for SMEs</div>
+            <div class="objective-item">Explain how budgets are used to evaluate goals</div>
+            <div class="objective-item">Explain how and why a standard cost is developed</div>
+            <div class="objective-item">Describe how companies use variance analysis</div>
+            <div class="objective-item">Understand Luxembourg SME budgeting practices</div>
+            <div class="objective-item">Apply Luxembourg cash flow budgeting for SMEs</div>
+        </div>
+    </div>
+    
+    <!-- Section 23.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.1 Describe How and Why Managers Use Budgets</div>
+            <div class="subsection-title">The Role of Budgets</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Planning</strong>: Budgets define what the organization intends to achieve</li>
+                <li class="bullet-item"><strong>Resource Allocation</strong>: Budgets determine where resources will be used</li>
+                <li class="bullet-item"><strong>Coordination</strong>: Budgets align different parts of the organization</li>
+                <li class="bullet-item"><strong>Communication</strong>: Budgets communicate priorities and expectations</li>
+                <li class="bullet-item"><strong>Motivation</strong>: Budgets can motivate employees via performance targets</li>
+                <li class="bullet-item"><strong>Control</strong>: Budgets provide benchmarks for evaluating actual results</li>
+            </ul>
+            <div class="subsection-title">Types of Budgets</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Strategic Budget</strong>: Long-term financial plan linked to strategy</li>
+                <li class="bullet-item"><strong>Operating Budget</strong>: Short-term plan for revenues and expenses</li>
+                <li class="bullet-item"><strong>Financial Budget</strong>: Focuses on cash flow, capital expenditures, balance sheet</li>
+                <li class="bullet-item"><strong>Static Budget</strong>: Based on a single level of activity</li>
+                <li class="bullet-item"><strong>Flexible Budget</strong>: Adjusts for different activity levels</li>
+                <li class="bullet-item"><strong>Rolling Budget</strong>: Continuously updated (e.g., add a month when one ends)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.2 Prepare Operating Budgets</div>
+            <div class="subsection-title">Operating Budget Components</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Sales Budget</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Average daily meals: 120 weekdays, 180 weekends</li>
+                <li class="bullet-item">Average price: €25 (excluding VAT)</li>
+                <li class="bullet-item">Monthly sales:</li>
+                <li class="bullet-item">Weekdays: 22 days × 120 × €25 = €66,000</li>
+                <li class="bullet-item">Weekends: 8 days × 180 × €25 = €36,000</li>
+                <li class="bullet-item"><strong>Total: €102,000 (excluding VAT)</strong></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.3 Prepare Financial Budgets</div>
+            <div class="subsection-title">Financial Budgets</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cash Budget</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Beginning cash: €20,000</li>
+                <li class="bullet-item">Cash collections: €95,000</li>
+                <li class="bullet-item">Total cash available: €115,000</li>
+                <li class="bullet-item">Cash disbursements:</li>
+                <li class="bullet-item">Inventory: €35,000</li>
+                <li class="bullet-item">Salaries: €18,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.4 Prepare Operating and Financial Budgets (Integrated)</div>
+            <div class="subsection-title">Master Budget</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Operating budget (sales, production, COGS, income statement)</li>
+                <li class="bullet-item">Financial budget (cash, capital expenditures, balance sheet)</li>
+            </ul>
+            <div class="subsection-title">Steps to Prepare a Master Budget</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.5 Explain How Budgets Are Used to Evaluate Goals</div>
+            <div class="subsection-title">Performance Evaluation</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Budget vs. Actual</strong>: Compare actual results to budgeted targets</li>
+                <li class="bullet-item"><strong>Variance Analysis</strong>: Analyze differences (variances) between actual and budget</li>
+                <li class="bullet-item"><strong>Management by Exception</strong>: Focus on significant variances</li>
+            </ul>
+            <div class="subsection-title">Variance Types</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Favorable Variance</strong>: Actual results better than budget</li>
+                <li class="bullet-item"><strong>Unfavorable Variance</strong>: Actual results worse than budget</li>
+                <li class="bullet-item">Actual sales > budgeted sales = favorable sales variance</li>
+                <li class="bullet-item">Actual expenses > budgeted expenses = unfavorable expense variance</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.6 Explain How and Why a Standard Cost Is Developed</div>
+            <div class="subsection-title">Standard Costs</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Establish cost benchmarks</li>
+                <li class="bullet-item">Simplify budgeting and cost control</li>
+                <li class="bullet-item">Facilitate variance analysis</li>
+                <li class="bullet-item">Encourage efficiency</li>
+            </ul>
+            <div class="subsection-title">Types of Standards</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Ideal Standards</strong>: Perfect performance (no waste, no downtime)</li>
+                <li class="bullet-item">Motivational but often unrealistic</li>
+                <li class="bullet-item"><strong>Practical Standards</strong>: Allow for normal inefficiencies</li>
+                <li class="bullet-item">More realistic and achievable</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.7 Describe How Companies Use Variance Analysis</div>
+            <div class="subsection-title">Variance Analysis Overview</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Materials Variances</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>Formula:</strong> (Actual Price - Standard Price) × Actual Quantity</li>
+                <li class="bullet-item">Measures purchase price differences</li>
+                <li class="bullet-item">Responsibility: Purchasing department</li>
+                <li class="bullet-item">Causes: Supplier price changes, quality differences, purchasing efficiency</li>
+                <li class="bullet-item"><strong>Formula:</strong> (Actual Quantity - Standard Quantity) × Standard Price</li>
+                <li class="bullet-item">Measures efficiency of material usage</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.8 Luxembourg SME Budgeting Practices</div>
+            <div class="subsection-title">Budgeting Characteristics in Luxembourg SMEs</div>
+            <ul class="bullet-list">
+                <li class="bullet-item"><strong>High Fixed Costs</strong>: Rent, salaries, social charges</li>
+                <li class="bullet-item"><strong>Multilingual Workforce</strong>: Budgets may need to be communicated in multiple languages</li>
+                <li class="bullet-item"><strong>Cross-Border Workers</strong>: Payroll planning must consider cross-border employment regulations</li>
+                <li class="bullet-item"><strong>VAT Complexity</strong>: Multiple VAT rates (3%, 8%, 14%, 17%) affect cash flow</li>
+                <li class="bullet-item"><strong>Seasonality</strong>: Tourism, hospitality, retail may have seasonal peaks</li>
+                <li class="bullet-item"><strong>Banking Expectations</strong>: Banks often require budgets for lending</li>
+            </ul>
+            <div class="subsection-title">Best Practices</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 23.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">23.9 Luxembourg Cash Flow Budgeting for SMEs</div>
+            <div class="subsection-title">Cash Flow Importance</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cash Flow Budget Steps</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Customer collections</li>
+                <li class="bullet-item">Loans and investments</li>
+                <li class="bullet-item">Other income (grants, refunds)</li>
+                <li class="bullet-item">Inventory/materials purchases</li>
+                <li class="bullet-item">Salaries and wages</li>
+                <li class="bullet-item">Social charges (CCSS)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Budget</div>
+                <div class="term-definition">Financial plan for the future period</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Master Budget</div>
+                <div class="term-definition">Comprehensive budget including operating and financial components</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Operating Budget</div>
+                <div class="term-definition">Budget for revenues and expenses</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Financial Budget</div>
+                <div class="term-definition">Budget for cash flows, capital expenditures, and balance sheet</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Sales Budget</div>
+                <div class="term-definition">Forecast of sales volume and revenue</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Production Budget</div>
+                <div class="term-definition">Plan for units to produce</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Cash Budget</div>
+                <div class="term-definition">Plan for cash inflows and outflows</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Static Budget</div>
+                <div class="term-definition">Budget based on single activity level</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Flexible Budget</div>
+                <div class="term-definition">Budget that adjusts to actual activity levels</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Rolling Budget</div>
+                <div class="term-definition">Continuously updated budget (always covers fixed period)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Standard Cost</div>
+                <div class="term-definition">Pre-determined cost based on expected prices and quantities</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Variance</div>
+                <div class="term-definition">Difference between actual and budgeted/standard amounts</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Variance Analysis</div>
+                <div class="term-definition">Comparison of actual results to standards/budget to identify differences</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Favorable Variance</div>
+                <div class="term-definition">Actual results better than budget</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Unfavorable Variance</div>
+                <div class="term-definition">Actual results worse than budget</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Materials Price Variance</div>
+                <div class="term-definition">Difference due to price paid for materials</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Materials Quantity Variance</div>
+                <div class="term-definition">Difference due to quantity of materials used</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Labor Rate Variance</div>
+                <div class="term-definition">Difference due to wage rate paid</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Labor Efficiency Variance</div>
+                <div class="term-definition">Difference due to hours worked</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Budget Slack</div>
+                <div class="term-definition">Intentional padding of budgets</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Scenario Planning</div>
+                <div class="term-definition">Creating multiple budget versions based on different assumptions</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Participative Budgeting</div>
+                <div class="term-definition">Budgeting process involving lower-level managers</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

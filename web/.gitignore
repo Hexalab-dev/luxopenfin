@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Production
+build/
+.docusaurus/
+.cache-loader/
+
+# Generated files
+.cache/
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Algolia config (if contains API keys)
+.parse_config.json
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

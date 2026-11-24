@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "LuxOpenFin",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo LuxOpenFin",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Textbook": {
+    "message": "Cours",
+    "description": "Navbar item with label Textbook"
+  },
+  "item.label.Interactive Tools": {
+    "message": "Outils interactifs",
+    "description": "Navbar item with label Interactive Tools"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

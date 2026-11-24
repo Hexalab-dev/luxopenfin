@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 20: Job Order Costing - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 20: Job Order Costing</div>
+        <div class="slide-subtitle">Chapter 20 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Compare and contrast job order costing and process costing</div>
+            <div class="objective-item">Describe and identify the three major components of product costs under job order costing</div>
+            <div class="objective-item">Use the job order costing method to trace the flow of product costs through the inventory accounts</div>
+            <div class="objective-item">Compute a predetermined overhead rate and apply overhead to production</div>
+            <div class="objective-item">Compute the cost of a job using job order costing</div>
+            <div class="objective-item">Determine and dispose of underapplied or overapplied overhead</div>
+            <div class="objective-item">Prepare journal entries for a job order cost system</div>
+            <div class="objective-item">Explain how a job order cost system applies to a nonmanufacturing environment</div>
+            <div class="objective-item">Understand Luxembourg service company job costing applications</div>
+            <div class="objective-item">Apply job order costing to Luxembourg craft/artisan businesses</div>
+        </div>
+    </div>
+    
+    <!-- Section 20.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.1 Compare and Contrast Job Order Costing and Process Costing</div>
+            <div class="subsection-title">Two Main Costing Systems</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Job Order Costing</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Each job is unique</li>
+                <li class="bullet-item">Costs are accumulated by job</li>
+                <li class="bullet-item">Jobs can be separately identified</li>
+                <li class="bullet-item">Different jobs may have different costs</li>
+                <li class="bullet-item">Used for customized products/services</li>
+                <li class="bullet-item">Custom manufacturing</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.2 Describe and Identify the Three Major Components of Product Costs under Job Order Costing</div>
+            <div class="subsection-title">Product Costs in Job Order Costing</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Direct Materials</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Physically become part of the product</li>
+                <li class="bullet-item">Can be easily traced to specific jobs</li>
+                <li class="bullet-item">Significant cost</li>
+                <li class="bullet-item">Examples: Wood for furniture, fabric for clothing, ingredients for custom cakes</li>
+                <li class="bullet-item">Direct materials: Food ingredients (€200), beverages (€150), packaging (€50)</li>
+                <li class="bullet-item">Total direct materials: €400</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.3 Use the Job Order Costing Method to Trace the Flow of Product Costs through the Inventory Accounts</div>
+            <div class="subsection-title">Flow of Costs in Job Order Costing</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Inventory Accounts</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.4 Compute a Predetermined Overhead Rate and Apply Overhead to Production</div>
+            <div class="subsection-title">Why Predetermined Overhead Rate?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Apply overhead during the period (not wait until year-end)</li>
+                <li class="bullet-item">More timely cost information</li>
+                <li class="bullet-item">Better job costing during the period</li>
+                <li class="bullet-item">Standard practice in job order costing</li>
+            </ul>
+            <div class="subsection-title">Calculating Predetermined Overhead Rate</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Direct labor hours</li>
+                <li class="bullet-item">Direct labor cost</li>
+                <li class="bullet-item">Machine hours</li>
+                <li class="bullet-item">Direct materials cost</li>
+                <li class="bullet-item">Units produced</li>
+                <li class="bullet-item">Direct labor hours (most common)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.5 Compute the Cost of a Job Using Job Order Costing</div>
+            <div class="subsection-title">Job Cost Calculation</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Complete Example: Job Cost Calculation</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Food ingredients: €800</li>
+                <li class="bullet-item">Beverages: €600</li>
+                <li class="bullet-item">Decorations: €200</li>
+                <li class="bullet-item">Packaging/supplies: €150</li>
+                <li class="bullet-item"><strong>Total Direct Materials: €1,750</strong></li>
+                <li class="bullet-item">Head chef: 12 hours × €30/hour = €360</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.6 Determine and Dispose of Underapplied or Overapplied Overhead</div>
+            <div class="subsection-title">Overhead Application Issues</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Underapplied Overhead</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Actual overhead higher than estimated</li>
+                <li class="bullet-item">Actual activity lower than estimated</li>
+                <li class="bullet-item">Inefficient overhead spending</li>
+                <li class="bullet-item">Unexpected costs</li>
+                <li class="bullet-item">Actual overhead: €62,000</li>
+                <li class="bullet-item">Applied overhead: €60,000</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.7 Prepare Journal Entries for a Job Order Cost System</div>
+            <div class="subsection-title">Complete Journal Entry Flow</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">1. Purchase Raw Materials</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">301: Raw Materials (Class 3)</li>
+                <li class="bullet-item">421611: VAT Recoverable (Class 4)</li>
+                <li class="bullet-item">44111: Accounts Payable (Class 4)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.8 Explain How a Job Order Cost System Applies to a Nonmanufacturing Environment</div>
+            <div class="subsection-title">Job Order Costing Beyond Manufacturing</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Service Companies</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">No finished goods inventory (services are consumed as provided)</li>
+                <li class="bullet-item">May have work in process (uncompleted services)</li>
+                <li class="bullet-item">Direct materials may be minimal</li>
+                <li class="bullet-item">Direct labor is often the major cost</li>
+                <li class="bullet-item">Overhead still needs allocation</li>
+                <li class="bullet-item">Travel expenses: €500</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.9 Luxembourg Service Company Job Costing</div>
+            <div class="subsection-title">Luxembourg Service Industry</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Financial services</li>
+                <li class="bullet-item">Consulting</li>
+                <li class="bullet-item">Legal services</li>
+                <li class="bullet-item">Accounting services</li>
+                <li class="bullet-item">IT services</li>
+                <li class="bullet-item">Marketing and advertising</li>
+            </ul>
+            <div class="subsection-title">Service Company Job Costing Example</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Software licenses: €2,000</li>
+                <li class="bullet-item">Hardware (temporary): €1,500</li>
+                <li class="bullet-item">Travel expenses: €800</li>
+                <li class="bullet-item"><strong>Total: €3,300</strong></li>
+                <li class="bullet-item">Senior consultant: 60 hours × €120/hour = €7,200</li>
+                <li class="bullet-item">Consultant: 80 hours × €90/hour = €7,200</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 20.10 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">20.10 Luxembourg Craft/Artisan Business Costing</div>
+            <div class="subsection-title">Luxembourg Craft and Artisan Sector</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Custom furniture makers</li>
+                <li class="bullet-item">Artisan bakers and pastry chefs</li>
+                <li class="bullet-item">Jewelry makers</li>
+                <li class="bullet-item">Custom clothing and tailoring</li>
+                <li class="bullet-item">Artisan food producers</li>
+                <li class="bullet-item">Handcrafted products</li>
+            </ul>
+            <div class="subsection-title">Craft Business Characteristics</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Each product is unique or customized</li>
+                <li class="bullet-item">Small batch production</li>
+                <li class="bullet-item">High skill requirements</li>
+                <li class="bullet-item">Direct labor is significant</li>
+                <li class="bullet-item">Materials vary by product</li>
+                <li class="bullet-item">Overhead includes workshop costs</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Job Order Costing</div>
+                <div class="term-definition">Costing system that accumulates costs for each individual job</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Process Costing</div>
+                <div class="term-definition">Costing system used for identical products produced in large quantities</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Direct Materials</div>
+                <div class="term-definition">Raw materials that become part of the product and can be traced to jobs</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Direct Labor</div>
+                <div class="term-definition">Labor cost of employees who work directly on products</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Manufacturing Overhead</div>
+                <div class="term-definition">All manufacturing costs that cannot be easily traced to jobs</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Job Cost Sheet</div>
+                <div class="term-definition">Document that accumulates all costs for a specific job</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Work in Process</div>
+                <div class="term-definition">Inventory account for partially completed jobs</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Finished Goods</div>
+                <div class="term-definition">Inventory account for completed jobs not yet sold</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Raw Materials Inventory</div>
+                <div class="term-definition">Inventory account for materials not yet used</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Predetermined Overhead Rate</div>
+                <div class="term-definition">Estimated overhead rate used to apply overhead to jobs</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Applied Overhead</div>
+                <div class="term-definition">Overhead allocated to jobs using predetermined rate</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Actual Overhead</div>
+                <div class="term-definition">Real overhead costs incurred during the period</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Underapplied Overhead</div>
+                <div class="term-definition">When actual overhead exceeds applied overhead</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Overapplied Overhead</div>
+                <div class="term-definition">When applied overhead exceeds actual overhead</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Activity Base</div>
+                <div class="term-definition">Measure used to allocate overhead (labor hours, labor cost, machine hours)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Cost of Goods Sold</div>
+                <div class="term-definition">Cost of jobs/products sold to customers</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Job</div>
+                <div class="term-definition">Specific order, project, or batch of products</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

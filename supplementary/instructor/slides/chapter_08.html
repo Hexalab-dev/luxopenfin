@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Fraud, Internal Controls, and Cash - LuxOpenFin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            page-break-after: always;
+        }
+        
+        .slide-title {
+            font-size: 3.5em;
+            color: #4a9eff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .slide-header {
+            font-size: 2.5em;
+            color: #4a9eff;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .objective-item {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #4a9eff;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.6em;
+            color: #5cb85c;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-item {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .bullet-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-size: 1.5em;
+        }
+        
+        .term-item {
+            margin-bottom: 25px;
+        }
+        
+        .term-name {
+            font-size: 1.4em;
+            color: #4a9eff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            padding-left: 20px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Slide -->
+    <div class="slide">
+        <div class="slide-title">Chapter 8: Fraud, Internal Controls, and Cash</div>
+        <div class="slide-subtitle">Chapter 8 - Luxembourg SME Accounting</div>
+        <div class="footer">LuxOpenFin - Financial Accounting for Luxembourg SMEs</div>
+    </div>
+    
+    <!-- Learning Objectives -->
+    <div class="slide">
+        <div class="slide-header">Learning Objectives</div>
+        <div class="slide-content">
+            <div class="objective-item">Analyze fraud in the accounting workplace</div>
+            <div class="objective-item">Define and explain internal controls and their purpose within an organization</div>
+            <div class="objective-item">Describe internal controls within an organization</div>
+            <div class="objective-item">Define the purpose and use of a petty cash fund, and prepare petty cash journal entries</div>
+            <div class="objective-item">Discuss management responsibilities for maintaining internal controls within an organization</div>
+            <div class="objective-item">Define the purpose of a bank reconciliation, and prepare a bank reconciliation and its associated journal entries</div>
+            <div class="objective-item">Describe fraud in financial statements and regulatory requirements</div>
+            <div class="objective-item">Understand Luxembourg banking system and payment methods (Cetrel, SEPA, etc.)</div>
+            <div class="objective-item">Explain Luxembourg cash handling regulations for SMEs</div>
+        </div>
+    </div>
+    
+    <!-- Section 8.1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.1 Analyze Fraud in the Accounting Workplace</div>
+            <div class="subsection-title">What is Fraud?</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Types of Fraud</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.2 Define and Explain Internal Controls and Their Purpose within an Organization</div>
+            <div class="subsection-title">What are Internal Controls?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Safeguard assets</li>
+                <li class="bullet-item">Ensure accurate and reliable financial records</li>
+                <li class="bullet-item">Promote operational efficiency</li>
+                <li class="bullet-item">Ensure compliance with laws and regulations</li>
+                <li class="bullet-item">Prevent and detect fraud and errors</li>
+            </ul>
+            <div class="subsection-title">Purpose of Internal Controls</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Protect cash, inventory, equipment</li>
+                <li class="bullet-item">Prevent theft and misuse</li>
+                <li class="bullet-item">Ensure assets are used for business purposes</li>
+                <li class="bullet-item">Reduce errors in recording transactions</li>
+                <li class="bullet-item">Ensure financial statements are accurate</li>
+                <li class="bullet-item">Maintain reliable accounting records</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.3 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.3 Describe Internal Controls within an Organization</div>
+            <div class="subsection-title">Internal Control Framework</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Cash Controls</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">All cash receipts recorded</li>
+                <li class="bullet-item">Missing receipts indicate problems</li>
+                <li class="bullet-item">Sequence can be verified</li>
+                <li class="bullet-item">Record cash immediately upon receipt</li>
+                <li class="bullet-item">Don't allow cash to accumulate</li>
+                <li class="bullet-item">Daily deposits</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.4 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.4 Define the Purpose and Use of a Petty Cash Fund, and Prepare Petty Cash Journal Entries</div>
+            <div class="subsection-title">What is Petty Cash?</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Pay for small expenses quickly</li>
+                <li class="bullet-item">Avoid writing checks for small amounts</li>
+                <li class="bullet-item">Convenience for minor purchases</li>
+                <li class="bullet-item">Emergency expenses</li>
+                <li class="bullet-item">Office supplies</li>
+                <li class="bullet-item">Postage</li>
+            </ul>
+            <div class="subsection-title">Establishing a Petty Cash Fund</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Based on typical small expenses</li>
+                <li class="bullet-item">Usually €100-€500 for small businesses</li>
+                <li class="bullet-item">Should last 2-4 weeks</li>
+                <li class="bullet-item">One person responsible for petty cash</li>
+                <li class="bullet-item">Should be trustworthy</li>
+                <li class="bullet-item">Should not have access to other cash</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.5 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.5 Discuss Management Responsibilities for Maintaining Internal Controls within an Organization</div>
+            <div class="subsection-title">Management's Role</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Responsibilities</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Tone at the top (ethical culture)</li>
+                <li class="bullet-item">Management's attitude toward controls</li>
+                <li class="bullet-item">Organizational structure</li>
+                <li class="bullet-item">Assignment of authority and responsibility</li>
+                <li class="bullet-item">Human resource policies</li>
+                <li class="bullet-item">Set ethical tone</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.6 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.6 Define the Purpose of a Bank Reconciliation, and Prepare a Bank Reconciliation and Its Associated Journal Entries</div>
+            <div class="subsection-title">What is a Bank Reconciliation?</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Purpose of Bank Reconciliation</div>
+            <ul class="bullet-list">
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.7 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.7 Describe Fraud in Financial Statements and Regulatory Requirements</div>
+            <div class="subsection-title">Fraudulent Financial Reporting</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Common Schemes</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Recording fictitious sales</li>
+                <li class="bullet-item">Recording sales before they occur</li>
+                <li class="bullet-item">Recording sales that don't meet criteria</li>
+                <li class="bullet-item">Inflating sales amounts</li>
+                <li class="bullet-item">Understating expenses</li>
+                <li class="bullet-item">Capitalizing expenses that should be expensed</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.8 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.8 Luxembourg Banking System and Payment Methods (Cetrel, SEPA, etc.)</div>
+            <div class="subsection-title">Luxembourg Banking System</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Strong regulatory framework</li>
+                <li class="bullet-item">International focus</li>
+                <li class="bullet-item">Multiple currencies</li>
+                <li class="bullet-item">Advanced technology</li>
+                <li class="bullet-item">High security standards</li>
+            </ul>
+            <div class="subsection-title">Major Banks in Luxembourg</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">BGL BNP Paribas</li>
+                <li class="bullet-item">Banque Internationale à Luxembourg (BIL)</li>
+                <li class="bullet-item">ING Luxembourg</li>
+                <li class="bullet-item">Deutsche Bank Luxembourg</li>
+                <li class="bullet-item">Many other international banks</li>
+                <li class="bullet-item">Business accounts</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Section 8.9 -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="section-title">8.9 Luxembourg Cash Handling Regulations for SMEs</div>
+            <div class="subsection-title">Cash Handling Regulations</div>
+            <ul class="bullet-list">
+            </ul>
+            <div class="subsection-title">Fiscal Cash Registers</div>
+            <ul class="bullet-list">
+                <li class="bullet-item">Restaurants and cafes</li>
+                <li class="bullet-item">Retail stores</li>
+                <li class="bullet-item">Businesses with significant cash sales</li>
+                <li class="bullet-item">Specific sectors as required</li>
+                <li class="bullet-item">Must be certified/approved</li>
+                <li class="bullet-item">Must record all transactions</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Key Terms -->
+    <div class="slide">
+        <div class="slide-header">Key Terms</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Bank Reconciliation</div>
+                <div class="term-definition">Process of comparing bank statement to cash records</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Deposits in Transit</div>
+                <div class="term-definition">Deposits made but not yet on bank statement</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Fraud</div>
+                <div class="term-definition">Intentional deception for personal gain</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Fraud Triangle</div>
+                <div class="term-definition">Three factors (pressure, opportunity, rationalization) that lead to fraud</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Internal Controls</div>
+                <div class="term-definition">Policies and procedures to safeguard assets and ensure accuracy</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Key Terms (continued) -->
+    <div class="slide">
+        <div class="slide-header">Key Terms (continued)</div>
+        <div class="slide-content">
+            <div class="term-item">
+                <div class="term-name">Misappropriation of Assets</div>
+                <div class="term-definition">Theft of company assets</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Outstanding Checks</div>
+                <div class="term-definition">Checks written but not yet cashed</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Petty Cash</div>
+                <div class="term-definition">Small amount of cash for incidental expenses</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">SEPA</div>
+                <div class="term-definition">Single Euro Payments Area - standardized euro payment system</div>
+            </div>
+            <div class="term-item">
+                <div class="term-name">Tone at the Top</div>
+                <div class="term-definition">Management's attitude toward controls and ethics</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
